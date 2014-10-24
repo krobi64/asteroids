@@ -11,7 +11,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem "faraday"
 gem "faraday_middleware"
-gem "rubocop"
 gem "hashr"
 gem 'bootstrap-sass'
 gem 'haml-rails'
@@ -38,10 +37,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-  gem 'sqlite3'
+  gem 'mysql2'
 end
 group :production do
-  gem 'pg'
+  gem 'mysql2'
   gem 'rails_12factor'
 end
 group :test do
