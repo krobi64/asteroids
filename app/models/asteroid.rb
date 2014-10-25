@@ -22,6 +22,6 @@ class Asteroid < ActiveRecord::Base
   delegate :palermo_max, to: :hazard, allow_nil: true
 
   def asteroid_packet
-    attributes.merge(palermo_cum: palermo_cum, palermo_max: palermo_max, torino: torino)
+    attributes.merge(torino: torino)
   end
 end
