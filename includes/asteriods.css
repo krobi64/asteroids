@@ -86,19 +86,19 @@ h1, h2 {
 }
 
 #size-chart {
-  width: 460px;
+  width: 300px;
 }
 
 #speed-chart {
-  width: 460px;
+  width: 300px;
 }
 
 #perihelion-distance-chart {
-  width: 460px;
+  width: 300px;
 }
 
 #earth-moid-chart {
-  width: 460px;
+  width: 900px;
 }
 
 #asteroid-list {
