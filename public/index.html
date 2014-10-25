@@ -142,7 +142,7 @@ $(document).ready(function(){
     <div class="panel-heading clearfix"> <h4 class="panel-title">Asteriods <span class="pull-right" style="font-size: .76em;">XXX of Asteriods Displayed</span></h4></div>
 
   <div class="panel-body">
-    <table class="table table-hover table-striped">
+    <table class="table table-striped">
 
     <thead>
 
@@ -464,7 +464,23 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
           .data(designation.top(30), function(d) { return d.index; });
 
       var asteroidEnter = asteroid.enter().append("tr")
-                                  .attr("class", "asteroid");
+                                  .attr("class", function(d) {
+
+                                    if (d.torino == null) {
+                                      return "asteroid unknown-danger"
+                                    } else if (+d.torino == 0) {
+                                      
+                                    } else if (+d.torino == 1) {
+                                      return "asteroid success"
+                                    } else if (+d.torino == 2 || +d.torino == 3 || +d.torino == 4) {
+                                      return "asteroid warning"
+                                    } else if (+d.torino == 5 || +d.torino == 6 || +d.torino == 7) {
+                                      return "asteroid med-danger"
+                                    } else if (+d.torino == 8 || +d.torino == 9 || +d.torino == 10) {
+                                      return "asteroid danger"
+                                    }
+
+                                  });
 
       // asteroidEnter.append("td")
       //     .text(function(d) { return d.name; });
@@ -493,7 +509,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
           .text(function(d) { return d.delta_v; });   
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.torino; }); 
+          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; }); 
 
 
 // <a href="https://twitter.com/share" class="twitter-share-button" 
@@ -506,7 +522,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
       asteroidEnter.append("td")
       .append("a")
-      .attr("href","http://twitter.com/home/?status=Check out this Asteriod! https://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti" )
+      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! https://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti" )
       .attr("class", "btn btn-default")
       .text("Tweet"); 
 
@@ -542,9 +558,10 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
         // Create the skeletal chart.
         if (g.empty()) {
+
           div.select(".title").append("a")
               .attr("href", "javascript:reset(" + id + ")")
-              .attr("class", "reset")
+              .attr("class", "label label-default reset")
               .text("reset")
               .style("display", "none");
 
