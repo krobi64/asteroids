@@ -144,9 +144,17 @@ $(document).ready(function(){
 
         <tr>
 
-            <th>Name</th>
+<!--             <th>Name</th> -->
 
             <th>Number/Designation</th>
+
+            <th>Speed</th>
+
+            <th>Size</th>
+
+            <th>Nearest distance to Sun</th>
+
+            <th>Nearest distance to Earth</th>
 
             <th>Time to Oribit the Sun(in years)</th>
 
@@ -368,8 +376,8 @@ d3.json("asteroids.json", function(error, asteroids) {
         .dimension(size)
         .group(sizes)
       .x(d3.scale.linear()
-        .domain([10, 30])
-        .rangeRound([0, 10 * 20])),
+        .domain([10, 35])
+        .rangeRound([0, 10 * 25])),
 
     barChart()
         .dimension(sun_distance)
@@ -458,17 +466,31 @@ d3.json("asteroids.json", function(error, asteroids) {
       var asteroidEnter = asteroid.enter().append("tr")
                                   .attr("class", "asteroid");
 
-      asteroidEnter.append("td")
-          .text(function(d) { return d.name; });
+      // asteroidEnter.append("td")
+      //     .text(function(d) { return d.name; });
 
       asteroidEnter.append("td")
           .text(function(d) { return d.designation; });
+
+
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.mean_daily_motion; });    
+          
+      asteroidEnter.append("td")
+          .text(function(d) { return d.absolute_magnitude; });  
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.perihelion_distance; });          
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.earth_moid; });
 
       asteroidEnter.append("td")
           .text(function(d) { return d.period; });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.delta_v; });          
+          .text(function(d) { return d.delta_v; });              
 
       asteroid.exit().remove();
 
