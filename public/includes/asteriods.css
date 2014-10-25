@@ -74,18 +74,18 @@ color: #fff;
 }
 
 .foreground.bar {
-  fill: #CACBD4;
+  fill: steelblue;
 }
 
-.foreground.bar brightness{
+#size-chart .foreground.bar {
   fill: #AAAAFF;
 }
 
-.foreground.bar sun{
+#perihelion-distance-chart .foreground.bar {
   fill: #FFD700;
 }
 
-.foreground.bar earth{
+#earth-moid-chart .foreground.bar {
   fill: #00C78C;
 }
 
@@ -189,7 +189,7 @@ aside {
 background-color: #fff;
 }
 
-.unnkown-danger{
+.unknown-danger{
 background-color: #F5BEF5;
 }
 
