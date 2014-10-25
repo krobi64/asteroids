@@ -131,11 +131,16 @@ $(document).ready(function(){
     <div class="title">Brightness&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="The apparent magnitude of an object only tells us how bright an object appears from Earth. The lower the number, the brighter (and bigger) the asteriod!">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
   </div>
   <div id="perihelion-distance-chart" class="chart">
-    <div class="title">Passes Closest to the Sun&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="The perihelion is the point in the orbit of a planet, asteroid, or comet where it is nearest to the sun.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
+    <div class="title">Passes Closest <br>to the Sun&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="The perihelion is the point in the orbit of a planet, asteroid, or comet where it is nearest to the sun.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
   </div>
   <div id="earth-moid-chart" class="chart">
     <div class="title">Passes Closest to Earth&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
   </div>
+<!--   <div id="km-neo" style="display: inline-block">
+    <div class="title">KM NEO&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><br>
+    <input type="checkbox" value="Bike">True<br>
+    <input type="checkbox" value="Car">False
+  </div> -->
 </div>
 <!-- charts END -->
 
@@ -305,7 +310,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
       earth_distances = earth_distance.group(function(d) { return Math.floor(d * 150) / 150.0; }),
 
       sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
-      sun_distances = sun_distance.group(function(d) { return Math.floor(d * 10) / 10.0; }),
+      sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
 
       designation = asteroid.dimension(function(d) { return d.designation});
 
@@ -336,8 +341,8 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
         .dimension(sun_distance)
         .group(sun_distances)
       .x(d3.scale.linear()
-        .domain([0, 2.0])
-        .rangeRound([0, 10 * 20])), 
+        .domain([0, 1.2])
+        .rangeRound([0, 10 * 24])), 
 
     barChart()
         .dimension(earth_distance)
@@ -439,6 +444,8 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
       //     .text(function(d) { return d.name; });
 
       asteroidEnter.append("td")
+          .append("a")
+          .attr("href", "http://asteriod-explorers.herokuapp.com/adetail.html")
           .text(function(d) { return d.designation; });
 
 
@@ -475,7 +482,8 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
       asteroidEnter.append("td")
       .append("a")
-      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! https://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti" )
+      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! http://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti")
+      .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
       .html("<span class='fa fa-twitter'></span> Tweet"); 
 
