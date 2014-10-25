@@ -173,42 +173,42 @@ ActiveRecord::Schema.define(version: 20141024000528) do
     t.datetime "color_updated_at"
   end
 
-  add_index "asteroids", ["absolute_magnitude"], name: "index_mp_properties_on_absolute_magnitude", using: :btree
-  add_index "asteroids", ["albedo_neowise"], name: "index_mp_properties_on_albedo_neowise", using: :btree
-  add_index "asteroids", ["aphelion_distance"], name: "index_mp_properties_on_aphelion_distance", using: :btree
-  add_index "asteroids", ["argument_of_perihelion"], name: "index_mp_properties_on_argument_of_perihelion", using: :btree
-  add_index "asteroids", ["ascending_node"], name: "index_mp_properties_on_ascending_node", using: :btree
-  add_index "asteroids", ["ascending_node_uncertainty_dbl"], name: "index_mp_properties_on_ascending_node_uncertainty_dbl", using: :btree
-  add_index "asteroids", ["binary_object"], name: "index_mp_properties_on_binary_object", using: :btree
+  add_index "asteroids", ["absolute_magnitude"], name: "index_asteroids_on_absolute_magnitude", using: :btree
+  add_index "asteroids", ["albedo_neowise"], name: "index_asteroids_on_albedo_neowise", using: :btree
+  add_index "asteroids", ["aphelion_distance"], name: "index_asteroids_on_aphelion_distance", using: :btree
+  add_index "asteroids", ["argument_of_perihelion"], name: "index_asteroids_on_argument_of_perihelion", using: :btree
+  add_index "asteroids", ["ascending_node"], name: "index_asteroids_on_ascending_node", using: :btree
+  add_index "asteroids", ["ascending_node_uncertainty_dbl"], name: "index_asteroids_on_ascending_node_uncertainty_dbl", using: :btree
+  add_index "asteroids", ["binary_object"], name: "index_asteroids_on_binary_object", using: :btree
   add_index "asteroids", ["delta_v"], name: "delta_v", using: :btree
-  add_index "asteroids", ["designation"], name: "index_mp_properties_on_designation", using: :btree
-  add_index "asteroids", ["diameter_neowise"], name: "index_mp_properties_on_diameter_neowise", using: :btree
+  add_index "asteroids", ["designation"], name: "index_asteroids_on_designation", using: :btree
+  add_index "asteroids", ["diameter_neowise"], name: "index_asteroids_on_diameter_neowise", using: :btree
   add_index "asteroids", ["earth_moid"], name: "earth_moid", using: :btree
-  add_index "asteroids", ["eccentricity"], name: "index_mp_properties_on_eccentricity", using: :btree
-  add_index "asteroids", ["eccentricity_uncertainty_dbl"], name: "index_mp_properties_on_eccentricity_uncertainty_dbl", using: :btree
-  add_index "asteroids", ["inclination"], name: "index_mp_properties_on_inclination", using: :btree
-  add_index "asteroids", ["inclination_uncertainty_dbl"], name: "index_mp_properties_on_inclination_uncertainty_dbl", using: :btree
+  add_index "asteroids", ["eccentricity"], name: "index_asteroids_on_eccentricity", using: :btree
+  add_index "asteroids", ["eccentricity_uncertainty_dbl"], name: "index_asteroids_on_eccentricity_uncertainty_dbl", using: :btree
+  add_index "asteroids", ["inclination"], name: "index_asteroids_on_inclination", using: :btree
+  add_index "asteroids", ["inclination_uncertainty_dbl"], name: "index_asteroids_on_inclination_uncertainty_dbl", using: :btree
   add_index "asteroids", ["jupiter_moid"], name: "jupiter_moid", using: :btree
   add_index "asteroids", ["mars_moid"], name: "mars_moid", using: :btree
-  add_index "asteroids", ["mean_anomaly"], name: "index_mp_properties_on_mean_anomaly", using: :btree
-  add_index "asteroids", ["mean_daily_motion"], name: "index_mp_properties_on_mean_daily_motion", using: :btree
+  add_index "asteroids", ["mean_anomaly"], name: "index_asteroids_on_mean_anomaly", using: :btree
+  add_index "asteroids", ["mean_daily_motion"], name: "index_asteroids_on_mean_daily_motion", using: :btree
   add_index "asteroids", ["mercury_moid"], name: "mercury_moid", using: :btree
-  add_index "asteroids", ["n_or_d"], name: "index_mp_properties_on_n_or_d", using: :btree
+  add_index "asteroids", ["n_or_d"], name: "index_asteroids_on_n_or_d", using: :btree
   add_index "asteroids", ["neptune_moid"], name: "neptune_moid", using: :btree
-  add_index "asteroids", ["number", "designation"], name: "index_mp_properties_on_number_and_designation", unique: true, using: :btree
-  add_index "asteroids", ["number"], name: "index_mp_properties_on_number", using: :btree
-  add_index "asteroids", ["orbit_type"], name: "index_mp_properties_on_orbit_type", using: :btree
-  add_index "asteroids", ["packed_designation"], name: "index_mp_properties_on_packed_designation", using: :btree
-  add_index "asteroids", ["perihelion_date_jd_uncertainty_dbl"], name: "index_mp_properties_on_perihelion_date_jd_uncertainty_dbl", using: :btree
-  add_index "asteroids", ["perihelion_distance"], name: "index_mp_properties_on_perihelion_distance", using: :btree
-  add_index "asteroids", ["perihelion_distance_uncertainty_dbl"], name: "index_mp_properties_on_perihelion_distance_uncertainty_dbl", using: :btree
-  add_index "asteroids", ["period"], name: "index_mp_properties_on_period", using: :btree
+  add_index "asteroids", ["number", "designation"], name: "index_asteroids_on_number_and_designation", unique: true, using: :btree
+  add_index "asteroids", ["number"], name: "index_asteroids_on_number", using: :btree
+  add_index "asteroids", ["orbit_type"], name: "index_asteroids_on_orbit_type", using: :btree
+  add_index "asteroids", ["packed_designation"], name: "index_asteroids_on_packed_designation", using: :btree
+  add_index "asteroids", ["perihelion_date_jd_uncertainty_dbl"], name: "index_asteroids_on_perihelion_date_jd_uncertainty_dbl", using: :btree
+  add_index "asteroids", ["perihelion_distance"], name: "index_asteroids_on_perihelion_distance", using: :btree
+  add_index "asteroids", ["perihelion_distance_uncertainty_dbl"], name: "index_asteroids_on_perihelion_distance_uncertainty_dbl", using: :btree
+  add_index "asteroids", ["period"], name: "index_asteroids_on_period", using: :btree
   add_index "asteroids", ["saturn_moid"], name: "saturn_moid", using: :btree
-  add_index "asteroids", ["semimajor_axis"], name: "index_mp_properties_on_semimajor_axis", using: :btree
-  add_index "asteroids", ["spin_max_amplitude"], name: "index_mp_properties_on_spin_max_amplitude", using: :btree
-  add_index "asteroids", ["spin_min_amplitude"], name: "index_mp_properties_on_spin_min_amplitude", using: :btree
-  add_index "asteroids", ["spin_period"], name: "index_mp_properties_on_spin_period", using: :btree
-  add_index "asteroids", ["taxonomy_class"], name: "index_mp_properties_on_taxonomy_class", using: :btree
+  add_index "asteroids", ["semimajor_axis"], name: "index_asteroids_on_semimajor_axis", using: :btree
+  add_index "asteroids", ["spin_max_amplitude"], name: "index_asteroids_on_spin_max_amplitude", using: :btree
+  add_index "asteroids", ["spin_min_amplitude"], name: "index_asteroids_on_spin_min_amplitude", using: :btree
+  add_index "asteroids", ["spin_period"], name: "index_asteroids_on_spin_period", using: :btree
+  add_index "asteroids", ["taxonomy_class"], name: "index_asteroids_on_taxonomy_class", using: :btree
   add_index "asteroids", ["tisserand_jupiter"], name: "tisserand_jupiter", using: :btree
   add_index "asteroids", ["uranus_moid"], name: "uranus_moid", using: :btree
   add_index "asteroids", ["venus_moid"], name: "venus_moid", using: :btree

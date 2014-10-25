@@ -1,5 +1,5 @@
 class Asteroid < ActiveRecord::Base
-  has_one :hazard, foreign_key: :designation
+  has_one :hazard, foreign_key: :designation, primary_key: :n_or_d
 
   default_scope {select(%i[absolute_magnitude
                           aphelion_distance
@@ -16,5 +16,7 @@ class Asteroid < ActiveRecord::Base
                           period
                           pha])}
 
-  delegate :torino, to: :hazard
+  delegate :torino, to: :hazard, allow_nil: true
+  delegate :palermo_cum, to: :hazard, allow_nil: true
+  delegate :palermo_max, to: :hazard, allow_nil: true
 end
