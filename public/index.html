@@ -176,7 +176,15 @@ $(document).ready(function(){
                 
                   <!-- torino pop up layer HTML -->
                   <div id="torino_content_wrapper" style="display: none">
-                    <div>This is your div content This is your div content</div>
+                      <table class="table small table-bordered" style="align:center; width:200px;">
+                              <tr><td>No Hazard (White Zone)</td></tr>
+                              <tr class="success"><td>Normal (Green Zone)</td></tr>
+                              <tr class="unknown-danger"><td>Danger is Unkown</td></tr>
+                              <tr class="warning"><td>Meriting Attention by Astronomers (Yellow Zone)</td></tr>
+                              <tr class="med-danger"><td>Threatening (Orange Zone)</td></tr>
+                              <tr class="high-danger"><td>Certain Collisions (Red Zone)</td></tr>
+                      </table>
+                      <a href="http://neo.jpl.nasa.gov/torino_scale.html">More Info...</a>  
                   </div>
                   <!-- end tornino pop up layer -->
                   
@@ -217,7 +225,7 @@ $(document).ready(function(){
 
 <footer>
   <span style="float:left;">
-    <h6>Created by Team Nova</h6>
+    <h6>Created by Team Nova: Kris Robison, Rajagopal Sathyamurthi, Daniel Schwartz, DJ Ursal</h6>
     <p><a href="http://en.wikipedia.org/wiki/Major_Tom" target="_blank">More about Major Tom...</a></p>
     Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.<br>
     Leverage: Bootstrap, Fontawesome, Crossfilter (Square,Inc.)
