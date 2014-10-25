@@ -74,19 +74,19 @@ color: #fff;
 }
 
 .foreground.bar {
-  fill: steelblue;
+  fill: #CACBD4;
 }
 
 .foreground.bar brightness{
-  fill: orange;
+  fill: #AAAAFF;
 }
 
 .foreground.bar sun{
-  fill: yellow;
+  fill: #FFD700;
 }
 
 .foreground.bar earth{
-  fill: green;
+  fill: #00C78C;
 }
 
 .axis path, .axis line {
@@ -105,17 +105,17 @@ color: #fff;
 }
 
 .brush rect.extent brightness{
-  fill: orange;
+  fill: #E5E5FF;
   fill-opacity: .125;
 }
 
 .brush rect.extent sun{
-  fill: yellow;
+  fill: #FFFBE5;
   fill-opacity: .125;
 }
 
 .brush rect.extent earth{
-  fill: green;
+  fill: #86FFDB;
   fill-opacity: .125;
 }
 
@@ -189,25 +189,28 @@ aside {
 background-color: #fff;
 }
 
+.unnkown-danger{
+background-color: #F5BEF5;
+}
+
+/*using bootstrap warning*/
 .low-danger{
-background-color:  #FFD6D6;
-
+background-color: #FFD6D6;
 }
 
+/*using*/
 .med-danger{
-background-color: #FF8080;
-
-
+background-color: #FFCC99;
 }
 
+/*using*/
 .high-danger{
-background-color: #FF3030;
+background-color: #FF8888;
 }
 
 
 /*
 success
 info
-warning
 danger
 */
