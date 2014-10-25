@@ -138,7 +138,11 @@ color: #fff;
 }
 
 #earth-moid-chart {
-  width: 900px;
+  width: 750px;
+}
+
+#km-neo {
+  width: 150px;
 }
 
 #asteroid-list {
