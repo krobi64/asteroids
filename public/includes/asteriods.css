@@ -65,9 +65,8 @@ color: #fff;
 }
 
 .reset {
-  padding-left: 1em;
+  margin-left: 1em;
   font-size: smaller;
-  color: #ccc;
 }
 
 .background.bar {

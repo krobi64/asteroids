@@ -558,9 +558,10 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
         // Create the skeletal chart.
         if (g.empty()) {
+
           div.select(".title").append("a")
               .attr("href", "javascript:reset(" + id + ")")
-              .attr("class", "reset")
+              .attr("class", "label label-default reset")
               .text("reset")
               .style("display", "none");
 
