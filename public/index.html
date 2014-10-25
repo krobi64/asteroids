@@ -467,9 +467,8 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
       asteroidEnter.append("td")
       .append("a")
       .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! https://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti" )
-      .attr("class", "btn btn-default")
-      <!-- RAJA DS add this before text <span class="fa fa-twitter"></span> -->
-      .text("Tweet"); 
+      .attr("class", "btn btn-default btn-sm")
+      .html("<span class='fa fa-twitter'></span> Tweet"); 
 
       asteroid.exit().remove();
 
