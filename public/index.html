@@ -41,7 +41,12 @@ $(document).ready(function(){
     $('#radio-tom-modal').on('hidden.bs.modal', function (e) {
          $('#question-tom').val('');
      });
-
+    $('.torino').popover({ 
+    html : true,
+    content: function() {
+      return $('#torino_content_wrapper').html();
+    }
+    });
 });
 </script>
 
@@ -165,9 +170,16 @@ $(document).ready(function(){
             <th>Energy to get to Asteroid(km/sec)</th>
 
             <th>Danger Risk
-              <div href="#" class="tornino label label-info" data-toggle="popover" title="THE TORINO IMPACT HAZARD SCALE" data-content="blah blah blah">
-                <span class="fa fa-info-circle fa-lg"></span>
-            </div>
+                <div href="#" class="torino label label-info" data-placement='above' title="The Torino Impact Hazard Scale">
+                  <span class="fa fa-info-circle fa-lg"></span>
+                </div>
+                
+                  <!-- torino pop up layer HTML -->
+                  <div id="torino_content_wrapper" style="display: none">
+                    <div>This is your div content This is your div content</div>
+                  </div>
+                  <!-- end tornino pop up layer -->
+                  
             </th>
 
             <th>Share</th>
