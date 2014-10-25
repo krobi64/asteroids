@@ -49,7 +49,6 @@ $(document).ready(function(){
 
 <body>
 
-<div>
 
 <h1>Asteriods Analytics</h1>
 
@@ -58,26 +57,27 @@ $(document).ready(function(){
 <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
 <br>
 <br>
+
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Ground Control</h3>
-  </div>
+    <div class="panel-heading">
+      <h3 class="panel-title">Ground Control</h3>
+    </div>
   <div class="panel-body">
-<p>Ask Major Tom a question or manipulate the filters yourself to find asteriods</p>
-<br>
-<br>
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"> Ask Major Tom...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">What is the most dangerous asteriod?</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Which is the closest asteriod to earth?</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Which is the fastest asteriod?</a></li>
-    <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#radio-tom-modal">Radio Tom for More Questions...</a></li>
-  </ul>
-</div>
+    <p>Ask Major Tom a question or manipulate the filters yourself to find asteriods</p>
+    <br>
+    <br>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"> Ask Major Tom...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">What is the most dangerous asteriod?</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Which is the closest asteriod to earth?</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Which is the fastest asteriod?</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#radio-tom-modal">Radio Tom for More Questions...</a></li>
+      </ul>
+    </div>
 
 <!-- Radio Tom Modal Dialog -->
 <div class="modal fade" id="radio-tom-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -132,11 +132,22 @@ $(document).ready(function(){
 </div>
 <!-- charts END -->
 
+
 <!-- search results -->
 <div class="panel panel-default">
 
     <div class="panel-heading clearfix"> <h4 class="panel-title">Asteriods <span class="pull-right" style="font-size: .76em;">XXX of Asteriods Displayed</span></h4></div>
   
+
+<a href="https://twitter.com/share" class="twitter-share-button" 
+data-url="https://asteriod-explorers.herokuapp.com/adetail.html" 
+data-text="Check out this Asteriod!" 
+data-via=user_id 
+data-related="asteriodexplore" 
+data-count="none" 
+data-hashtags="asteriodexplore, asteriods, nasa, seti">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
   <div class="panel-body">
     <table class="table">
 
@@ -166,7 +177,7 @@ $(document).ready(function(){
 
     </thead>
 
-    <tbody class="list">
+    <tbody class="list table-hover">
 
 <!--         <tr>
 
@@ -251,21 +262,10 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <!-- closing of Ground Control-->
   </div>
-</div>
-
+ </div>
+<!-- closing of Ground Control-->
 
 
 
