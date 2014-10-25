@@ -1,5 +1,5 @@
 class Asteroid < ActiveRecord::Base
-  has_one :hazard, foreign_key: :designation, primary_key: :n_or_d
+  has_one :hazard, foreign_key: :designation, primary_key: :designation
 
   default_scope {select(%i[absolute_magnitude
                           aphelion_distance
@@ -19,4 +19,8 @@ class Asteroid < ActiveRecord::Base
   delegate :torino, to: :hazard, allow_nil: true
   delegate :palermo_cum, to: :hazard, allow_nil: true
   delegate :palermo_max, to: :hazard, allow_nil: true
+
+  def asteroid_packet
+    attributes.merge(palermo_cum: palermo_cum, palermo_max: palermo_max, torino: torino)
+  end
 end
