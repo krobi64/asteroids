@@ -5,15 +5,21 @@ body {
   margin: 40px auto;
   width: 960px;
   min-height: 2000px;
+  background-image: url('../images/back-web.jpg');
+  background-color: #000;
 }
 
+/*
 #body {
   position: relative;
+
 }
+*/
 
 footer {
   padding: 2em 0 1em 0;
   font-size: 12px;
+  color: #e7e7e7;
 }
 
 h1 {
@@ -21,6 +27,7 @@ h1 {
   margin-top: 1em;
   margin-bottom: 0;
   margin-top: 0;
+  color: #fff;
 }
 
 h2 {
@@ -34,11 +41,17 @@ h1, h2 {
   text-rendering: optimizeLegibility;
 }
 
+.mission{
+color: #fff;
+}
+
+/*
 #body > p {
   line-height: 1.5em;
   width: 640px;
   text-rendering: optimizeLegibility;
 }
+*/
 
 #charts {
   padding: 10px 0;
@@ -146,20 +159,30 @@ aside {
 
 
 .no-danger{
-background-color: #fff
+background-color: #fff;
 }
 
 .low-danger{
-background-color:  #FFD6D6
+background-color:  #FFD6D6;
 
 }
 
 .med-danger{
-background-color: #FF8080
+background-color: #FF8080;
 
 
 }
 
 .high-danger{
-background-color: #FF3030
+background-color: #FF3030;
 }
+
+
+/*
+success
+info
+warning
+danger
+*/
+
+
