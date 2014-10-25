@@ -78,6 +78,18 @@ color: #fff;
   fill: steelblue;
 }
 
+.foreground.bar brightness{
+  fill: orange;
+}
+
+.foreground.bar sun{
+  fill: yellow;
+}
+
+.foreground.bar earth{
+  fill: green;
+}
+
 .axis path, .axis line {
   fill: none;
   stroke: #000;
@@ -92,6 +104,22 @@ color: #fff;
   fill: steelblue;
   fill-opacity: .125;
 }
+
+.brush rect.extent brightness{
+  fill: orange;
+  fill-opacity: .125;
+}
+
+.brush rect.extent sun{
+  fill: yellow;
+  fill-opacity: .125;
+}
+
+.brush rect.extent earth{
+  fill: green;
+  fill-opacity: .125;
+}
+
 
 .brush .resize path {
   fill: #eee;
@@ -184,5 +212,3 @@ info
 warning
 danger
 */
-
-
