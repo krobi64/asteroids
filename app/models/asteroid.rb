@@ -6,6 +6,7 @@ class Asteroid < ActiveRecord::Base
                           designation
                           delta_v
                           earth_moid
+                          id
                           km_neo
                           mean_daily_motion
                           n_or_d
