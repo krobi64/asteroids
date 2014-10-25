@@ -461,7 +461,7 @@ d3.json("asteroids.json", function(error, asteroids) {
     //   date.exit().remove();
     div.each(function() {
       var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(designation.top(40), function(d) { return d.index; });
+          .data(designation.top(Infinity), function(d) { return d.index; });
 
       var asteroidEnter = asteroid.enter().append("tr")
                                   .attr("class", "asteroid");
@@ -490,7 +490,13 @@ d3.json("asteroids.json", function(error, asteroids) {
           .text(function(d) { return d.period; });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.delta_v; });              
+          .text(function(d) { return d.delta_v; });   
+
+      // asteroidEnter.append("td")
+      //     .text(function(d) { return d.torino; }); 
+
+      // asteroidEnter.append("td")
+      //     .text(function(d) { return d.torino; }); 
 
       asteroid.exit().remove();
 
