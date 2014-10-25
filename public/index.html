@@ -72,7 +72,7 @@ $(document).ready(function(){
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"> Ask Major Tom...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5, 2.0], [25, 35], null, [0.00, 0.02]])">What are the most dangerous asteriods?</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5, 2.0], [10, 20], null, [0.00, 0.02]])">What are the most dangerous asteriods?</a></li>
         <li role="presentation" class="divider"></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.00, 0.01]])">What are the closest asteriods to earth?</a></li>
         <li role="presentation" class="divider"></li>
@@ -139,10 +139,10 @@ $(document).ready(function(){
 <!-- search results -->
 <div class="panel panel-default">
 
-    <div class="panel-heading clearfix"> <h4 class="panel-title">Asteriods <span class="pull-right" style="font-size: .76em;">XXX of Asteriods Displayed</span></h4></div>
+    <div class="panel-heading clearfix"> <h4 class="panel-title">Asteriods <span class="pull-right" style="font-size: .76em;"><span id="active">-</span> of <span id="total">-</span> Asteriods Displayed</span></h4></div>
 
   <div class="panel-body">
-    <table class="table">
+    <table class="table table-condensed">
 
     <thead>
 
@@ -154,7 +154,7 @@ $(document).ready(function(){
 
             <th>Speed</th>
 
-            <th>Size</th>
+            <th>Brigthness</th>
 
             <th>Nearest distance to Sun</th>
 
@@ -400,15 +400,15 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
                                   .attr("class", function(d) {
 
                                     if (d.torino == null) {
-                                      return "asteroid unknown-danger"
+                                      return "asteroid unknown-danger";
                                     } else if (+d.torino == 0) {
-                                      
+                                      return "asteroid";
                                     } else if (+d.torino == 1) {
-                                      return "asteroid success"
+                                      return "asteroid success";
                                     } else if (+d.torino == 2 || +d.torino == 3 || +d.torino == 4) {
-                                      return "asteroid warning"
+                                      return "asteroid warning";
                                     } else if (+d.torino == 5 || +d.torino == 6 || +d.torino == 7) {
-                                      return "asteroid med-danger"
+                                      return "asteroid med-danger";
                                     } else if (+d.torino == 8 || +d.torino == 9 || +d.torino == 10) {
                                       return "asteroid high-danger"
                                     }
