@@ -24,171 +24,26 @@
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
 
-<style>
 
-@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700);
+<!-- font awesome -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-body {
-  font-family: "Helvetica Neue";
-  margin: 40px auto;
-  width: 960px;
-  min-height: 2000px;
-}
-
-#body {
-  position: relative;
-}
-
-footer {
-  padding: 2em 0 1em 0;
-  font-size: 12px;
-}
-
-h1 {
-  font-size: 3em;
-  margin-top: 1em;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-h2 {
-  margin-top: 1em;
-  font-weight: 400;
-  font-size: 2em;
-}
-
-h1, h2 {
-  font-family: "Yanone Kaffeesatz";
-  text-rendering: optimizeLegibility;
-}
-
-#body > p {
-  line-height: 1.5em;
-  width: 640px;
-  text-rendering: optimizeLegibility;
-}
-
-#charts {
-  padding: 10px 0;
-}
-
-.chart {
-  display: inline-block;
-  height: 151px;
-  margin-bottom: 20px;
-}
-
-.reset {
-  padding-left: 1em;
-  font-size: smaller;
-  color: #ccc;
-}
-
-.background.bar {
-  fill: #ccc;
-}
-
-.foreground.bar {
-  fill: steelblue;
-}
-
-.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font: 10px sans-serif;
-}
-
-.brush rect.extent {
-  fill: steelblue;
-  fill-opacity: .125;
-}
-
-.brush .resize path {
-  fill: #eee;
-  stroke: #666;
-}
-
-#size-chart {
-  width: 462px;
-}
-
-#speed-chart {
-  width: 462px;
-}
-
-#perihelion-distance-chart {
-  width: 462px;
-}
-
-#earth-moid-chart {
-  width: 462px;
-}
-
-#asteroid-list {
-  min-height: 1024px;
-}
-
-#asteroid-list .date,
-#asteroid-list .day {
-  margin-bottom: .4em;
-}
-
-#asteroid-list .asteroid {
-  line-height: 1.5em;
-  background: #eee;
-  width: 640px;
-  margin-bottom: 1px;
-}
-
-#asteroid-list .time {
-  color: #999;
-}
-
-#asteroid-list .asteroid div {
-  display: inline-block;
-  width: 100px;
-}
-
-#asteroid-list div.distance,
-#asteroid-list div.delay {
-  width: 160px;
-  padding-right: 10px;
-  text-align: right;
-}
-
-#asteroid-list .early {
-  color: green;
-}
-
-aside {
-  position: absolute;
-  left: 740px;
-  font-size: smaller;
-  width: 220px;
-}
+<!-- our css -->
+<link rel="stylesheet" href="includes/asteriods.css">
 
 
-.low-danger{
-background-color:  #FFD6D6
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+        'placement': 'top'
+    });
+    $('#radio-tom-modal').on('hidden.bs.modal', function (e) {
+         $('#question-tom').val('');
+     });
 
-}
-
-.med-danger{
-background-color: #FF8080
-
-
-}
-
-.high-danger{
-background-color: #FF3030
-}
-
-
-</style>
+});
+</script>
 
 </head>
 
@@ -198,8 +53,9 @@ background-color: #FF3030
 
 <h1>Asteriods Analytics</h1>
 
+
 <h2>Mission</h2>
-<p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
+<p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
 <br>
 <br>
 <div class="panel panel-default">
@@ -207,7 +63,7 @@ background-color: #FF3030
     <h3 class="panel-title">Ground Control</h3>
   </div>
   <div class="panel-body">
-<p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah </p>
+<p>Ask Major Tom a question or manipulate the filters yourself to find asteriods</p>
 <br>
 <br>
 <div class="dropdown">
@@ -219,27 +75,62 @@ background-color: #FF3030
     <li role="presentation" class="divider"></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Which is the fastest asteriod?</a></li>
     <li role="presentation" class="divider"></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#custom-question">Radio Tom for More Questions...</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#radio-tom-modal">Radio Tom for More Questions...</a></li>
   </ul>
 </div>
 
+<!-- Radio Tom Modal Dialog -->
+<div class="modal fade" id="radio-tom-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Radio Major Tom</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do you have a new question you want answered? Submit your question here and it will be radioed to Major Tom&hellip;</p>
+<br>
+<form>
+    <label for="question-tom">Question</label>
+    <input type="text" class="form-control" name="question-tom" id="question-tom" placeholder="What do you want to learn about?">
+</form>
+<br>
+<div class="row">
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-4"><img class="helmet" src="images/helmet2.png" width="100px" height="100px"></div>
+  <div class="col-md-4">&nbsp;</div>
+</div>
+<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" aria-hidden="true" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary"  aria-hidden="true" data-dismiss="modal">Notify Major Tom</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- END DIALOG -->
+
 <br>
 
+
+<!-- charts START --> 
 <div id="charts">
+
   <div id="speed-chart" class="chart">
-    <div class="title">Speed</div>
+    <div class="title">Speed&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="label label-info" data-toggle="popover" title="Popover title" data-content="blah blah blah">Info</a>&nbsp;&nbsp;<a href="#" class="label label-default">Reset</a></div> 
   </div>
   <div id="size-chart" class="chart">
-    <div class="title">Size</div>
+    <div class="title">Size&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="label label-info" data-toggle="popover" title="Popover title" data-content="blah blah blah">Info</a>&nbsp;&nbsp;<a href="#" class="label label-default">Reset</a></div> 
   </div>
   <div id="perihelion-distance-chart" class="chart">
-    <div class="title">Nearest Distance to Sun</div>
+    <div class="title">Nearest Distance to Sun&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="label label-info" data-toggle="popover" title="Popover title" data-content="blah blah blah">Info</a>&nbsp;&nbsp;<a href="#" class="label label-default">Reset</a></div> 
   </div>
   <div id="earth-moid-chart" class="chart">
-    <div class="title">Nearest Distance to Earth</div>
+    <div class="title">Nearest Distance to Earth&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" class="label label-info" data-toggle="popover" title="Popover title" data-content="blah blah blah">Info</a>&nbsp;&nbsp;<a href="#" class="label label-default">Reset</a></div> 
   </div>
 </div>
-
+<!-- charts END -->
 
 <!-- search results -->
 <div class="panel panel-default">
@@ -267,9 +158,9 @@ background-color: #FF3030
 
     </thead>
 
-    <tbody class="list">
+    <tbody>
 
-      <!--   <tr>
+        <tr>
 
             <td>Casopeida</td>
 
@@ -283,7 +174,7 @@ background-color: #FF3030
 
         </tr>
 
-        <tr>
+        <tr class="med-danger">
 
             <td>2</td>
 
@@ -293,7 +184,7 @@ background-color: #FF3030
 
             <td>30 Joules</td>
 
-            <td class="med-danger">Danger Tom! (30 xyz)</td>
+            <td>Danger Tom! (30 xyz)</td>
 
         </tr>
 
@@ -311,7 +202,7 @@ background-color: #FF3030
 
         </tr>
 
-        <tr>
+        <tr class="low-danger">
 
            <td>Casopeida</td>
 
@@ -321,12 +212,12 @@ background-color: #FF3030
 
             <td>30 Joules</td>
 
-            <td class="low-danger">Low Danger (30 xyz)</td>
+            <td >Low Danger (30 xyz)</td>
 
         </tr>
 
 
-        <tr>
+        <tr class="high-danger">
 
            <td>Casopeida</td>
 
@@ -336,9 +227,9 @@ background-color: #FF3030
 
             <td>30 Joules</td>
 
-            <td class="high-danger">Super Danger Tom! (121 xyz)</td>
+            <td >Super Danger Tom! (121 xyz)</td>
 
-        </tr> -->
+        </tr>
 
     </tbody>
 
@@ -369,16 +260,22 @@ background-color: #FF3030
 
 
 
+
+<!--
 <div id="lists">
   <div id="asteroid-list" class="list"></div>
 </div>
-
+-->
 
 <footer>
   <span style="float:left;">
-    <h6>Created by Team XXXX</h6>
-    Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>. Inspired by Crossfilter, Copyright Square,Inc.
+    <h6>Created by Team Nova</h6>
+    <p><a href="http://en.wikipedia.org/wiki/Major_Tom" target="_blank">More about Major Tom...</a></p>
+    Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.<br>
+    Leverage: Bootstrap, Fontawesome, Crossfilter (Square,Inc.)
 </footer>
+
+
 
 
 <script>
@@ -769,7 +666,5 @@ background-color: #FF3030
   }
 
 </script>
-
 </body>
 </html>
-
