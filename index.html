@@ -113,19 +113,19 @@ h1, h2 {
 }
 
 #size-chart {
-  width: 420px;
+  width: 462px;
 }
 
 #speed-chart {
-  width: 420px;
+  width: 462px;
 }
 
 #perihelion-distance-chart {
-  width: 420px;
+  width: 462px;
 }
 
 #earth-moid-chart {
-  width: 420px;
+  width: 462px;
 }
 
 #asteroid-list {
@@ -369,12 +369,10 @@ background-color: #FF3030
 
 
 
-
-<!--
 <div id="lists">
   <div id="asteroid-list" class="list"></div>
 </div>
--->
+
 
 <footer>
   <span style="float:left;">
@@ -383,14 +381,12 @@ background-color: #FF3030
 </footer>
 
 
-
-
 <script>
 
-  var asteroid_json = [{
+  var asteroids = [{
     "absolute_magnitude": 18.6,
     "aphelion_distance": 3.791,
-    "designation": "1979 XB",
+    "designation": "63249 XB",
     "delta_v": 10.424,
     "earth_moid": 0.01825,
     "km_neo": false,
@@ -399,20 +395,20 @@ background-color: #FF3030
     "name":null, 
     "neo":true,
     "number": null,
-    "perihelion_distance": 0.649445272, 
+    "perihelion_distance": 0.849445272, 
     "period": 3.31,
     "pha":true,
-    "torino_hazard_rating": 0
-    "id": null
+    "torino_hazard_rating": 0,
+    "id": 1
   },
   {
-    "absolute_magnitude": 12.6,
+    "absolute_magnitude": 52.6,
     "aphelion_distance": 1.791,
-    "designation": "1979 XB",
+    "designation": "1239 XB",
     "delta_v": 10.424,
     "earth_moid": 0.21825,
     "km_neo": false,
-    "mean_daily_motion": 0.2979761,
+    "mean_daily_motion": 0.6979761,
     "n_or_d": "J79X00B",
     "name":null, 
     "neo":true,
@@ -420,8 +416,8 @@ background-color: #FF3030
     "perihelion_distance": 0.649445272, 
     "period": 3.31,
     "pha":true,
-    "torino_hazard_rating": 0
-    "id": null
+    "torino_hazard_rating": 0,
+    "id": 2
   }]
 
 
@@ -432,20 +428,25 @@ background-color: #FF3030
       formatChange = d3.format("+,d");
 
 
-  // A little coercion, since the CSV is untyped.
-  asteroids.forEach(function(d, i) {
-    d.index = i;
-    d.delay = +d.delay;
-    d.distance = +d.distance;
-  });
+  // // A little coercion, since the CSV is untyped.
+  // asteroids.forEach(function(d, i) {
+  //   d.index = i;
+  //   d.delay = +d.delay;
+  //   d.distance = +d.distance;
+  // });
 
   // Create the crossfilter for the relevant dimensions and groups.
   var asteroid = crossfilter(asteroids),
       all = asteroid.groupAll(),
-      delay = asteroid.dimension(function(d) { return Math.max(-60, Math.min(149, d.delay)); }),
-      delays = delay.group(function(d) { return Math.floor(d / 10) * 10; }),
-      distance = asteroid.dimension(function(d) { return Math.min(1999, d.distance); }),
-      distances = distance.group(function(d) { return Math.floor(d / 50) * 50; });
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.absolute_magnitude)); }),
+      sizes = size.group(function(d) { return Math.floor(d / 10) * 10; }),
+      speed = asteroid.dimension(function(d) { return Math.min(100, +d.mean_daily_motion); }),
+      speeds = speed.group(function(d) { return Math.floor(d * 10) / 10.0; });
+      earth_distance = asteroid.dimension(function(d) { return Math.min(1, +d.earth_moid); }),
+      earth_distances = earth_distance.group(function(d) { return Math.floor(d * 10) / 10.0; }),
+      sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
+      sun_distances = sun_distance.group(function(d) { return Math.floor(d * 10) / 10.0; }),
+      designation = asteroid.dimension(function(d) { return d.designation});
 
   var charts = [
 
@@ -457,18 +458,34 @@ background-color: #FF3030
     //     .rangeRound([0, 10 * 24])),
 
     barChart()
-        .dimension(delay)
-        .group(delays)
+        .dimension(speed)
+        .group(speeds)
       .x(d3.scale.linear()
-        .domain([-60, 150])
-        .rangeRound([0, 10 * 21])),
+        .domain([0, 1])
+        .rangeRound([0, 10 * 42])),
 
     barChart()
-        .dimension(distance)
-        .group(distances)
+        .dimension(size)
+        .group(sizes)
       .x(d3.scale.linear()
-        .domain([0, 2000])
-        .rangeRound([0, 10 * 40])),
+        .domain([0, 150])
+        .rangeRound([0, 10 * 42])),
+
+    barChart()
+        .dimension(sun_distance)
+        .group(sun_distances)
+      .x(d3.scale.linear()
+        .domain([0, 1])
+        .rangeRound([0, 10 * 42])), 
+
+    barChart()
+        .dimension(earth_distance)
+        .group(earth_distances)
+      .x(d3.scale.linear()
+        .domain([0, 1])
+        .rangeRound([0, 10 * 42])),
+
+     
 
     // barChart()
     //     .dimension(date)
@@ -521,46 +538,30 @@ background-color: #FF3030
   };
 
   function asteroidList(div) {
-    var asteroidsByDate = nestByDate.entries(date.top(40));
+    // var asteroidsByDate = nestByDate.entries(date.top(40));
 
+    // div.each(function() {
+    //   var date = d3.select(this).selectAll(".date")
+    //       .data(asteroidsByDate, function(d) { return d.key; });
+
+    //   date.enter().append("div")
+    //       .attr("class", "date")
+    //     .append("div")
+    //       .attr("class", "day")
+    //       .text(function(d) { return formatDate(d.values[0].date); });
+
+    //   date.exit().remove();
     div.each(function() {
-      var date = d3.select(this).selectAll(".date")
-          .data(asteroidsByDate, function(d) { return d.key; });
-
-      date.enter().append("div")
-          .attr("class", "date")
-        .append("div")
-          .attr("class", "day")
-          .text(function(d) { return formatDate(d.values[0].date); });
-
-      date.exit().remove();
-
-      var asteroid = date.order().selectAll(".asteroid")
-          .data(function(d) { return d.values; }, function(d) { return d.index; });
+      var asteroid = d3.select(this).selectAll(".asteroid")
+          .data(designation.top(40), function(d) { return d.id; });
 
       var asteroidEnter = asteroid.enter().append("div")
           .attr("class", "asteroid");
 
       asteroidEnter.append("div")
-          .attr("class", "time")
-          .text(function(d) { return formatTime(d.date); });
+          .attr("class", "name")
+          .text(function(d) { return d.designation; });
 
-      asteroidEnter.append("div")
-          .attr("class", "origin")
-          .text(function(d) { return d.origin; });
-
-      asteroidEnter.append("div")
-          .attr("class", "destination")
-          .text(function(d) { return d.destination; });
-
-      asteroidEnter.append("div")
-          .attr("class", "distance")
-          .text(function(d) { return formatNumber(d.distance) + " mi."; });
-
-      asteroidEnter.append("div")
-          .attr("class", "delay")
-          .classed("early", function(d) { return d.delay < 0; })
-          .text(function(d) { return formatChange(d.delay) + " min."; });
 
       asteroid.exit().remove();
 
@@ -759,7 +760,6 @@ background-color: #FF3030
 
     return d3.rebind(chart, brush, "on");
   }
-});
 
 </script>
 
