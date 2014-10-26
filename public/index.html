@@ -41,7 +41,7 @@ $(document).ready(function(){
     $('#radio-tom-modal').on('hidden.bs.modal', function (e) {
          $('#question-tom').val('');
      });
-    $('.torino').popover({ 
+    $('.torino').popover({
     html : true,
     content: function() {
       return $('#torino_content_wrapper').html();
@@ -66,7 +66,7 @@ $(document).ready(function(){
 <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Major Tom's Ground Control Panel</h3>
-  
+
     </div>
   <div class="panel-body clearfix">
     <p class="pull-right"><object width="250" height="40" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="gsSong3522212442" name="gsSong3522212442"><param name="movie" value="http://grooveshark.com/songWidget.swf" /><param name="wmode" value="window" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="hostname=grooveshark.com&songID=35222124&style=metal&p=0" /><object type="application/x-shockwave-flash" data="http://grooveshark.com/songWidget.swf" width="250" height="40"><param name="wmode" value="window" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="hostname=grooveshark.com&songID=35222124&style=metal&p=0" /><span><a href="http://grooveshark.com/search/song?q=David%20Bowie%20Space%20Oddity" title="Space Oddity by David Bowie on Grooveshark">Space Oddity by David Bowie on Grooveshark</a></span></object></object></p>
@@ -121,20 +121,20 @@ $(document).ready(function(){
 <br>
 
 
-<!-- charts START --> 
+<!-- charts START -->
 <div id="charts">
 
   <div id="speed-chart" class="chart">
-    <div class="title">Speed&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
+    <div class="title">Speed&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
   </div>
   <div id="size-chart" class="chart">
-    <div class="title">Brightness&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="The apparent magnitude of an object only tells us how bright an object appears from Earth. The lower the number, the brighter (and bigger) the asteriod!">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
+    <div class="title">Brightness&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="The apparent magnitude of an object only tells us how bright an object appears from Earth. The lower the number, the brighter (and bigger) the asteriod!">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
   </div>
   <div id="perihelion-distance-chart" class="chart">
-    <div class="title">Passes Closest <br>to the Sun&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="The perihelion is the point in the orbit of a planet, asteroid, or comet where it is nearest to the sun.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
+    <div class="title">Passes Closest <br>to the Sun&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="The perihelion is the point in the orbit of a planet, asteroid, or comet where it is nearest to the sun.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
   </div>
   <div id="earth-moid-chart" class="chart">
-    <div class="title">Passes Closest to Earth&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
+    <div class="title">Passes Closest to Earth&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
   </div>
 <!--   <div id="km-neo" style="display: inline-block">
     <div class="title">KM NEO&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><br>
@@ -177,7 +177,7 @@ $(document).ready(function(){
                 <div href="#" class="torino label label-info" data-placement='above' title="The Torino Impact Hazard Scale">
                   <span class="fa fa-info-circle fa-lg"></span>
                 </div>
-                
+
                   <!-- torino pop up layer HTML -->
                   <div id="torino_content_wrapper" style="display: none">
                       <table class="table small table-bordered" style="align:center; width:200px;">
@@ -188,10 +188,10 @@ $(document).ready(function(){
                               <tr class="med-danger"><td>Threatening (Orange Zone)</td></tr>
                               <tr class="high-danger"><td>Certain Collisions (Red Zone)</td></tr>
                       </table>
-                      <a href="http://neo.jpl.nasa.gov/torino_scale.html" target="_blank">More Info...</a>  
+                      <a href="http://neo.jpl.nasa.gov/torino_scale.html" target="_blank">More Info...</a>
                   </div>
                   <!-- end tornino pop up layer -->
-                  
+
             </th>
 
             <th>Share</th>
@@ -250,10 +250,10 @@ twitter_share(document, 'script', 'twitter-wjs');
   //   "km_neo": false,
   //   "mean_daily_motion": 0.2979761,
   //   "n_or_d": "J79X00B",
-  //   "name":"IDFU 234", 
+  //   "name":"IDFU 234",
   //   "neo":true,
   //   "number": null,
-  //   "perihelion_distance": 0.849445272, 
+  //   "perihelion_distance": 0.849445272,
   //   "period": 3.31,
   //   "pha":true,
   //   "torino_hazard_rating": 0,
@@ -268,10 +268,10 @@ twitter_share(document, 'script', 'twitter-wjs');
   //   "km_neo": false,
   //   "mean_daily_motion": 0.6979761,
   //   "n_or_d": "J79X00B",
-  //   "name": "ROOD 23434", 
+  //   "name": "ROOD 23434",
   //   "neo":true,
   //   "number": null,
-  //   "perihelion_distance": 0.649445272, 
+  //   "perihelion_distance": 0.649445272,
   //   "period": 1.31,
   //   "pha":true,
   //   "torino_hazard_rating": 0,
@@ -291,7 +291,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
   asteroids_temp.forEach(function(d, i) {
     d.index = i;
     if(d.earth_moid != null) {
-      asteroids.push(d) 
+      asteroids.push(d)
 
     }
   });
@@ -342,7 +342,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
         .group(sun_distances)
       .x(d3.scale.linear()
         .domain([0, 1.2])
-        .rangeRound([0, 10 * 24])), 
+        .rangeRound([0, 10 * 24])),
 
     barChart()
         .dimension(earth_distance)
@@ -351,7 +351,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
         .domain([0, 0.5])
         .rangeRound([0, 10 * 75])),
 
-     
+
 
     // barChart()
     //     .dimension(date)
@@ -451,13 +451,13 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.mean_daily_motion; });    
-          
-      asteroidEnter.append("td")
-          .text(function(d) { return d.absolute_magnitude; });  
+          .text(function(d) { return d.mean_daily_motion; });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.perihelion_distance; });          
+          .text(function(d) { return d.absolute_magnitude; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.perihelion_distance; });
 
       asteroidEnter.append("td")
           .text(function(d) { return d.earth_moid; });
@@ -466,26 +466,26 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
           .text(function(d) { return d.period; });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.delta_v; });   
+          .text(function(d) { return d.delta_v; });
 
       asteroidEnter.append("td")
-          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; }); 
+          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
 
 
-// <a href="https://twitter.com/share" class="twitter-share-button" 
-// data-url="https://asteriod-explorers.herokuapp.com/adetail.html" 
-// data-text="Check out this Asteriod!" 
-// data-via=user_id 
-// data-related="asteriodexplore" 
-// data-count="none" 
+// <a href="https://twitter.com/share" class="twitter-share-button"
+// data-url="https://asteriod-explorers.herokuapp.com/adetail.html"
+// data-text="Check out this Asteriod!"
+// data-via=user_id
+// data-related="asteriodexplore"
+// data-count="none"
 // data-hashtags="asteriodexplore, asteriods, nasa, seti">Tweet</a>
 
       asteroidEnter.append("td")
       .append("a")
-      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! http://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti")
+      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! http://asteroid-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti")
       .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
-      .html("<span class='fa fa-twitter'></span> Tweet"); 
+      .html("<span class='fa fa-twitter'></span> Tweet");
 
       asteroid.exit().remove();
 
