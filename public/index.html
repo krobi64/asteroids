@@ -29,7 +29,7 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- our css -->
-<link rel="stylesheet" href="includes/asteriods.css">
+<link rel="stylesheet" href="includes/asteroids.css">
 
 
 <script type="text/javascript">
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 <div class="mission">
   <h2>Mission</h2>
-  <p>Your mission is to <strong>discover, learn and share</strong> information about asteriods to increase awareness about asteriods and their impact to the world. <!-- Asteroids, sometimes called minor planets, are rocky remnants left over from the early formation of our solar system about 4.6 billion years ago. Despite their size, asteroids can be dangerous. Many have hit Earth in the past, and more will crash into our planet in the future. That's one reason scientists who study asteroids and are eager to learn more about their numbers, orbits and physical characteristics. --><!-- </p><p> -->Work with Major Tom to help our scientists stop asteriods before they hit us!</p>
+  <p>Your mission is to <strong>discover, learn and share</strong> information about asteroids to increase awareness about asteroids and their impact to the world. <!-- Asteroids, sometimes called minor planets, are rocky remnants left over from the early formation of our solar system about 4.6 billion years ago. Despite their size, asteroids can be dangerous. Many have hit Earth in the past, and more will crash into our planet in the future. That's one reason scientists who study asteroids and are eager to learn more about their numbers, orbits and physical characteristics. --><!-- </p><p> -->Work with Major Tom to help our scientists stop asteroids before they hit us!</p>
   <br>
 </div>
 
@@ -76,11 +76,11 @@ $(document).ready(function(){
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"> Ask Major Tom...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5, 2.0], [10, 20], null, [0.00, 0.02]])">What are the most dangerous asteriods?</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5, 2.0], [10, 20], null, [0.00, 0.02]])">What are the most dangerous asteroids?</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.00, 0.01]])">What are the closest asteriods to earth?</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.00, 0.01]])">What are the closest asteroids to earth?</a></li>
         <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5,2.0], null, null, null])">What are the fastest asteriods?</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5,2.0], null, null, null])">What are the fastest asteroids?</a></li>
         <li role="presentation" class="divider"></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#radio-tom-modal">Radio Tom for More Questions...</a></li>
       </ul>
@@ -128,7 +128,7 @@ $(document).ready(function(){
     <div class="title">Speed&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
   </div>
   <div id="size-chart" class="chart">
-    <div class="title">Brightness&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="The apparent magnitude of an object only tells us how bright an object appears from Earth. The lower the number, the brighter (and bigger) the asteriod!">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
+    <div class="title">Brightness&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="The apparent magnitude of an object only tells us how bright an object appears from Earth. The lower the number, the brighter (and bigger) the asteroid!">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
   </div>
   <div id="perihelion-distance-chart" class="chart">
     <div class="title">Passes Closest <br>to the Sun&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="The perihelion is the point in the orbit of a planet, asteroid, or comet where it is nearest to the sun.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div> 
@@ -232,7 +232,7 @@ $(document).ready(function(){
     <h6>Created by Team Nova: Kris Robison, Rajagopal Sathyamurthi, Daniel Schwartz, DJ Ursal</h6>
     <p><a href="http://en.wikipedia.org/wiki/Major_Tom" target="_blank">More about Major Tom...</a></p>
     Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.<br>
-    Leverage: Bootstrap, Fontawesome, Crossfilter (Square,Inc.)
+    Technologies: Ruby on Rails, HTML5, Javascript, Bootstrap, Fontawesome, Crossfilter (Square,Inc.)
     <br><br><br><br><br>
 </footer>
 
@@ -445,7 +445,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
       asteroidEnter.append("td")
           .append("a")
-          .attr("href", "http://asteriod-explorers.herokuapp.com/adetail.html")
+          .attr("href", "adetail.html")
           .text(function(d) { return d.designation; });
 
 
@@ -473,16 +473,16 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
 
 
 // <a href="https://twitter.com/share" class="twitter-share-button" 
-// data-url="https://asteriod-explorers.herokuapp.com/adetail.html" 
-// data-text="Check out this Asteriod!" 
+// data-url="https://asteroid-explorers.herokuapp.com/adetail.html" 
+// data-text="Check out this Asteroid!" 
 // data-via=user_id 
-// data-related="asteriodexplore" 
+// data-related="asteroidexplore" 
 // data-count="none" 
-// data-hashtags="asteriodexplore, asteriods, nasa, seti">Tweet</a>
+// data-hashtags="asteroidexplore, asteroids, nasa, seti">Tweet</a>
 
       asteroidEnter.append("td")
       .append("a")
-      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! http://asteriod-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteriods %23nasa %23seti")
+      .attr("href","http://twitter.com/home/?status=Check out Asteroid 2003 TL4! http://asteroid-explorers.herokuapp.com/adetail.html %23asteroidexplorers %23asteroids %23nasa %23seti")
       .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
       .html("<span class='fa fa-twitter'></span> Tweet"); 
