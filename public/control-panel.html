@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="icon" type="image/png" href="images/MPClogo16.png">
+
+  <link media="all" rel="stylesheet" href="css/all.css">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20663393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="https://plus.google.com/103523519128767953332" rel="publisher">
+  <script type="text/javascript">
+    (function()
+      {var po = document.createElement("script");
+       po.type = "text/javascript"; po.async = true;
+       po.src = "https://apis.google.com/js/plusone.js";
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(po, s);
+      })();
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="js/jquery.metadata.js"></script>
+  <script type="text/javascript" src="js/webtrends.js"></script>
+  <script type="text/javascript" src="js/track_pdfs.js"></script>
+  <link href="http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic|PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finding Asteroids Before They Find Us!</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
+
+  <!-- font awesome -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- our css -->
+  <link rel="stylesheet" href="css/asteroid-explorers.css">
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+        'placement': 'top'
+    });
+    $('#radio-tom-modal').on('hidden.bs.modal', function (e) {
+         $('#question-tom').val('');
+     });
+    $('.torino').popover({
+    html : true,
+    content: function() {
+      return $('#torino_content_wrapper').html();
+    }
+    });
+    });
+  </script>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <div class="w1">
+      <!-- header -->
+      <header id="header">
+        <div class="holder">
+          <!-- logo -->
+          <h1 class="logo"><a href="/">The International Astronomical Union Minor Planet Center</a></h1>
+          <div class="area">
+            <!-- top-nav -->
+            <nav class="top-nav">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+            <!-- search-form -->
+            <div class="form-holder">
+              <!-- This commented code opens a new page for the search. -->
+              <!--<form class="search-form" method="get" action="http://www.google.com/search" target="_blank">-->
+              <form class="search-form" method="get" action="http://www.google.com/search">
+                <fieldset>
+                  <!--<label for="search">Search</label>-->
+                  <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
+                  <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
+                </fieldset>
+              </form>
+            </div>
+            <div class="social-bar">
+              <a href="https://twitter.com/MinorPlanetCtr"><span class="social twitter">L</span></a>
+              <a href="https://www.facebook.com/MinorPlanetCenter"><span class="social facebook">F</span></a>
+              <a href="https://plus.google.com/103523519128767953332/posts"><span class="social gplus">G</span></a>
+              <a href="/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
+            </div>
+          </div>
+        </div>
+        <nav class="nav-holder">
+          <!-- main navigation -->
+          <ul id="nav">
+            <li>
+              <a href="/iau/mpc.html"><span>OBSERVERS</span></a>
+              <ul>
+                <li><a href="/iau/MPEph/MPEph.html">Ephemeris Service</a></li>
+                <li><a href="/mpec/RecentMPECs.html">MPECs</a></li>
+                <li><a href="/iau/NEO/toconfirm_tabular.html">NEO Confirmation</a></li>
+                <li><a href="/iau/Ephemerides/EphemOrbEls.html" class="nested">Orbital Elements</a>
+                  <ul>
+                    <li><a href="/iau/MPCORB.html">MPCORB</a></li>
+                    <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
+                    <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
+                    <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
+                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>              
+                <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
+                  <ul>
+                    <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
+                    <li><a href="/iau/NEO/PossNEO.html">Ratings</a></li>
+                    <li><a href="/cgi-bin/neaobs.cgi">Observation Planning Aid</a></li>
+                    <li><a href="/cgi-bin/checkneo.cgi">NEOChecker</a></li>
+                    <li><a href="/cgi-bin/checkneocmt.cgi">NEOCMTChecker</a></li>
+                    <li><a href="/NEOCPblog/">NEOCP Blog</a></li>
+                    <li><a href="/neocp_obs">NEOCP Recent Observations</a></li>
+                  </ul>
+                </li>
+                <li><a href="/iau/services/WebCSAccess.html" class="nested">Other Observer Services</a>
+                  <ul>
+                    <li><a href="/iau/NatSats/NaturalSatellites.html">Natural Satellite Ephemerides</a></li>
+                    <li><a href="/iau/MPEph/NewObjEphems.html">New Object Ephemerides</a></li>
+                    <li><a href="/cgi-bin/checkmp.cgi">MPChecker</a></li>
+                    <li><a href="/cgi-bin/checkcmt.cgi">CMTChecker</a></li>
+                    <li><a href="/iau/SpaceJunk/SpaceJunk.html">Distant Artificial Satellites</a></li>
+                    <li><a href="/iau/lists/Customize.html">Observing List Customizer</a></li>
+                  </ul>
+                </li>
+                <li><a href="/db_search">Orbits/Observations Database</a></li>
+                <li><a href='/light_curve2/light_curve.php'>Light Curve Database</a></li>
+                <li><a href="/iau/ECS/MPCAT-OBS/MPCAT-OBS.html">MPCAT-OBS</a></li>
+                <li><a href="/iau/SkyCoverage.html">Sky Coverage</a></li>
+                <li><a href="/iau/MPC_Documentation.html" class="nested">Documentation</a>
+                  <ul>
+                    <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
+                    <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
+                    <li><a href="/iau/WhatsNew.html">What's New</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
+                  <ul>
+                    <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
+                    <li><a href="/iau/lists/CometLists.html">Comets</a></li>
+                    <li><a href="/iau/Animations/Animations.html">Animations</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
+                <li><a href='/mpc/summary'>Summary of Latest Data</a></li>
+              </ul>
+            </li>
+            <li><a href="/blog"><span>Public</span></a>
+            </li>
+            <li><a href="/IAWN/"><span>IAWN</span></a>
+              <ul>
+                <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
+                <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
+                <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
+                <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+
+<!-- ae content - control panel -->
+      <div id="main">
+
+        <a href="index.html" class="btn pull-right ae-btn-default-blue" role="button"><i class="fa fa-chevron-up"></i>&nbsp;Data&nbsp;Explorer&nbsp;Home</a>
+        <h1 class="title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Data&nbsp;Explorer</h1>
+        <h3 class="mission">Finding Asteroids Before They Find Us!</h3>
+
+              <p class="sub-sub-title">
+                <span class="mission-big">Discover, learn and share</span> information about
+                asteroids to increase awareness about asteroids and their impact and risks to the world.
+              </p>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Data Explorer Control Panel</h3>
+          </div>
+
+          <div class="panel-body clearfix">
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                Start Exploring Asteroids...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5, 2.0], [10, 20], null, [0.00, 0.02]])">Which are the most dangerous asteroids?</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.00, 0.01]])">Which are the biggest asteroids?</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5,2.0], null, null, null])">Which asteroids are flying by the earth this month?</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5,2.0], null, null, null])">Which asteroids are easisest to travel to?</a></li>
+              </ul>
+            </div>
+
+
+
+<br>
+
+<!-- charts START -->
+<div id="charts">
+
+  <div id="speed-chart" class="chart">
+    <div class="title">Size (Meters)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
+  </div>
+
+  <div id="size-chart" class="chart">
+    <div class="title">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="Closest Approach to Earth">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div> 
+  </div>
+
+  <div id="perihelion-distance-chart" class="chart">
+    <div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="Time to Orbit">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
+  </div>
+
+  <div id="earth-moid-chart" class="chart">
+    <div class="title">Energy to Travel to Asteroid (KM/Sec)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
+  </div>
+</div>
+<!-- charts END -->
+
+<!-- search results -->
+<div class="panel panel-default">
+
+    <div class="panel-heading clearfix"> <h4 class="panel-title">Asteroids <span class="pull-right" style="font-size: .76em;"><span id="active">10,057</span> of <span id="total">10,057</span> Asteroids Displayed</span></h4></div>
+
+  <div class="panel-body">
+    <table class="table table-condensed">
+      <thead>
+  
+        <tr>
+          <th class="header">&nbsp;&nbsp;&nbsp; Designation (i)&nbsp;&nbsp;&nbsp;</th>
+          <th class="header">Size (Meters) (i)</th>
+          <th class="header">Next Closest Approach to Earth Date (i)</th>
+          <th class="header">Next Closest Approach to Earth (Lunar&nbsp;Distance) (i)</th>
+          <th class="header">Orbital Period (i)</th>
+          <th class="header">Energy to Travel to Asteroid (KM/Sec) (i)</th>
+          <th class="header">PHA (i)
+            <br>
+            <div  class="torino label label-info" data-placement="above" title="" data-original-title="The Torino Impact Hazard Scale">
+               <span class="fa fa-info-circle fa-lg"></span>
+            </div>
+
+            <!-- torino pop up layer HTML -->
+            <div id="torino_content_wrapper" style="display: none">
+              <table class="table small table-bordered" style="align:center; width:200px;">
+                <tbody>
+                  <tr><td>No Hazard (White Zone)</td></tr>
+                  <tr class="success"><td>Normal (Green Zone)</td></tr>
+                  <tr class="unknown-danger"><td>Danger is Unkown</td></tr>
+                  <tr class="warning"><td>Meriting Attention by Astronomers (Yellow Zone)</td></tr>
+                  <tr class="med-danger"><td>Threatening (Orange Zone)</td></tr>
+                  <tr class="high-danger"><td>Certain Collisions (Red Zone)</td></tr>
+                </tbody>
+              </table>
+              <a href="http://neo.jpl.nasa.gov/torino_scale.html" target="_blank">More Info...</a>
+            </div>
+            <!-- end tornino pop up layer -->
+          </th>
+      
+          <th class="header">Share</th>
+        </tr>
+      </thead>
+
+      <tbody class="list">
+      <!-- render via javascript -->
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- closing of Ground Control-->
+  </div>
+ </div>
+<!-- closing of Ground Control-->
+
+<div class="small">
+  <a href="ae-about.html" class="ae-link">About MPC Data Explorer...</a>
+</div>
+
+<script>
+var twitter_share = function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}};
+
+twitter_share(document, 'script', 'twitter-wjs');
+  // var asteroids = [{
+  //   "absolute_magnitude": 18.6,
+  //   "aphelion_distance": 3.791,
+  //   "designation": "63249 XB",
+  //   "delta_v": 602.424,
+  //   "earth_moid": 0.01825,
+  //   "km_neo": false,
+  //   "mean_daily_motion": 0.2979761,
+  //   "n_or_d": "J79X00B",
+  //   "name":"IDFU 234",
+  //   "neo":true,
+  //   "number": null,
+  //   "perihelion_distance": 0.849445272,
+  //   "period": 3.31,
+  //   "pha":true,
+  //   "torino_hazard_rating": 0,
+  //   "id": 1
+  // },
+  // {
+  //   "absolute_magnitude": 52.6,
+  //   "aphelion_distance": 1.791,
+  //   "designation": "1239 XB",
+  //   "delta_v": 10.424,
+  //   "earth_moid": 0.21825,
+  //   "km_neo": false,
+  //   "mean_daily_motion": 0.6979761,
+  //   "n_or_d": "J79X00B",
+  //   "name": "ROOD 23434",
+  //   "neo":true,
+  //   "number": null,
+  //   "perihelion_distance": 0.649445272,
+  //   "period": 1.31,
+  //   "pha":true,
+  //   "torino_hazard_rating": 0,
+  //   "id": 2
+  // }]
+
+d3.json("asteroids.json", function(error, asteroids_temp) {
+  // Various formatters.
+  var formatNumber = d3.format(",d"),
+      formatChange = d3.format("+,d");
+
+  var asteroids = [];
+  // // A little coercion, since the CSV is untyped.
+  asteroids_temp.forEach(function(d, i) {
+    d.index = i;
+    if(d.earth_moid != null) {
+      asteroids.push(d)
+
+    }
+  });
+
+  // Create the crossfilter for the relevant dimensions and groups.
+  var asteroid = crossfilter(asteroids),
+      all = asteroid.groupAll(),
+
+      speed = asteroid.dimension(function(d) { return Math.min(100, +d.mean_daily_motion); }),
+      speeds = speed.group(function(d) { return Math.floor(d * 10) / 10.0; });
+
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.absolute_magnitude)); }),
+      sizes = size.group(function(d) { return Math.floor(d); }),
+
+      earth_distance = asteroid.dimension(function(d) { return Math.min(1, +d.earth_moid); }),
+      earth_distances = earth_distance.group(function(d) { return Math.floor(d * 150) / 150.0; }),
+
+      sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
+      sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
+
+      designation = asteroid.dimension(function(d) { return d.designation});
+
+  var charts = [
+
+    // barChart()
+    //     .dimension(hour)
+    //     .group(hours)
+    //   .x(d3.scale.linear()
+    //     .domain([0, 24])
+    //     .rangeRound([0, 10 * 24])),
+
+    barChart()
+        .dimension(speed)
+        .group(speeds)
+      .x(d3.scale.linear()
+        .domain([0, 2.0])
+        .rangeRound([0, 10 * 20])),
+
+    barChart()
+        .dimension(size)
+        .group(sizes)
+      .x(d3.scale.linear()
+        .domain([10, 35])
+        .rangeRound([0, 10 * 25])),
+
+    barChart()
+        .dimension(sun_distance)
+        .group(sun_distances)
+      .x(d3.scale.linear()
+        .domain([0, 1.2])
+        .rangeRound([0, 10 * 24])),
+
+    barChart()
+        .dimension(earth_distance)
+        .group(earth_distances)
+      .x(d3.scale.linear()
+        .domain([0, 0.5])
+        .rangeRound([0, 10 * 75])),
+
+
+
+    // barChart()
+    //     .dimension(date)
+    //     .group(dates)
+    //     .round(d3.time.day.round)
+    //   .x(d3.time.scale()
+    //     .domain([new Date(2001, 0, 1), new Date(2001, 3, 1)])
+    //     .rangeRound([0, 10 * 90]))
+    //     .filter([new Date(2001, 1, 1), new Date(2001, 2, 1)])
+
+  ];
+
+  // Given our array of charts, which we assume are in the same order as the
+  // .chart elements in the DOM, bind the charts to the DOM and render them.
+  // We also listen to the chart's brush events to update the display.
+  var chart = d3.selectAll(".chart")
+      .data(charts)
+      .each(function(chart) { chart.on("brush", renderAll).on("brushend", renderAll); });
+
+  // Render the initial lists.
+  var list = d3.selectAll(".list")
+      .data([asteroidList]);
+
+  // Render the total.
+  d3.selectAll("#total")
+      .text(formatNumber(asteroid.size()));
+
+  renderAll();
+
+  // Renders the specified chart or list.
+  function render(method) {
+    d3.select(this).call(method);
+  }
+
+  // Whenever the brush moves, re-rendering everything.
+  function renderAll() {
+    chart.each(render);
+    list.each(render);
+    d3.select("#active").text(formatNumber(all.value()));
+  }
+
+  window.filter = function(filters) {
+    filters.forEach(function(d, i) { charts[i].filter(d); });
+    renderAll();
+  };
+
+  window.reset = function(i) {
+    charts[i].filter(null);
+    renderAll();
+  };
+
+  function asteroidList(div) {
+    // var asteroidsByDate = nestByDate.entries(date.top(40));
+
+    // div.each(function() {
+    //   var date = d3.select(this).selectAll(".date")
+    //       .data(asteroidsByDate, function(d) { return d.key; });
+
+    //   date.enter().append("div")
+    //       .attr("class", "date")
+    //     .append("div")
+    //       .attr("class", "day")
+    //       .text(function(d) { return formatDate(d.values[0].date); });
+
+    //   date.exit().remove();
+    div.each(function() {
+      var asteroid = d3.select(this).selectAll(".asteroid")
+          .data(designation.top(30), function(d) { return d.index; });
+
+      var asteroidEnter = asteroid.enter().append("tr")
+                                  .attr("class", function(d) {
+
+                                    if (d.torino == null) {
+                                      return "asteroid unknown-danger";
+                                    } else if (+d.torino == 0) {
+                                      return "asteroid";
+                                    } else if (+d.torino == 1) {
+                                      return "asteroid success";
+                                    } else if (+d.torino == 2 || +d.torino == 3 || +d.torino == 4) {
+                                      return "asteroid warning";
+                                    } else if (+d.torino == 5 || +d.torino == 6 || +d.torino == 7) {
+                                      return "asteroid med-danger";
+                                    } else if (+d.torino == 8 || +d.torino == 9 || +d.torino == 10) {
+                                      return "asteroid high-danger"
+                                    }
+
+                                  });
+
+      // asteroidEnter.append("td")
+      //     .text(function(d) { return d.name; });
+
+      asteroidEnter.append("td")
+          .append("a")
+          .attr("href", "adetail.html")
+          .text(function(d) { return d.designation; });
+
+
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.mean_daily_motion; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.absolute_magnitude; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.perihelion_distance; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.earth_moid; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.period; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.delta_v; });
+
+      asteroidEnter.append("td")
+          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
+
+
+// <a href="https://twitter.com/share" class="twitter-share-button" 
+// data-url="https://asteroid-explorers.herokuapp.com/adetail.html" 
+// data-text="Check out this Asteroid!" 
+// data-via=user_id 
+// data-related="asteroidexplore" 
+// data-count="none" 
+// data-hashtags="asteroidexplore, asteroids, nasa, seti">Tweet</a>
+
+      asteroidEnter.append("td")
+      .append("a")
+      .attr("href","http://twitter.com/home/?status=Check out Asteroid 2003 TL4! http://asteroid-explorers.herokuapp.com/adetail.html %23asteroidexplorers %23asteroids %23nasa %23seti")
+      .attr("target", "_blank")
+      .attr("class", "btn btn-default btn-sm")
+      .html("<span class='fa fa-twitter'></span> Tweet");
+
+      asteroid.exit().remove();
+
+      asteroid.order();
+    });
+  }
+
+  function barChart() {
+    if (!barChart.id) barChart.id = 0;
+
+    var margin = {top: 10, right: 10, bottom: 20, left: 10},
+        x,
+        y = d3.scale.linear().range([100, 0]),
+        id = barChart.id++,
+        axis = d3.svg.axis().orient("bottom"),
+        brush = d3.svg.brush(),
+        brushDirty,
+        dimension,
+        group,
+        round;
+
+    function chart(div) {
+      var width = x.range()[1],
+          height = y.range()[0];
+
+      y.domain([0, group.top(1)[0].value]);
+
+      div.each(function() {
+        var div = d3.select(this),
+            g = div.select("g");
+
+        // Create the skeletal chart.
+        if (g.empty()) {
+
+          div.select(".title").append("a")
+              .attr("href", "javascript:reset(" + id + ")")
+              .attr("class", "label label-default reset")
+              .text("reset")
+              .style("display", "none");
+
+          g = div.append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+          g.append("clipPath")
+              .attr("id", "clip-" + id)
+            .append("rect")
+              .attr("width", width)
+              .attr("height", height);
+
+          g.selectAll(".bar")
+              .data(["background", "foreground"])
+            .enter().append("path")
+              .attr("class", function(d) { return d + " bar"; })
+              .datum(group.all());
+
+          g.selectAll(".foreground.bar")
+              .attr("clip-path", "url(#clip-" + id + ")");
+
+          g.append("g")
+              .attr("class", "axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(axis);
+
+          // Initialize the brush component with pretty resize handles.
+          var gBrush = g.append("g").attr("class", "brush").call(brush);
+          gBrush.selectAll("rect").attr("height", height);
+          gBrush.selectAll(".resize").append("path").attr("d", resizePath);
+        }
+
+        // Only redraw the brush if set externally.
+        if (brushDirty) {
+          brushDirty = false;
+          g.selectAll(".brush").call(brush);
+          div.select(".title a").style("display", brush.empty() ? "none" : null);
+          if (brush.empty()) {
+            g.selectAll("#clip-" + id + " rect")
+                .attr("x", 0)
+                .attr("width", width);
+          } else {
+            var extent = brush.extent();
+            g.selectAll("#clip-" + id + " rect")
+                .attr("x", x(extent[0]))
+                .attr("width", x(extent[1]) - x(extent[0]));
+          }
+        }
+
+        g.selectAll(".bar").attr("d", barPath);
+      });
+
+      function barPath(groups) {
+        var path = [],
+            i = -1,
+            n = groups.length,
+            d;
+        while (++i < n) {
+          d = groups[i];
+          path.push("M", x(d.key), ",", height, "V", y(d.value), "h9V", height);
+        }
+        return path.join("");
+      }
+
+      function resizePath(d) {
+        var e = +(d == "e"),
+            x = e ? 1 : -1,
+            y = height / 3;
+        return "M" + (.5 * x) + "," + y
+            + "A6,6 0 0 " + e + " " + (6.5 * x) + "," + (y + 6)
+            + "V" + (2 * y - 6)
+            + "A6,6 0 0 " + e + " " + (.5 * x) + "," + (2 * y)
+            + "Z"
+            + "M" + (2.5 * x) + "," + (y + 8)
+            + "V" + (2 * y - 8)
+            + "M" + (4.5 * x) + "," + (y + 8)
+            + "V" + (2 * y - 8);
+      }
+    }
+
+    brush.on("brushstart.chart", function() {
+      var div = d3.select(this.parentNode.parentNode.parentNode);
+      div.select(".title a").style("display", null);
+    });
+
+    brush.on("brush.chart", function() {
+      var g = d3.select(this.parentNode),
+          extent = brush.extent();
+      if (round) g.select(".brush")
+          .call(brush.extent(extent = extent.map(round)))
+        .selectAll(".resize")
+          .style("display", null);
+      g.select("#clip-" + id + " rect")
+          .attr("x", x(extent[0]))
+          .attr("width", x(extent[1]) - x(extent[0]));
+      dimension.filterRange(extent);
+    });
+
+    brush.on("brushend.chart", function() {
+      if (brush.empty()) {
+        var div = d3.select(this.parentNode.parentNode.parentNode);
+        div.select(".title a").style("display", "none");
+        div.select("#clip-" + id + " rect").attr("x", null).attr("width", "100%");
+        dimension.filterAll();
+      }
+    });
+
+    chart.margin = function(_) {
+      if (!arguments.length) return margin;
+      margin = _;
+      return chart;
+    };
+
+    chart.x = function(_) {
+      if (!arguments.length) return x;
+      x = _;
+      axis.scale(x);
+      brush.x(x);
+      return chart;
+    };
+
+    chart.y = function(_) {
+      if (!arguments.length) return y;
+      y = _;
+      return chart;
+    };
+
+    chart.dimension = function(_) {
+      if (!arguments.length) return dimension;
+      dimension = _;
+      return chart;
+    };
+
+    chart.filter = function(_) {
+      if (_) {
+        brush.extent(_);
+        dimension.filterRange(_);
+      } else {
+        brush.clear();
+        dimension.filterAll();
+      }
+      brushDirty = true;
+      return chart;
+    };
+
+    chart.group = function(_) {
+      if (!arguments.length) return group;
+      group = _;
+      return chart;
+    };
+
+    chart.round = function(_) {
+      if (!arguments.length) return round;
+      round = _;
+      return chart;
+    };
+
+    return d3.rebind(chart, brush, "on");
+  }
+});
+
+</script>
+
+      </div>
+    </div>
+
+
+
+  <!-- footer -->
+  <footer id="footer">
+    <div class="holder">
+      <nav class="nav">
+        <ul>
+          <li><a href="http://www.minorplanetcenter.net/">Home</a></li>
+          <li><a href="http://www.minorplanetcenter.net/about">About</a></li>
+          <li><a href="http://www.minorplanetcenter.net/contact">Contact</a></li>
+          <li><a href="http://www.minorplanetcenter.net/iau/mpc.html">For Observers</a></li>
+          <li><a href="http://www.minorplanetcenter.net/blog">For the Public</a></li>
+        </ul>
+      </nav>
+      <img src="images/MPC_logo_circular.png" width="60" height="60" alt="Minor Planet Center Logo">
+      <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div> 
+   </div>
+  </footer>
+
+  </div>
+
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    var _tag=new WebTrends();
+    _tag.dcsGetId();
+    //]]>
+  </script>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    _tag.dcsCustom=function(){
+    // Add custom parameters here.
+    //_tag.DCSext.param_name=param_value;
+    }
+    _tag.dcsCollect();
+    //]]>
+  </script>
+
+  <noscript>
+    <div>
+      <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//logs1.smithsonian.museum/dcsa7yzrmbdzpxzrosrn4tyep_5i1d/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.minorplanetcenter.net"/>
+    </div>
+  </noscript>
+
+</body>
+</html>
