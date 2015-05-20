@@ -1,6 +1,7 @@
 class VisitorsController < ApplicationController
-  def index
-    render file: 'public/index.html'
+
+  def mpc
+    render file: 'public/mpc/index.html'
   end
 
   def ae
