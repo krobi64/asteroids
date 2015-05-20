@@ -22,6 +22,7 @@ class Asteroid
     delegate :[], to: :list
 
     def all
+      import unless list.present? && last_read_current?
       list.values
     end
 
