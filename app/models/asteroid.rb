@@ -1,37 +1,57 @@
 require Rails.root.join('lib/asteroid_math')
 
-class Asteroid < ActiveRecord::Base
-  has_one :hazard, foreign_key: :designation, primary_key: :designation
-  attr_reader :albedo
+class Asteroid
+  include ActiveModel::Model
 
-  default_scope {select(%i[absolute_magnitude
-                          albedo_neowise
-                          aphelion_distance
-                          designation
-                          delta_v
-                          earth_moid
-                          id
-                          km_neo
-                          mean_daily_motion
-                          n_or_d
-                          diameter_neowise
-                          name
-                          neo
-                          number
-                          perihelion_distance
-                          period
-                          pha])}
+  class_attribute :list, :last_read
 
   delegate :torino, to: :hazard, allow_nil: true
   delegate :palermo_cum, to: :hazard, allow_nil: true
   delegate :palermo_max, to: :hazard, allow_nil: true
 
-  def asteroid_packet
-    attributes.merge(torino: torino, estimated_size: size)
-  end
+  class << self
+    def import
+      unless list.present? && last_read_current?
+        self.list = referenced_repo
+      end
+    end
 
-  def albedo
-    albedo_neowise.presence || 0.15
+    def find(designation)
+      list[designation]
+    end
+    delegate :[], to: :list
+
+    def all
+      list.values
+    end
+
+    private
+
+    def last_read_current?
+      last_read? && last_read > (DateTime.now - 1.day)
+    end
+
+    def referenced_repo
+      loaded_repo.inject(Hashr.new) do |asteroid_hash, asteroid|
+        asteroid_hash[asteroid['designation']] = asteroid
+        asteroid_hash
+      end
+    end
+
+    def loaded_repo
+      repo = JSON.load repo_file
+      self.last_read = DateTime.now
+      repo
+    rescue StandardError => e
+      Rails.logger.error(e.message)
+      Rails.logger.error(e.backtrace)
+      list? ? list.values : raise('Asteroid List Unavailable')
+    end
+
+    def repo_file
+      Rails.root.join('public/asteroids.json')
+    end
+
   end
 
   def size

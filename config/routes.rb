@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :asteroids, only: [:index]
+  resources :asteroids, only: [:index, :show]
 
   get '/ae', controller: :visitors, action: :ae
 

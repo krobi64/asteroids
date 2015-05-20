@@ -127,10 +127,10 @@
                     <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
                     <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
                     <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
-                  </ul>                
+                  </ul>
                 </li>
                 <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
-                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>              
+                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>
                 <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
                   <ul>
                     <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
@@ -161,14 +161,14 @@
                     <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
                     <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
                     <li><a href="/iau/WhatsNew.html">What's New</a></li>
-                  </ul>                
+                  </ul>
                 </li>
                 <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
                   <ul>
                     <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
                     <li><a href="/iau/lists/CometLists.html">Comets</a></li>
                     <li><a href="/iau/Animations/Animations.html">Animations</a></li>
-                  </ul>                
+                  </ul>
                 </li>
                 <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
                 <li><a href='/mpc/summary'>Summary of Latest Data</a></li>
@@ -235,7 +235,7 @@
   </div>
 
   <div id="size-chart" class="chart">
-    <div class="title">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="Closest Approach to Earth">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div> 
+    <div class="title">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="Closest Approach to Earth">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
   </div>
 
   <div id="perihelion-distance-chart" class="chart">
@@ -256,7 +256,7 @@
   <div class="panel-body">
     <table class="table table-condensed">
       <thead>
-  
+
         <tr>
           <th class="header">&nbsp;&nbsp;&nbsp; Designation (i)&nbsp;&nbsp;&nbsp;</th>
           <th class="header">Size (Meters) (i)</th>
@@ -286,7 +286,7 @@
             </div>
             <!-- end tornino pop up layer -->
           </th>
-      
+
           <th class="header">Share</th>
         </tr>
       </thead>
@@ -349,7 +349,7 @@ twitter_share(document, 'script', 'twitter-wjs');
   //   "id": 2
   // }]
 
-d3.json("asteroids.json", function(error, asteroids_temp) {
+d3.json("/asteroids.json", function(error, asteroids_temp) {
   // Various formatters.
   var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d");
@@ -540,12 +540,12 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
           .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
 
 
-// <a href="https://twitter.com/share" class="twitter-share-button" 
-// data-url="https://asteroid-explorers.herokuapp.com/adetail.html" 
-// data-text="Check out this Asteroid!" 
-// data-via=user_id 
-// data-related="asteroidexplore" 
-// data-count="none" 
+// <a href="https://twitter.com/share" class="twitter-share-button"
+// data-url="https://asteroid-explorers.herokuapp.com/adetail.html"
+// data-text="Check out this Asteroid!"
+// data-via=user_id
+// data-related="asteroidexplore"
+// data-count="none"
 // data-hashtags="asteroidexplore, asteroids, nasa, seti">Tweet</a>
 
       asteroidEnter.append("td")
@@ -775,7 +775,7 @@ d3.json("asteroids.json", function(error, asteroids_temp) {
         </ul>
       </nav>
       <img src="images/MPC_logo_circular.png" width="60" height="60" alt="Minor Planet Center Logo">
-      <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div> 
+      <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div>
    </div>
   </footer>
 
