@@ -49,7 +49,7 @@ class Asteroid
     end
 
     def repo_file
-      Rails.root.join('public/asteroids.json')
+      Rails.root.join('lib/asteroids.json')
     end
 
   end

@@ -1,11 +1,11 @@
 class AsteroidsController < ApplicationController
 
-  respond_to? :json, :html
+  respond_to :json, :html
 
   def index
     Rails.logger.info "HERE"
     @asteroids = Asteroid.all
-    render :json, @asteroids
+    respond_with(@asteroids)
   end
 
   def show
