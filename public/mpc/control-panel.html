@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="icon" type="image/png" href="images/MPClogo16.png">
+  <link rel="icon" type="image/png" href="mpc/images/MPClogo16.png">
 
   <link media="all" rel="stylesheet" href="css/all.css">
 
@@ -87,9 +87,9 @@
             <!-- top-nav -->
             <nav class="top-nav">
               <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="mpc/index">Home</a></li>
+                <li><a href="mpc/about">About</a></li>
+                <li><a href="mpc/contact">Contact</a></li>
               </ul>
             </nav>
             <!-- search-form -->
@@ -513,7 +513,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
       asteroidEnter.append("td")
           .append("a")
-          .attr("href", "adetail.html")
+          .attr("href", "ae-detail.html")
           .text(function(d) { return d.designation; });
 
 
@@ -541,7 +541,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
 
 // <a href="https://twitter.com/share" class="twitter-share-button"
-// data-url="https://asteroid-explorers.herokuapp.com/adetail.html"
+// data-url="https://asteroid-explorers.herokuapp.com/ae-detail.html"
 // data-text="Check out this Asteroid!"
 // data-via=user_id
 // data-related="asteroidexplore"
@@ -550,7 +550,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
       asteroidEnter.append("td")
       .append("a")
-      .attr("href","http://twitter.com/home/?status=Check out Asteroid 2003 TL4! http://asteroid-explorers.herokuapp.com/adetail.html %23asteroidexplorers %23asteroids %23nasa %23seti")
+      .attr("href","http://twitter.com/home/?status=Check out Asteroid 2003 TL4! http://asteroid-explorers.herokuapp.com/ae-detail.html %23asteroidexplorers %23asteroids %23nasa %23seti")
       .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
       .html("<span class='fa fa-twitter'></span> Tweet");
