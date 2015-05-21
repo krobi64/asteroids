@@ -5,10 +5,6 @@ class Asteroid
 
   class_attribute :list, :last_read
 
-  delegate :torino, to: :hazard, allow_nil: true
-  delegate :palermo_cum, to: :hazard, allow_nil: true
-  delegate :palermo_max, to: :hazard, allow_nil: true
-
   class << self
     def import
       unless list.present? && last_read_current?
