@@ -125,24 +125,22 @@ $(document).ready(function(){
 
 <!-- charts START -->
 <div id="charts">
-
   <div id="speed-chart" class="chart">
-    <div class="title">Speed&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
+    <div class="title">Size (Meters)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
   </div>
+
   <div id="size-chart" class="chart">
-    <div class="title">Brightness&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="The apparent magnitude of an object only tells us how bright an object appears from Earth. The lower the number, the brighter (and bigger) the asteriod!">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
+    <div class="title">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="Closest Approach to Earth">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
   </div>
+
   <div id="perihelion-distance-chart" class="chart">
-    <div class="title">Passes Closest <br>to the Sun&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="The perihelion is the point in the orbit of a planet, asteroid, or comet where it is nearest to the sun.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
+    <div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="Time to Orbit">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
   </div>
+
   <div id="earth-moid-chart" class="chart">
-    <div class="title">Passes Closest to Earth&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a href="#" class="label label-default">Reset</a> --></div>
+    <div class="title">Energy to Travel to Asteroid (KM/Sec)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
   </div>
-<!--   <div id="km-neo" style="display: inline-block">
-    <div class="title">KM NEO&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><br>
-    <input type="checkbox" value="Bike">True<br>
-    <input type="checkbox" value="Car">False
-  </div> -->
+
 </div>
 <!-- charts END -->
 
@@ -363,17 +361,17 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
       sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
 */
-      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.size)); }),
-      sizes = size.group(function(d) { return Math.floor(d); }),
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(2000, +d.size)); }),
+      sizes = size.group(function(d) { return Math.floor(d/100) * 100.0; }),
 
       earth_distance = asteroid.dimension(function(d) { return Math.max(0, +d.close_app_dist); }),
-      earth_distances = earth_distance.group(function(d) { return Math.floor(d * 150) / 150.0; }),
+      earth_distances = earth_distance.group(function(d) { return Math.floor(d / 25)  * 25.0; }),
 
       period = asteroid.dimension(function(d) { return Math.min(100, +d.period); }),
-      periods = period.group(function(d) { return Math.floor(d * 10) / 10.0; }),
+      periods = period.group(function(d) { return Math.floor(d * 4) / 4.0; }),
 
-      energy = asteroid.dimension(function(d) { return Math.min(100, +d.delta_v); }),
-      energys = energy.group(function(d) { return Math.floor(d * 10) / 10.0; }),
+      energy = asteroid.dimension(function(d) { return Math.min(1000, +d.delta_v); }),
+      energys = energy.group(function(d) { return Math.floor(d) / 100 * 100.0; }),
 
       designation = asteroid.dimension(function(d) { return d.designation});
 
@@ -397,8 +395,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         .dimension(size)
         .group(sizes)
       .x(d3.scale.linear()
-        .domain([10, 35])
-        .rangeRound([0, 10 * 25])),
+        .domain([1, 2000])
+        .rangeRound([0, 10 * 20])),
 /*
     barChart()
         .dimension(sun_distance)
@@ -411,21 +409,21 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         .dimension(earth_distance)
         .group(earth_distances)
       .x(d3.scale.linear()
-        .domain([0, 0.5])
-        .rangeRound([0, 10 * 75])),
+        .domain([0, 500])
+        .rangeRound([0, 10 * 20])),
 
     barChart()
         .dimension(period)
         .group(periods)
       .x(d3.scale.linear()
-        .domain([0, 2.0])
+        .domain([0, 5.0])
         .rangeRound([0, 10 * 20])),
 
     barChart()
         .dimension(energy)
         .group(energys)
       .x(d3.scale.linear()
-        .domain([0, 2.0])
+        .domain([0, 20])
         .rangeRound([0, 10 * 20])),
 
 
