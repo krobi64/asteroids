@@ -5,6 +5,10 @@ class VisitorsController < ApplicationController
     render file: 'public/mpc/index.html'
   end
 
+  def cpanel
+    @filter_type = params[:filter_type]
+  end
+
   def ae
     render file: 'public/ae/index.html'
   end

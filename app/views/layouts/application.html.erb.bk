@@ -176,6 +176,9 @@
         </nav>
       </header>
 
+	<%= yield %>
+<!--
+Raymond
       <div id="main">
         <h1 class="title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Data&nbsp;Explorer</h1>
         <h3 class="mission">Finding Asteroids Before They Find Us!</h3>
@@ -208,22 +211,22 @@
           <div class="row">
             <div class="col-md-6 ">
               <div class="thumbnail ae-thumbnail">
-                <a href="/cpanel?filter_type=hazard"><img src="/mpc/images/Chelyabinsk.jpg" class="ae-gallery-thumb" alt="Chelyabinsk meteor"></a>
+                <a href="/mpc/control-panel.html"><img src="/mpc/images/Chelyabinsk.jpg" class="ae-gallery-thumb" alt="Chelyabinsk meteor"></a>
                 <div class="caption">
                   <h5>Which asteriods are the most hazardrous?</h5>
                   <p>On 15 February 2013, an approximately 20 meter meteor exploded in the Earth's atmosphere above Chelyabinsk, Russia, causing damage to thousands of buildings.</p>
-                  <p><a href="/cpanel?filter_type=hazard" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
+                  <p><a href="/mpc/control-panel.html" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
                 </div>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="thumbnail ae-thumbnail">
-                <a href="/cpanel?filter_type=size"><img src="/mpc/images/Eros.jpg" class="ae-gallery-thumb" alt="Minor planet (433) Eros."></a>
+                <a href="/mpc/control-panel.html"><img src="/mpc/images/Eros.jpg" class="ae-gallery-thumb" alt="Minor planet (433) Eros."></a>
                 <div class="caption">
                   <h5>Which asteriods are the biggest?</h5>
                   <p>Minor planet (433) Eros is the second largest known Near Earth asteroid. It is approximately 17 kilometers in size.<br><br></p>
-                  <p><a href="/cpanel?filter_type=size" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
+                  <p><a href="/mpc/control-panel.html" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
                 </div>
               </div>
             </div>
@@ -251,10 +254,12 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
-
+Raymond
+-->
       <!-- footer -->
       <footer id="footer">
         <div class="holder">
