@@ -159,23 +159,14 @@ $(document).ready(function(){
 
         <tr>
 
-<!--             <th>Name</th> -->
-
-            <th>Number/Designation</th>
-
-            <th>Speed</th>
-
-            <th>Brigthness</th>
-
-            <th>Nearest distance to Sun</th>
-
-            <th>Nearest distance to Earth</th>
-
-            <th>Time to Oribit the Sun(in years)</th>
-
-            <th>Energy to get to Asteroid(km/sec)</th>
-
-            <th>Danger Risk
+          <th class="header">&nbsp;&nbsp;&nbsp; Designation (i)&nbsp;&nbsp;&nbsp;</th>
+          <th class="header">Size (Meters) (i)</th>
+          <th class="header">Next Closest Approach to Earth Date (i)</th>
+          <th class="header">Next Closest Approach to Earth (Lunar&nbsp;Distance) (i)</th>
+          <th class="header">Orbital Period (i)</th>
+          <th class="header">Energy to Travel to Asteroid (KM/Sec) (i)</th>
+          <th class="header">PHA (i)
+	    <br/>
                 <div href="#" class="torino label label-info" data-placement='above' title="The Torino Impact Hazard Scale">
                   <span class="fa fa-info-circle fa-lg"></span>
                 </div>
@@ -282,7 +273,7 @@ twitter_share(document, 'script', 'twitter-wjs');
 
 
 
-d3.json("ae/asteroids.json", function(error, asteroids_temp) {
+d3.json("/asteroids.json", function(error, asteroids_temp) {
   // Various formatters.
   var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d");
@@ -301,16 +292,65 @@ d3.json("ae/asteroids.json", function(error, asteroids_temp) {
   // // A little coercion, since the CSV is untyped.
   asteroids_temp.forEach(function(d, i) {
     d.index = i;
-    if(d.earth_moid != null) {
+    if(d.close_app_dist != null) {
       asteroids.push(d)
 
     }
   });
 
+  //RXIE
+  console.log("total count of asteroids: " + asteroids.length)
+
+
+
+
+/***
+// FIELD CHANGES
+absolute_magnitude      :       21.4
+aphelion_distance       :       2.738
+designation     :       2013 GF
+delta_v :       6.38464
+earth_moid      :       0.05096
+id      :       5819910
+km_neo  :       false
+mean_daily_motion       :       0.3805738
+n_or_d  :       K13G00F
+name    :       null
+neo     :       true
+number  :       null
+perihelion_distance     :       1.033777023
+period  :       2.59
+pha     :       true
+torino  :       null
+
+==============
+New JSON fields:
+
+designation     :       2009 UK
+close_app_date  :       2023 12 12
+close_app_dist  :       83
+impact_prob     :       0
+taxonomy_class  :
+pha     :       false
+size    :       372
+spin_period     :
+delta_v :       5.8
+period  :       2.78
+url     :       http://minorplanetcenter.net/db_search/show_object?object_id=2009 UK
+***/
+
+
+
+
+
+
+
+
+
   // Create the crossfilter for the relevant dimensions and groups.
   var asteroid = crossfilter(asteroids),
       all = asteroid.groupAll(),
-
+/*
       speed = asteroid.dimension(function(d) { return Math.min(100, +d.mean_daily_motion); }),
       speeds = speed.group(function(d) { return Math.floor(d * 10) / 10.0; });
 
@@ -322,6 +362,18 @@ d3.json("ae/asteroids.json", function(error, asteroids_temp) {
 
       sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
       sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
+*/
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.size)); }),
+      sizes = size.group(function(d) { return Math.floor(d); }),
+
+      earth_distance = asteroid.dimension(function(d) { return Math.max(0, +d.close_app_dist); }),
+      earth_distances = earth_distance.group(function(d) { return Math.floor(d * 150) / 150.0; }),
+
+      period = asteroid.dimension(function(d) { return Math.min(100, +d.period); }),
+      periods = period.group(function(d) { return Math.floor(d * 10) / 10.0; }),
+
+      energy = asteroid.dimension(function(d) { return Math.min(100, +d.delta_v); }),
+      energys = energy.group(function(d) { return Math.floor(d * 10) / 10.0; }),
 
       designation = asteroid.dimension(function(d) { return d.designation});
 
@@ -333,28 +385,28 @@ d3.json("ae/asteroids.json", function(error, asteroids_temp) {
     //   .x(d3.scale.linear()
     //     .domain([0, 24])
     //     .rangeRound([0, 10 * 24])),
-
+/*
     barChart()
         .dimension(speed)
         .group(speeds)
       .x(d3.scale.linear()
         .domain([0, 2.0])
         .rangeRound([0, 10 * 20])),
-
+*/
     barChart()
         .dimension(size)
         .group(sizes)
       .x(d3.scale.linear()
         .domain([10, 35])
         .rangeRound([0, 10 * 25])),
-
+/*
     barChart()
         .dimension(sun_distance)
         .group(sun_distances)
       .x(d3.scale.linear()
         .domain([0, 1.2])
         .rangeRound([0, 10 * 24])),
-
+*/
     barChart()
         .dimension(earth_distance)
         .group(earth_distances)
@@ -362,6 +414,19 @@ d3.json("ae/asteroids.json", function(error, asteroids_temp) {
         .domain([0, 0.5])
         .rangeRound([0, 10 * 75])),
 
+    barChart()
+        .dimension(period)
+        .group(periods)
+      .x(d3.scale.linear()
+        .domain([0, 2.0])
+        .rangeRound([0, 10 * 20])),
+
+    barChart()
+        .dimension(energy)
+        .group(energys)
+      .x(d3.scale.linear()
+        .domain([0, 2.0])
+        .rangeRound([0, 10 * 20])),
 
 
     // barChart()
@@ -459,7 +524,7 @@ d3.json("ae/asteroids.json", function(error, asteroids_temp) {
           .text(function(d) { return d.designation; });
 
 
-
+/*
       asteroidEnter.append("td")
           .text(function(d) { return d.mean_daily_motion; });
 
@@ -480,6 +545,26 @@ d3.json("ae/asteroids.json", function(error, asteroids_temp) {
 
       asteroidEnter.append("td")
           .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
+*/
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.size });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.close_app_date; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.close_app_dist; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.period; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.delta_v; });
+
+      asteroidEnter.append("td")
+          .text(function(d) { return d.pha; });
+
 
 
 // <a href="https://twitter.com/share" class="twitter-share-button"
