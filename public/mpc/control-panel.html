@@ -349,6 +349,9 @@ twitter_share(document, 'script', 'twitter-wjs');
   //   "id": 2
   // }]
 
+
+
+
 d3.json("/asteroids.json", function(error, asteroids_temp) {
   // Various formatters.
   var formatNumber = d3.format(",d"),
@@ -358,27 +361,30 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
   // // A little coercion, since the CSV is untyped.
   asteroids_temp.forEach(function(d, i) {
     d.index = i;
-    if(d.earth_moid != null) {
-      asteroids.push(d)
 
+    if(d.close_app_dist != null) {
+      asteroids.push(d)
     }
   });
+
+  console.log("total count of asteroids: " + asteroids.length)
+
 
   // Create the crossfilter for the relevant dimensions and groups.
   var asteroid = crossfilter(asteroids),
       all = asteroid.groupAll(),
 
-      speed = asteroid.dimension(function(d) { return Math.min(100, +d.mean_daily_motion); }),
-      speeds = speed.group(function(d) { return Math.floor(d * 10) / 10.0; });
+      // speed = asteroid.dimension(function(d) { return Math.min(100, +d.mean_daily_motion); }),
+      // speeds = speed.group(function(d) { return Math.floor(d * 10) / 10.0; });
 
-      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.absolute_magnitude)); }),
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.size)); }),
       sizes = size.group(function(d) { return Math.floor(d); }),
 
-      earth_distance = asteroid.dimension(function(d) { return Math.min(1, +d.earth_moid); }),
+      earth_distance = asteroid.dimension(function(d) { return Math.min(1000, +d.close_app_dist); }),
       earth_distances = earth_distance.group(function(d) { return Math.floor(d * 150) / 150.0; }),
 
-      sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
-      sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
+      // sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
+      // sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
 
       designation = asteroid.dimension(function(d) { return d.designation});
 
@@ -391,33 +397,33 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     //     .domain([0, 24])
     //     .rangeRound([0, 10 * 24])),
 
-    barChart()
-        .dimension(speed)
-        .group(speeds)
-      .x(d3.scale.linear()
-        .domain([0, 2.0])
-        .rangeRound([0, 10 * 20])),
+    // barChart()
+    //     .dimension(speed)
+    //     .group(speeds)
+    //   .x(d3.scale.linear()
+    //     .domain([0, 2.0])
+    //     .rangeRound([0, 10 * 20])),
 
     barChart()
         .dimension(size)
         .group(sizes)
       .x(d3.scale.linear()
-        .domain([10, 35])
+        .domain([1, 160])
         .rangeRound([0, 10 * 25])),
 
-    barChart()
-        .dimension(sun_distance)
-        .group(sun_distances)
-      .x(d3.scale.linear()
-        .domain([0, 1.2])
-        .rangeRound([0, 10 * 24])),
+    // barChart()
+    //     .dimension(sun_distance)
+    //     .group(sun_distances)
+    //   .x(d3.scale.linear()
+    //     .domain([0, 1.2])
+    //     .rangeRound([0, 10 * 24])),
 
     barChart()
         .dimension(earth_distance)
         .group(earth_distances)
       .x(d3.scale.linear()
-        .domain([0, 0.5])
-        .rangeRound([0, 10 * 75])),
+        .domain([0, 1000])
+        .rangeRound([0, 10 * 25])),
 
 
 
@@ -446,7 +452,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
   // Render the total.
   d3.selectAll("#total")
       .text(formatNumber(asteroid.size()));
-
+  
   renderAll();
 
   // Renders the specified chart or list.
@@ -519,16 +525,13 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.mean_daily_motion; });
+          .text(function(d) { return d.size });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.absolute_magnitude; });
+          .text(function(d) { return d.close_app_date; });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.perihelion_distance; });
-
-      asteroidEnter.append("td")
-          .text(function(d) { return d.earth_moid; });
+          .text(function(d) { return d.close_app_dist; });
 
       asteroidEnter.append("td")
           .text(function(d) { return d.period; });
@@ -537,7 +540,10 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
           .text(function(d) { return d.delta_v; });
 
       asteroidEnter.append("td")
-          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
+          .text(function(d) { return d.pha; });
+
+//      asteroidEnter.append("td")
+//          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
 
 
 // <a href="https://twitter.com/share" class="twitter-share-button"
