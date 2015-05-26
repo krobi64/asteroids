@@ -75,51 +75,20 @@ $(document).ready(function(){
     <p>If an asteroid is headed our way, we want to know that! Ask Major Tom a question and explore the interactive charts below to find out about the risk for possibilities of future impact with Earth.</p>
     <br>
     <br>
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"> Ask Major Tom...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5, 2.0], [10, 20], null, [0.00, 0.02]])">What are the most dangerous asteroids?</a></li>
-        <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.00, 0.01]])">What are the closest asteroids to earth?</a></li>
-        <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[1.5,2.0], null, null, null])">What are the fastest asteroids?</a></li>
-        <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#radio-tom-modal">Radio Tom for More Questions...</a></li>
-      </ul>
-    </div>
-
-<!-- Radio Tom Modal Dialog -->
-<div class="modal fade" id="radio-tom-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;Radio Major Tom</h4>
-      </div>
-      <div class="modal-body">
-        <p>Do you have a new question you want answered? Submit your question here and it will be radioed to Major Tom&hellip;</p>
-<br>
-<form>
-    <label for="question-tom">Question</label>
-    <input type="text" class="form-control" name="question-tom" id="question-tom" placeholder="What do you want to learn about?">
-</form>
-<br>
-<div class="row">
-  <div class="col-md-4">&nbsp;</div>
-  <div class="col-md-4"><img class="helmet" src="ae/images/helmet2.png" width="100px" height="100px"></div>
-  <div class="col-md-4">&nbsp;</div>
-</div>
-<br>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" aria-hidden="true" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary"  aria-hidden="true" data-dismiss="modal">Notify Major Tom</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- END DIALOG -->
-
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                Start Exploring Asteroids...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:danger()">Which are the most dangerous asteroids?</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[2000,3000], null, null, null])">Which are the biggest asteroids?</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, [0,20], [0.0,0.7], null])">Which asteroids are flying by the earth this month?</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.0,5.0]])">Which asteroids are easisest to travel to?</a></li>
+              </ul>
+            </div>
 <br>
 
 
@@ -286,6 +255,11 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     renderAll();
   };
 
+  window.danger = function() {
+    pha.filter("true");
+    renderAll();
+  };
+ 
   var asteroids = [];
   // // A little coercion, since the CSV is untyped.
   asteroids_temp.forEach(function(d, i) {
@@ -341,26 +315,10 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
 
 
-
-
-
-
   // Create the crossfilter for the relevant dimensions and groups.
   var asteroid = crossfilter(asteroids),
       all = asteroid.groupAll(),
-/*
-      speed = asteroid.dimension(function(d) { return Math.min(100, +d.mean_daily_motion); }),
-      speeds = speed.group(function(d) { return Math.floor(d * 10) / 10.0; });
 
-      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(150, +d.absolute_magnitude)); }),
-      sizes = size.group(function(d) { return Math.floor(d); }),
-
-      earth_distance = asteroid.dimension(function(d) { return Math.min(1, +d.earth_moid); }),
-      earth_distances = earth_distance.group(function(d) { return Math.floor(d * 150) / 150.0; }),
-
-      sun_distance = asteroid.dimension(function(d) { return Math.min(1, +d.perihelion_distance); }),
-      sun_distances = sun_distance.group(function(d) { return Math.floor(d * 20) / 20.0; }),
-*/
       size = asteroid.dimension(function(d) { return Math.max(0, Math.min(2000, +d.size)); }),
       sizes = size.group(function(d) { return Math.floor(d/100) * 100.0; }),
 
@@ -373,38 +331,19 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       energy = asteroid.dimension(function(d) { return Math.min(1000, +d.delta_v); }),
       energys = energy.group(function(d) { return Math.floor(d) / 100 * 100.0; }),
 
+      pha = asteroid.dimension(function(d) { return d.pha}),
       designation = asteroid.dimension(function(d) { return d.designation});
 
-  var charts = [
 
-    // barChart()
-    //     .dimension(hour)
-    //     .group(hours)
-    //   .x(d3.scale.linear()
-    //     .domain([0, 24])
-    //     .rangeRound([0, 10 * 24])),
-/*
-    barChart()
-        .dimension(speed)
-        .group(speeds)
-      .x(d3.scale.linear()
-        .domain([0, 2.0])
-        .rangeRound([0, 10 * 20])),
-*/
+
+  var charts = [
     barChart()
         .dimension(size)
         .group(sizes)
       .x(d3.scale.linear()
         .domain([1, 2000])
         .rangeRound([0, 10 * 20])),
-/*
-    barChart()
-        .dimension(sun_distance)
-        .group(sun_distances)
-      .x(d3.scale.linear()
-        .domain([0, 1.2])
-        .rangeRound([0, 10 * 24])),
-*/
+
     barChart()
         .dimension(earth_distance)
         .group(earth_distances)
@@ -453,13 +392,19 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   d3.selectAll("#total")
       .text(formatNumber(asteroid.size()));
 
-  //WIP: apply filter
+  // WIP: apply filter
   console.log("apply filter: <%= @filter_type %>"); 
+
   <% if @filter_type=="hazard" %>
-    window.filter([[1.5, 2.0], [10, 20], null, [0.00, 0.02]]);
+    pha.filter("true");
+    window.filter([[1900,3000],null,null,null]);
     console.log("filter is hazard"); 
   <% elsif @filter_type=="size"  %>
-    console.log("filter is size"); 
+    window.filter([[2000,3000],null,null,null]);
+  <% elsif @filter_type=="near"  %>
+    window.filter([null,[0,20], [0.0,0.7], null]);
+  <% elsif @filter_type=="easy"  %>
+    window.filter([null, null, null, [0.0,5.0]]);
   <% end %> 
   
   renderAll();
