@@ -247,11 +247,13 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
   window.filter = function(filters) {
     filters.forEach(function(d, i) { charts[i].filter(d); });
+    pha.filter(null);
     renderAll();
   };
 
   window.reset = function(i) {
     charts[i].filter(null);
+    pha.filter(null);
     renderAll();
   };
 
