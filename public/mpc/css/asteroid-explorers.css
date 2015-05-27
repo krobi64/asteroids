@@ -608,8 +608,9 @@ background-color: #FCCD72;
 
 
 .ae-gallery-thumb{
-    width: 400px !important;
+    width: 450px !important;
     height: 400px !important;
+    max-height: 400px !important;
 }
 
 
