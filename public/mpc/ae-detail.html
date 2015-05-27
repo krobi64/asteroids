@@ -55,7 +55,6 @@ $(document).ready(function(){
 <!-- START ae content - detail page-->
 <a name="top_page"></a>
 
-<div id="main">
 <div class="ae-main">
 
   <div class="ae-header">
@@ -78,119 +77,102 @@ $(document).ready(function(){
   </div>
 
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-7 col-sm-6 col-xs-6">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7 col-sm-6 col-xs-6">
 
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Summary</h3>
-            </div>
-            <div class="panel-body">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Summary</h3>
+                </div>
+                <div class="panel-body">
 
-            <form class="form-horizontal ae-form-center">
-              <div class="form-group">
+                <form class="form-horizontal ae-form-center">
+                  <div class="form-group">
 
-                <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
+                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
 
-                <div class="col-md-6">
-                  <p class="form-control-static ae-form-data">someValue Meters</p>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue Meters</p>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue Years</p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="Times the asteroid spins once around its axis"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue Hours</p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue</p>
+                    </div>
+                  </div>
+
+                </form>
+                    
                 </div>
               </div>
+          </div>
+    <div class="col-md-5 col-sm-6 col-xs-6">
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
               
-              <div class="form-group">
-              <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
-                <div class="col-md-6">
-                  <p class="form-control-static ae-form-data">someValue Years</p>
-                </div>
-              </div>
 
-              <div class="form-group">
-              <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="Times the asteroid spins once around its axis"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
-                <div class="col-md-6">
-                  <p class="form-control-static ae-form-data">someValue Hours</p>
-                </div>
-              </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">JPL Impact Risk</h3>
+                  </div>
+                  <div class="panel-body text-center">
+                    <div class="ae-form-data">SomeValue</div>
+                    <div class="ae-form-label-bottom">Impact Probability of Hitting Earth in the Future</div>
+                    <p>As astronomers make more observations about this asteroid, the small probability of the asteroid hitting Earth is likely to go down or disappear altogether.</p>      
+                  </div>
+                </div>   
+            </div>
+        </div>
 
-              <div class="form-group">
-              <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
-                <div class="col-md-6">
-                  <p class="form-control-static ae-form-data">someValue</p>
-                </div>
-              </div>
 
-            </form>
-                
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+              
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Potentially Hazardous Asteroid (PHA)</h3>
+                </div>
+              <div class="panel-body text-center">
+                    <div class="ae-form-data">SomeValue</div>
+                    <div class="ae-form-label-bottom">Asteroids of this Size are Estimated to hit Earth Every <span class="ae-form-data-med">SomeValue</span> Years.</div>
+                    <p>This asteroid is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p> 
+              </div>
             </div>
           </div>
+
+        </div>
+      <!-- END ROW -->
+
       </div>
+     </div>
+      <!-- END ROW -->
 
-<div class="col-md-5 col-sm-6 col-xs-6">
+      <a href="#top_page" class="btn pull-right ae-btn-top bottom-button" role="button"><i class="fa fa-caret-up"></i>&nbsp;Top&nbsp;</a>
 
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">JPL Impact Risk</h3>
-          </div>
-          <div class="panel-body text-center">
-            <div class="ae-form-data">SomeValue</div>
-            <div class="ae-form-label-bottom">Impact Probability of Hitting Earth in the Future</div>
-            <p>As astronomers make more observations about this asteroid, the small probability of the asteroid hitting Earth is likely to go down or disappear altogether.</p>      
-          </div>
-        </div>   
     </div>
-</div>
 
+    <!-- end container -->
 
-<div class="row">
-
-  <div class="col-md-12 col-sm-12 col-xs-12">
-      
-      <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Potentially Hazardous Asteroid (PHA)</h3>
     </div>
-      <div class="panel-body text-center">
-            <div class="ae-form-data">SomeValue</div>
-            <div class="ae-form-label-bottom">Asteroids of this Size are Estimated to hit Earth Every <span class="ae-form-data-med">SomeValue</span> Years.</div>
-            <p>This asteroid is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p> 
-      </div>
-    </div>
-  </div>
-
-</div>
-
-</div>
-  </div>
-  <!-- END ROW -->
-
- 
-  
-
-
-<a href="#top_page" class="btn pull-right ae-btn-top bottom-button" role="button"><i class="fa fa-caret-up"></i>&nbsp;Top&nbsp;</a>
-
-</div>
-
-<!--
-- What data is not going to make it and what data is not going to make it in? 
-Logic
-- If value for a data point is not found/blank, then value will be "Unknown" instead of just Blank so user does not think it is error
-- If value for a data point is 0, then show as 0
-- If we have a spin period for it, add value to main section, if not do not show.
-- If we have a spectral class for it, add value to main seciton,  if not do not show.
-- If have NEA, show in main seciton, if not do now show.
-- If it’s on JPL’s impact risk page, add JPL Impact Risk Section and its values.
-- If PHA is NO, show and explain what the means and implications
-
-
-Need
-- spectral class, spin period, spectral class definition (for i icon)
-- If PHA is NO, explain what the means and implications
--->
+    <!-- end ae-main -->
 
 </body>
 </html>
