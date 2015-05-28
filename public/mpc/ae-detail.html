@@ -3,327 +3,176 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="icon" type="image/png" href="images/MPClogo16.png">
-
-  <link media="all" rel="stylesheet" href="css/all.css">
-
-  <script type="text/javascript" async="" src="js/plusone.js"></script>
-  <script id="twitter-wjs" src="js/widgets.js"></script>
-  <script type="text/javascript" async="" src="js/plusone.js"></script>
-  <script type="text/javascript" async="" src="js/ga.js"></script>
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-20663393-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-  <link href="https://plus.google.com/103523519128767953332" rel="publisher">
-  <script type="text/javascript">
-    (function()
-      {var po = document.createElement("script");
-       po.type = "text/javascript"; po.async = true;
-       po.src = "https://apis.google.com/js/plusone.js";
-       var s = document.getElementsByTagName("script")[0];
-       s.parentNode.insertBefore(po, s);
-      })();
-  </script>
-
-  <script src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/jquery.metadata.js"></script>
-  <script type="text/javascript" src="js/webtrends.js"></script>
-  <script type="text/javascript" src="js/track_pdfs.js"></script>
-
-  <link href="css/css.css" rel="stylesheet" type="text/css">
-
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Minor Planet Center: Asteroids Explorer- About</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <title>MPC: Asteroids Data Explorer - SomeValue</title>
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/d3.min.js"></script>
-  <script src="js/crossfilter.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+<!-- font awesome -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- font awesome -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <!-- ae asteroid explorer css -->
+  <!-- ae asteroid explorer css + js -->
   <link rel="stylesheet" href="css/asteroid-explorers.css">
+  <script src="js/asteroid-explorers.js"></script> 
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+        'placement': 'top'
+    });
+});
+</script>
+
 </head>
 
 <body>
-  <div id="wrapper">
-    <div class="w1">
 
-      <!-- header -->
-      <header id="header">
-        <div class="holder">
-          <!-- logo -->
-          <h1 class="logo"><a href="/">The International Astronomical Union Minor Planet Center</a></h1>
-          <div class="area">
-            <!-- top-nav -->
-            <nav class="top-nav">
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-              </ul>
-            </nav>
 
-            <!-- search-form -->
-            <div class="form-holder">
-              <form class="search-form" method="get" action="http://www.google.com/search">
-                <fieldset>
-                  <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
-                  <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
-                </fieldset>
-              </form>
-            </div>
+<!-- START ae content - detail page-->
+<a name="top_page"></a>
 
-            <div class="social-bar">
-              <a href="https://twitter.com/MinorPlanetCtr"><span class="social twitter">L</span></a>
-              <a href="https://www.facebook.com/MinorPlanetCenter"><span class="social facebook">F</span></a>
-              <a href="https://plus.google.com/103523519128767953332/posts"><span class="social gplus">G</span></a>
-              <a href="/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
-            </div>
+<div class="ae-main">
+
+  <div class="ae-header">
+      <div id="ae-nav">
+       <div id="ae-nav-header">
+          <h1 class="ae-title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Asteroid&nbsp;Data&nbsp;Explorer</h1>
+          <div class="btn-group ae-nav-btn-group" role="group">
+            <a type="button" class="btn ae-nav-btn" href="index.html">Home</a>
+            <a type="button" class="btn ae-nav-btn" href="ae-about.html">About</a>
+            <a type="button" class="btn ae-nav-btn" href="control-panel.html">Control Panel</a>
+          </div> 
+        </div>
+        <div id="ae-header-detail">
+            <h2 class="ae-asteroid-title">Asteroid: SomeAsteroidName</h2>
+            <div id="ae-header-actions-2nd">
+             <a href="http://minorplanetcenter.net/db_search/show_object?object_id=2006%20SR131" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="#" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a> <span class="ae-btn-divider">|</span> <a onclick="goBack();" class="btn ae-btn-default" role="button"><i class="fa fa-step-backward"></i>&nbsp;Back</a>
+             </div>
           </div>
         </div>
-
-        <nav class="nav-holder">
-          <!-- main navigation -->
-          <ul id="nav">
-            <li>
-              <a href="/iau/mpc.html"><span>OBSERVERS</span></a>
-              <ul>
-                <li><a href="/iau/MPEph/MPEph.html">Ephemeris Service</a></li>
-                <li><a href="/mpec/RecentMPECs.html">MPECs</a></li>
-                <li><a href="/iau/NEO/toconfirm_tabular.html">NEO Confirmation</a></li>
-                <li><a href="/iau/Ephemerides/EphemOrbEls.html" class="nested">Orbital Elements</a>
-                  <ul>
-                    <li><a href="/iau/MPCORB.html">MPCORB</a></li>
-                    <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
-                    <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
-                    <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
-                  </ul>
-                </li>
-                <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
-                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>
-                <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
-                  <ul>
-                    <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
-                    <li><a href="/iau/NEO/PossNEO.html">Ratings</a></li>
-                    <li><a href="/cgi-bin/neaobs.cgi">Observation Planning Aid</a></li>
-                    <li><a href="/cgi-bin/checkneo.cgi">NEOChecker</a></li>
-                    <li><a href="/cgi-bin/checkneocmt.cgi">NEOCMTChecker</a></li>
-                    <li><a href="/NEOCPblog/">NEOCP Blog</a></li>
-                    <li><a href="/neocp_obs">NEOCP Recent Observations</a></li>
-                  </ul>
-                </li>
-                <li><a href="/iau/services/WebCSAccess.html" class="nested">Other Observer Services</a>
-                  <ul>
-                    <li><a href="/iau/NatSats/NaturalSatellites.html">Natural Satellite Ephemerides</a></li>
-                    <li><a href="/iau/MPEph/NewObjEphems.html">New Object Ephemerides</a></li>
-                    <li><a href="/cgi-bin/checkmp.cgi">MPChecker</a></li>
-                    <li><a href="/cgi-bin/checkcmt.cgi">CMTChecker</a></li>
-                    <li><a href="/iau/SpaceJunk/SpaceJunk.html">Distant Artificial Satellites</a></li>
-                    <li><a href="/iau/lists/Customize.html">Observing List Customizer</a></li>
-                  </ul>
-                </li>
-                <li><a href="/db_search">Orbits/Observations Database</a></li>
-                <li><a href='/light_curve2/light_curve.php'>Light Curve Database</a></li>
-                <li><a href="/iau/ECS/MPCAT-OBS/MPCAT-OBS.html">MPCAT-OBS</a></li>
-                <li><a href="/iau/SkyCoverage.html">Sky Coverage</a></li>
-                <li><a href="/iau/MPC_Documentation.html" class="nested">Documentation</a>
-                  <ul>
-                    <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
-                    <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
-                    <li><a href="/iau/WhatsNew.html">What's New</a></li>
-                  </ul>
-                </li>
-                <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
-                  <ul>
-                    <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
-                    <li><a href="/iau/lists/CometLists.html">Comets</a></li>
-                    <li><a href="/iau/Animations/Animations.html">Animations</a></li>
-                  </ul>
-                </li>
-                <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
-                <li><a href="/mpc/summary">Summary of Latest Data</a></li>
-              </ul>
-            </li>
-            <li><a href="/blog"><span>Public</span></a>
-            </li>
-            <li><a href="/IAWN/"><span>IAWN</span></a>
-              <ul>
-                <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
-                <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
-                <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
-                <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-<!-- ae content - detail page-->
-<a name="top_page">
-<div id="main">
+  </div>
 
 
-<div class="btn-toolbar pull-right" role="toolbar">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7 col-sm-6 col-xs-6">
 
-          <a href="http://www.minorplanetcenter.net/db_search/show_orbit?utf8=%E2%9C%93&epoch=2014-12-09.0&number=433&designation=&name=Eros&peri=178.7955874&m=231.40149&node=304.3345481&incl=10.8290024&e=0.222633849&a=1.4579607&commit=Interactive+Orbit+Sketch" class="btn ae-btn-default-blue" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;View Orbit Sketch&nbsp;</a>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Summary</h3>
+                </div>
+                <div class="panel-body">
 
-          <a href="control-panel.html" class="btn ae-btn-default-blue" role="button"><i class="fa fa-twitter"></i>&nbsp;Share&nbsp;</a>
+                <form class="form-horizontal ae-form-center">
+                  <div class="form-group">
 
-          <div class="btn-divider-vertical valign"></div>
+                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
 
-          <a href="control-panel.html" class="btn ae-btn-default-blue" role="button"><i class="fa fa-chevron-up"></i>&nbsp;Control Panel&nbsp;</a>
-</div>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue Meters</p>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue Years</p>
+                    </div>
+                  </div>
 
+                  <div class="form-group">
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="Times the asteroid spins once around its axis"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue Hours</p>
+                    </div>
+                  </div>
 
-<h1 class="title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Data&nbsp;Explorer</h1>
-<h3 class="sub-title">Asteroid: XYGNLIALIL-10</h3>
+                  <div class="form-group">
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
+                    <div class="col-md-6">
+                      <p class="form-control-static ae-form-data">someValue</p>
+                    </div>
+                  </div>
 
+                </form>
+                    
+                </div>
+              </div>
+          </div>
+    <div class="col-md-5 col-sm-6 col-xs-6">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              
 
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Summary</h3>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">JPL Impact Risk</h3>
+                  </div>
+                  <div class="panel-body text-center">
+                    <div class="ae-form-data">SomeValue</div>
+                    <div class="ae-form-label-bottom">Impact Probability of Hitting Earth in the Future</div>
+                    <p>As astronomers make more observations about this asteroid, the small probability of the asteroid hitting Earth is likely to go down or disappear altogether.</p>      
+                  </div>
+                </div>   
             </div>
-            <div class="panel-body">
-              Size {{Number}} Meters<br>
-
-          Years to Complete 1 Revolution Around the Sun {{Number - Years}}<br>
-
-          Spin Period: {{Number - Time}} (help text It spins around its axis once every [spin period] hours/minutes.)<br>
-
-          Spectral Class {{Text Name}}<br>
-
-          NEA Population {{Number}} Estimated Asteroids of this Size<br>
-            </div>
-          </div>
-    </div>
-
-    <div class="col-md-7">
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">JPL Impact Risk</h3>
-          </div>
-          <div class="panel-body">
-
-        {{2.0}}<br>
-
-        Impact Probability of Hitting Earth In the Future<br><br>
-
-        As astronomers make more observations of this asteroid, the small probability of hitting Earth is likely to go down or disappear altogether.
-          </div>
         </div>
+
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+              
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Potentially Hazardous Asteroid (PHA)</h3>
+                </div>
+              <div class="panel-body text-center">
+                    <div class="ae-form-data">SomeValue</div>
+                    <div class="ae-form-label-bottom">Asteroids of this Size are Estimated to hit Earth Every <span class="ae-form-data-med">SomeValue</span> Years.</div>
+                    <p>This asteroid is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p> 
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <!-- END ROW -->
+
+      </div>
+     </div>
+      <!-- END ROW -->
+
+      <a href="#top_page" class="btn pull-right ae-btn-top bottom-button" role="button"><i class="fa fa-caret-up"></i>&nbsp;Top&nbsp;</a>
+
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
 
-      <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Potentially Hazardous Asteroid (PHA)</h3>
-  </div>
-  <div class="panel-body">
-Yes, Asteroids of this size are estimated to hit Earth every {{impact frequency}} years.<br>
-
-Daniel testing github
-It is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it doesn’t drift closer over the coming centuries.
-  </div>
-</div>
-
+    <!-- end container -->
 
     </div>
-  </div>
-</div>
-
-<a href="#top_page" class="btn pull-right ae-btn-basic bottom-button" role="button"><i class="fa fa-caret-up"></i>&nbsp;Top&nbsp;</a>
-
-</div>
-
-<!--
-- What data is not going to make it and what data is not going to make it in?
-Logic
-- If data is not found, then value will be "Unknown"
-- If value is 0, then show as 0
-- If it’s on JPL’s impact risk page, add JPL Impact Risk Section
-- Potentially Hazardous Object - Is this binary value?
-- If it’s not Potentially Hazardous Object, should have case to say no and why?
-Asteroids of this size are estimated to hit Earth every [impact frequency] years.
-- If we have a spin period for it, add value to main section, if not do not show.
-- If we have a spectral class for it, add value to main seciton,  if not do not show.
-- spectral class definition?
-- If have NEA, show in main seciton, if not do now show.
--->
-
-      <!-- footer -->
-  <footer id="footer">
-    <div class="holder">
-      <nav class="nav">
-        <ul>
-          <li><a href="http://www.minorplanetcenter.net/">Home</a></li>
-          <li><a href="http://www.minorplanetcenter.net/about">About</a></li>
-          <li><a href="http://www.minorplanetcenter.net/contact">Contact</a></li>
-          <li><a href="http://www.minorplanetcenter.net/iau/mpc.html">For Observers</a></li>
-          <li><a href="http://www.minorplanetcenter.net/blog">For the Public</a></li>
-        </ul>
-      </nav>
-      <img src="images/MPC_logo_circular.png" width="60" height="60" alt="Minor Planet Center Logo">
-      <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div>
-   </div>
-  </footer>
-
-  </div>
-
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
-
-  <script type="text/javascript">
-    //<![CDATA[
-    var _tag=new WebTrends();
-    _tag.dcsGetId();
-    //]]>
-  </script>
-
-  <script type="text/javascript">
-    //<![CDATA[
-    _tag.dcsCustom=function(){
-    // Add custom parameters here.
-    //_tag.DCSext.param_name=param_value;
-    }
-    _tag.dcsCollect();
-    //]]>
-  </script>
-
-  <noscript>
-    <div>
-      <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//logs1.smithsonian.museum/dcsa7yzrmbdzpxzrosrn4tyep_5i1d/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.minorplanetcenter.net"/>
-    </div>
-  </noscript>
+    <!-- end ae-main -->
 
 </body>
 </html>
