@@ -118,9 +118,9 @@ $(document).ready(function(){
 <div class="panel panel-default">
 
      <div class="panel-heading clearfix"><h4 class="panel-title ae-data-table-title">Asteroids<span class="pull-right ae-table-total">
-      <div class="btn-group" role="group"><button type="button" class="btn active ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Table View">&nbsp;<i class="fa fa-table fa-lg"></i>&nbsp;</button><button type="button" class="btn inactive ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Chart View">&nbsp;<i class="fa fa-area-chart fa-lg"></i>&nbsp;</button></div>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="active">-</span> of <span id="total">-</span> Asteroids Displayed</span></h4></div>
+      <div class="btn-group" role="group"><button type="button" class="btn active ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Table View" onclick="toggleView(0);">&nbsp;<i class="fa fa-table fa-lg"></i>&nbsp;</button><button type="button" class="btn inactive ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Chart View" onclick="toggleView(1);">&nbsp;<i class="fa fa-area-chart fa-lg"></i>&nbsp;</button></div>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="active">-</span> of <span id="total">-</span> Asteroids Displayed</span></h4></div>
 
-  <div class="panel-body">
+  <div id="table_content" class="panel-body">
     <table class="table table-condensed">
 
     <thead>
@@ -133,6 +133,7 @@ $(document).ready(function(){
           <th class="header">Next Closest Approach to Earth (Lunar&nbsp;Distance) (i)</th>
           <th class="header">Orbital Period (i)</th>
           <th class="header">Energy to Travel to Asteroid (KM/Sec) (i)</th>
+          <th class="header">Impact Probability (i)
           <th class="header">PHA (i)
 	    <br/>
                 <div href="#" class="torino label label-info" data-placement='above' title="The Torino Impact Hazard Scale">
@@ -168,8 +169,11 @@ $(document).ready(function(){
 </table>
 
   </div>
- <!--<div class="panel-footer"> XXX of Asteroids selected. </div>-->
- <!-- <div class="panel-footer"><aside id="totals"><span id="active">-</span> of <span id="total">-</span> asteroids selected.</aside></div>-->
+  <!--<div class="panel-footer"> XXX of Asteroids selected. </div>-->
+  <!-- <div class="panel-footer"><aside id="totals"><span id="active">-</span> of <span id="total">-</span> asteroids selected.</aside></div>-->
+  
+  <div id="highchart_content" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+
 </div>
 
 
@@ -248,18 +252,19 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
   window.filter = function(filters) {
     filters.forEach(function(d, i) { charts[i].filter(d); });
-    pha.filter(null);
+    impact2.filter(null);
     renderAll();
   };
 
   window.reset = function(i) {
     charts[i].filter(null);
-    pha.filter(null);
+    impact2.filter(null);
     renderAll();
   };
 
   window.danger = function() {
-    pha.filter("true");
+    // pha.filter("true");
+    impact2.filterRange([0.00001, 1.0]);
     renderAll();
   };
  
@@ -334,9 +339,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       energy = asteroid.dimension(function(d) { return Math.min(1000, +d.delta_v); }),
       energys = energy.group(function(d) { return Math.floor(d) / 100 * 100.0; }),
 
+      // demision for filtering of "danger"...
       pha = asteroid.dimension(function(d) { return d.pha}),
-      designation = asteroid.dimension(function(d) { return d.designation});
+      impact = asteroid.dimension(function(d) { return d.impact_prob}),
+      impact2 = asteroid.dimension(function(d) { return d.impact_prob_float}),
 
+      designation = asteroid.dimension(function(d) { return d.designation});
 
 
   var charts = [
@@ -445,17 +453,17 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       var asteroidEnter = asteroid.enter().append("tr")
                                   .attr("class", function(d) {
 
-                                    if (d.torino == null) {
+                                    if (d.impact_prob_float == null) {
                                       return "asteroid unknown-danger";
-                                    } else if (+d.torino == 0) {
+                                    } else if (+d.impact_prob_float <= 0.0) {
                                       return "asteroid";
-                                    } else if (+d.torino == 1) {
+                                    } else if (+d.impact_prob_float > 0.0 && +d.impact_prob_float <= 0.00001 ) {
                                       return "asteroid success";
-                                    } else if (+d.torino == 2 || +d.torino == 3 || +d.torino == 4) {
+                                    } else if (+d.impact_prob_float > 0.00001 && +d.impact_prob_float <= 0.0001 ) {
                                       return "asteroid warning";
-                                    } else if (+d.torino == 5 || +d.torino == 6 || +d.torino == 7) {
+                                    } else if (+d.impact_prob_float > 0.0001 && +d.impact_prob_float <= 0.001 ) {
                                       return "asteroid med-danger";
-                                    } else if (+d.torino == 8 || +d.torino == 9 || +d.torino == 10) {
+                                    } else if (+d.impact_prob_float > 0.001 ) {
                                       return "asteroid high-danger"
                                     }
 
@@ -509,8 +517,10 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
           .text(function(d) { return d.delta_v; });
 
       asteroidEnter.append("td")
-          .text(function(d) { return d.pha; });
+          .text(function(d) { return d.impact_prob; });
 
+      asteroidEnter.append("td")
+          .text(function(d) { return d.pha; });
 
 
 // <a href="https://twitter.com/share" class="twitter-share-button"
@@ -730,6 +740,48 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
 </script>
 
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+function toggleView(flag) {
+    if( flag == 1 ) {
+      // $('#table_content').toggle();  
+      // showHighchart();
+    }
+    else {
+      // $('#highchart_content').toggle();
+      // showTabledata();
+    }
+};
+
+function showHighchart() {
+    $('#highchart_content').highcharts({
+
+        chart: {
+            type: 'bubble',
+            zoomType: 'xy'
+        },
+
+        title: {
+            text: 'Highcharts Coordinates'
+        },
+
+        series: [{
+            data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
+        }, {
+            data: [[25, 10, 87], [2, 75, 59], [11, 54, 8], [86, 55, 93], [5, 3, 58], [90, 63, 44], [91, 33, 17], [97, 3, 56], [15, 67, 48], [54, 25, 81]]
+        }, {
+            data: [[47, 47, 21], [20, 12, 4], [6, 76, 91], [38, 30, 60], [57, 98, 64], [61, 17, 80], [83, 60, 13], [67, 78, 75], [64, 12, 10], [30, 77, 82]]
+        }]
+    });
+
+};
+
+
+
+</script>
 
 </body>
 </html>
