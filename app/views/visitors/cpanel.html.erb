@@ -118,7 +118,7 @@ $(document).ready(function(){
 <div class="panel panel-default">
 
      <div class="panel-heading clearfix"><h4 class="panel-title ae-data-table-title">Asteroids<span class="pull-right ae-table-total">
-      <div class="btn-group" role="group"><button type="button" class="btn active ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Table View" onclick="toggleView(0);">&nbsp;<i class="fa fa-table fa-lg"></i>&nbsp;</button><button type="button" class="btn inactive ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Chart View" onclick="toggleView(1);">&nbsp;<i class="fa fa-area-chart fa-lg"></i>&nbsp;</button></div>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="active">-</span> of <span id="total">-</span> Asteroids Displayed</span></h4></div>
+      <div class="btn-group" role="group"><button type="button" class="btn active ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Table View" onclick="toggleAsteroidView(0);">&nbsp;<i class="fa fa-table fa-lg"></i>&nbsp;</button><button type="button" class="btn inactive ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Chart View" onclick="toggleAsteroidView(1);">&nbsp;<i class="fa fa-area-chart fa-lg"></i>&nbsp;</button></div>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="active">-</span> of <span id="total">-</span> Asteroids Displayed</span></h4></div>
 
   <div id="table_content" class="panel-body">
     <table class="table table-condensed">
@@ -172,7 +172,7 @@ $(document).ready(function(){
   <!--<div class="panel-footer"> XXX of Asteroids selected. </div>-->
   <!-- <div class="panel-footer"><aside id="totals"><span id="active">-</span> of <span id="total">-</span> asteroids selected.</aside></div>-->
   
-  <div id="highchart_content" style="height: 400px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+  <div id="highchart_content" class="highchart" style="height: 480px; min-width: 720px; max-width: 720px; margin: 0 auto"></div>
 
 </div>
 
@@ -202,48 +202,14 @@ $(document).ready(function(){
 </footer>
 
 
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
 <script>
 var twitter_share = function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}};
 
 twitter_share(document, 'script', 'twitter-wjs');
-  // var asteroids = [{
-  //   "absolute_magnitude": 18.6,
-  //   "aphelion_distance": 3.791,
-  //   "designation": "63249 XB",
-  //   "delta_v": 602.424,
-  //   "earth_moid": 0.01825,
-  //   "km_neo": false,
-  //   "mean_daily_motion": 0.2979761,
-  //   "n_or_d": "J79X00B",
-  //   "name":"IDFU 234",
-  //   "neo":true,
-  //   "number": null,
-  //   "perihelion_distance": 0.849445272,
-  //   "period": 3.31,
-  //   "pha":true,
-  //   "torino_hazard_rating": 0,
-  //   "id": 1
-  // },
-  // {
-  //   "absolute_magnitude": 52.6,
-  //   "aphelion_distance": 1.791,
-  //   "designation": "1239 XB",
-  //   "delta_v": 10.424,
-  //   "earth_moid": 0.21825,
-  //   "km_neo": false,
-  //   "mean_daily_motion": 0.6979761,
-  //   "n_or_d": "J79X00B",
-  //   "name": "ROOD 23434",
-  //   "neo":true,
-  //   "number": null,
-  //   "perihelion_distance": 0.649445272,
-  //   "period": 1.31,
-  //   "pha":true,
-  //   "torino_hazard_rating": 0,
-  //   "id": 2
-  // }]
-
-
 
 d3.json("/asteroids.json", function(error, asteroids_temp) {
   // Various formatters.
@@ -264,25 +230,34 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
 
   window.danger = function() {
     // pha.filter("true");
-    impact2.filterRange([0.00001, 1.0]);
+    impact2.filterRange([0.0001, 1.0]);
     renderAll();
   };
- 
+
+  window.toggleAsteroidView = function(tableOrHighChart) {
+    if( tableOrHighChart == 1 ) {
+      $('#table_content').hide();  
+      $('#highchart_content').show();
+    }
+    else if( tableOrHighChart == 0 ) {
+      $('#table_content').show();  
+      $('#highchart_content').hide();
+    }
+
+    // toggleFlag = tableOrHighChart;
+  }
+
   var asteroids = [];
   // // A little coercion, since the CSV is untyped.
   asteroids_temp.forEach(function(d, i) {
     d.index = i;
     if(d.close_app_dist != null) {
       asteroids.push(d)
-
     }
   });
 
   //RXIE
   console.log("total count of asteroids: " + asteroids.length)
-
-
-
 
 /***
 // FIELD CHANGES
@@ -399,6 +374,10 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   var list = d3.selectAll(".list")
       .data([asteroidList]);
 
+  // RXIE Render the initial high charts
+  var highChart = d3.selectAll(".highchart")
+      .data([asteroidHighchart]);
+
   // Render the total.
   d3.selectAll("#total")
       .text(formatNumber(asteroid.size()));
@@ -418,6 +397,10 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
     window.filter([null, null, null, [0.0,5.0]]);
   <% end %> 
   
+  // start with showing table list, hiding highchart
+  // var toggleFlag = 0;
+  toggleAsteroidView(0);
+
   renderAll();
 
   // Renders the specified chart or list.
@@ -429,6 +412,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   function renderAll() {
     chart.each(render);
     list.each(render);
+    highChart.each(render);
+
     d3.select("#active").text(formatNumber(all.value()));
   }
 
@@ -440,15 +425,18 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
     //       .data(asteroidsByDate, function(d) { return d.key; });
 
     //   date.enter().append("div")
-    //       .attr("class", "date")
+    //       .attr("class", "date")ƒ
     //     .append("div")
     //       .attr("class", "day")
     //       .text(function(d) { return formatDate(d.values[0].date); });
 
     //   date.exit().remove();
+
     div.each(function() {
       var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(designation.top(30), function(d) { return d.index; });
+          .data(designation.top(20), function(d) { 
+              return d.index; 
+          });
 
       var asteroidEnter = asteroid.enter().append("tr")
                                   .attr("class", function(d) {
@@ -474,32 +462,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
       asteroidEnter.append("td")
           .append("a")
-          .attr("href", "/asteroids/" + function(d) { return d.designation; })
+          .attr("href", function(d) { return "/asteroids/" + d.designation; })
           .text(function(d) { return d.designation; });
-
-
-/*
-      asteroidEnter.append("td")
-          .text(function(d) { return d.mean_daily_motion; });
-
-      asteroidEnter.append("td")
-          .text(function(d) { return d.absolute_magnitude; });
-
-      asteroidEnter.append("td")
-          .text(function(d) { return d.perihelion_distance; });
-
-      asteroidEnter.append("td")
-          .text(function(d) { return d.earth_moid; });
-
-      asteroidEnter.append("td")
-          .text(function(d) { return d.period; });
-
-      asteroidEnter.append("td")
-          .text(function(d) { return d.delta_v; });
-
-      asteroidEnter.append("td")
-          .text(function(d) {if (d.torino == null) {return "Unknown"} else { return d.torino }; });
-*/
 
       asteroidEnter.append("td")
           .text(function(d) { return d.size });
@@ -541,8 +505,124 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       asteroid.exit().remove();
 
       asteroid.order();
+
     });
+
+    // alert("series size: " +  sizeSeries.length);
+    // asteroidHighchart(sizeSeries);
   }
+
+
+function asteroidHighchart(div) {
+
+  var distanceSeries = [];
+  var periodSeries = [];
+  var sizeSeries = [];
+  var energySeries = [];
+  var impactSeries = [];
+  
+  $(function(){
+      var asteroid = d3.select(this).selectAll(".asteroid")
+          .data(designation.top(20), function(d) { 
+
+            var dateStr = d.close_app_date.split(' ');
+            var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
+            var size = d.size;
+
+            var tmpDist = [];
+            tmpDist.push(date);
+            tmpDist.push(Math.round(d.close_app_dist));
+            tmpDist.push(size); 
+            distanceSeries.push(tmpDist);
+
+            var tmpPeriod = [];
+            // tmpPeriod.push(Math.round(d.close_app_dist));
+            tmpPeriod.push(date);
+            tmpPeriod.push(Math.round(d.period));
+            tmpPeriod.push(size); 
+            periodSeries.push(tmpPeriod);
+
+            var tmpEnergy = [];
+            tmpEnergy.push(date);
+            tmpEnergy.push(Math.round(d.delta_v));
+            tmpEnergy.push(size); 
+            energySeries.push(tmpEnergy);
+
+            var tmpImpact = [];
+            tmpImpact.push(date);
+            var probLog = 0;
+            if( d.impact_prob_float > 0 ) {
+              probLog = Math.log10(d.impact_prob_float);
+            }
+            tmpImpact.push(probLog);
+            tmpImpact.push(size); 
+            impactSeries.push(tmpImpact);
+
+            return d.index; 
+          });
+  });
+
+//  alert("the size:  " + sizeSeries.length);
+
+      $('#highchart_content').highcharts({
+        chart: {
+            type: 'bubble',
+            zoomType: 'xy'
+        },
+
+        title: {
+            text: 'Asteroid Charts'
+        },
+
+        xAxis: {
+          type:"datetime",
+          dateTimeLabelFormats:{
+            month: '%m/%y'
+          }
+        },
+
+        series: [
+        {
+            name: "Distance",
+            data: distanceSeries
+            // fillColor: 'red'
+        },
+        {
+            name: "Orbital Period",
+            data: periodSeries
+        },
+        {
+            name: "Energy",
+            data: energySeries
+        },
+        {
+            name: "Impact Prob",
+            data: impactSeries
+        },
+        // {
+        //     name: 'Speed',
+        //     data: [[Date.UTC(2034,2,5),8,4324],[Date.UTC(2031,06,03),12,46], [Date.UTC(2020,0,0),32,2347]]
+        // },
+        {
+            name: 'RefSize',
+            data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]
+            // data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
+        }
+        // {
+        //     name: 'Period',
+        //     data: [[25, 10, 87], [2, 75, 59], [11, 54, 8], [86, 55, 93], [5, 3, 58], [90, 63, 44], [91, 33, 17], [97, 3, 56], [15, 67, 48], [54, 25, 81]]
+        // }, 
+        // {
+        //     name: 'Delta-v',
+        //     data: [[47, 47, 21], [20, 12, 4], [6, 76, 91], [38, 30, 60], [57, 98, 64], [61, 17, 80], [83, 60, 13], [67, 78, 75], [64, 12, 10], [30, 77, 82]]
+        // }
+        ]
+
+      });
+    }
+
+
+
 
   function barChart() {
     if (!barChart.id) barChart.id = 0;
@@ -740,48 +820,6 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
 </script>
 
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script type="text/javascript">
-function toggleView(flag) {
-    if( flag == 1 ) {
-      // $('#table_content').toggle();  
-      // showHighchart();
-    }
-    else {
-      // $('#highchart_content').toggle();
-      // showTabledata();
-    }
-};
-
-function showHighchart() {
-    $('#highchart_content').highcharts({
-
-        chart: {
-            type: 'bubble',
-            zoomType: 'xy'
-        },
-
-        title: {
-            text: 'Highcharts Coordinates'
-        },
-
-        series: [{
-            data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
-        }, {
-            data: [[25, 10, 87], [2, 75, 59], [11, 54, 8], [86, 55, 93], [5, 3, 58], [90, 63, 44], [91, 33, 17], [97, 3, 56], [15, 67, 48], [54, 25, 81]]
-        }, {
-            data: [[47, 47, 21], [20, 12, 4], [6, 76, 91], [38, 30, 60], [57, 98, 64], [61, 17, 80], [83, 60, 13], [67, 78, 75], [64, 12, 10], [30, 77, 82]]
-        }]
-    });
-
-};
-
-
-
-</script>
 
 </body>
 </html>
