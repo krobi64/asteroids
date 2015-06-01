@@ -536,15 +536,16 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   }
 
 
-function asteroidHighchart(div) {
-
-      var options = {
+  function asteroidHighchart(div) {
+    var useBubble = false;
+    var options = {
         chart: {
-         type: 'scatter',
+            type: 'scatter',
+            // type: 'bubble',
             zoomType: 'xy'
         },
         title: {
-          text: 'Asteroids Chart'
+            text: 'Asteroids Chart'
         },
         xAxis: {
             title: {
@@ -556,20 +557,21 @@ function asteroidHighchart(div) {
             showLastLabel: true
         },
         series: []
-      };
+    };
 
-  var distanceSeries = [];
-  var periodSeries = [];
-  var sizeSeries = [];
-  var energySeries = [];
-  var impactSeries = [];
+    var distanceSeries = [];
+    var periodSeries = [];
+    var sizeSeries = [];
+    var energySeries = [];
+    var impactSeries = [];
 
-      $(function(){
+    $(function(){
         var asteroid = d3.select(this).selectAll(".asteroid")
           .data(designation.top(1), function(d) { 
 
             var dateStr = d.close_app_date.split(' ');
             var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
+	          var size = d.size/100;
 
             var baseAxis = date;
             if( axisFlag == 0 ) {
@@ -593,14 +595,18 @@ function asteroidHighchart(div) {
             var tmpDist = [];
             tmpDist.push(baseAxis);
             tmpDist.push(Math.round(d.close_app_dist));
-            //tmpDist.push(size); 
+            if( useBubble ) {
+		          tmpDist.push(size); 
+	          }
             distanceSeries.push(tmpDist);
 
           if( axisFlag != 1 ) {
             var tmpSize = [];
             tmpSize.push(baseAxis);
             tmpSize.push(d.size/100);
-            //tmpPeriod.push(size); 
+            if( useBubble ) {
+		          tmpSize.push(size); 
+	          }
             sizeSeries.push(tmpSize);
           }
 
@@ -608,7 +614,9 @@ function asteroidHighchart(div) {
             var tmpPeriod = [];
             tmpPeriod.push(baseAxis);
             tmpPeriod.push(Math.round(d.period));
-            //tmpPeriod.push(size); 
+            if( useBubble ) {
+		          tmpPeriod.push(size); 
+	          }
             periodSeries.push(tmpPeriod);
           }
 
@@ -616,25 +624,27 @@ function asteroidHighchart(div) {
             var tmpEnergy = [];
             tmpEnergy.push(baseAxis);
             tmpEnergy.push(Math.round(d.delta_v));
-            //tmpEnergy.push(size); 
+            if( useBubble ) {
+		          tmpEnergy.push(size); 
+	          }
             energySeries.push(tmpEnergy);
           }
 
             var tmpImpact = [];
             tmpImpact.push(baseAxis);
-            var probLog = 0;
+            var probLog = -13;
             if( d.impact_prob_float > 0 ) {
               probLog = Math.log10(d.impact_prob_float);
             }
             tmpImpact.push(probLog);
-            //tmpImpact.push(size); 
+            if( useBubble ) {
+		          tmpImpact.push(size); 
+	          }
             impactSeries.push(tmpImpact);
 
             return d.index; 
-          });
-      });
-
-debugger;
+        });
+    });
 
       if( axisFlag == 0 ) {
         // Date
@@ -648,7 +658,7 @@ debugger;
       }
       else if( axisFlag == 2 ) {
         // Size
-        options.xAxis.title.text = 'Orbit Peroid';
+        options.xAxis.title.text = 'Orbit Period';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 3 ) {
@@ -670,167 +680,11 @@ debugger;
       }
 
       // alert("data series size: " + distanceSeries.length);
+      // reference size to influence the bubble size
+      // options.series.push(name: "RefSize", data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]);
 
       $('#highchart_content').highcharts( options );    
-    /*      
-      $('#highchart_content').highcharts({
-        chart: {
-            type: 'scatter',
-            zoomType: 'xy'
-        },
-
-        title: {
-            text: 'Asteroid Charts'
-        },
-
-        xAxis: {
-            title: {
-                enabled: true,
-                text: 'Size (m)'
-            },
-            startOnTick: false,
-            endOnTick: false,
-            showLastLabel: true
-        },
-
-        series: [
-        {
-            name: "Distance",
-            data: distanceSeries
-            // fillColor: 'red'
-        },
-        {
-            name: "Orbital Period",
-            data: periodSeries
-        },
-        {
-            name: "Energy",
-            data: energySeries
-        },
-        {
-            name: "Impact Prob",
-            data: impactSeries
-        }
-        // {
-        //     name: 'RefSize',
-        //     data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]
-        //     // data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
-        // }
-        ]
-
-      });
-    */
-    }
-/*
-function asteroidHighchart2(div) {
-
-  var distanceSeries = [];
-  var periodSeries = [];
-  var sizeSeries = [];
-  var energySeries = [];
-  var impactSeries = [];
-  
-  $(function(){
-      var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(designation.top(35), function(d) { 
-
-            var dateStr = d.close_app_date.split(' ');
-            var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
-            var size = d.size;
-
-            var tmpDist = [];
-            tmpDist.push(date);
-            tmpDist.push(Math.round(d.close_app_dist));
-            tmpDist.push(size); 
-            distanceSeries.push(tmpDist);
-
-            var tmpPeriod = [];
-            // tmpPeriod.push(Math.round(d.close_app_dist));
-            tmpPeriod.push(date);
-            tmpPeriod.push(Math.round(d.period));
-            tmpPeriod.push(size); 
-            periodSeries.push(tmpPeriod);
-
-            var tmpEnergy = [];
-            tmpEnergy.push(date);
-            tmpEnergy.push(Math.round(d.delta_v));
-            tmpEnergy.push(size); 
-            energySeries.push(tmpEnergy);
-
-            var tmpImpact = [];
-            tmpImpact.push(date);
-            var probLog = 0;
-            if( d.impact_prob_float > 0 ) {
-              probLog = Math.log10(d.impact_prob_float);
-            }
-            tmpImpact.push(probLog);
-            tmpImpact.push(size); 
-            impactSeries.push(tmpImpact);
-
-            return d.index; 
-          });
-  });
-
-//  alert("the size:  " + sizeSeries.length);
-
-      $('#highchart_content').highcharts({
-        chart: {
-            type: 'bubble',
-            zoomType: 'xy'
-        },
-
-        title: {
-            text: 'Asteroid Charts'
-        },
-
-        xAxis: {
-          type:"datetime",
-          dateTimeLabelFormats:{
-            month: '%m/%y'
-          }
-        },
-
-        series: [
-        {
-            name: "Distance",
-            data: distanceSeries
-            // fillColor: 'red'
-        },
-        {
-            name: "Orbital Period",
-            data: periodSeries
-        },
-        {
-            name: "Energy",
-            data: energySeries
-        },
-        {
-            name: "Impact Prob",
-            data: impactSeries
-        },
-        // {
-        //     name: 'Speed',
-        //     data: [[Date.UTC(2034,2,5),8,4324],[Date.UTC(2031,06,03),12,46], [Date.UTC(2020,0,0),32,2347]]
-        // },
-        {
-            name: 'RefSize',
-            data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]
-            // data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
-        }
-        // {
-        //     name: 'Period',
-        //     data: [[25, 10, 87], [2, 75, 59], [11, 54, 8], [86, 55, 93], [5, 3, 58], [90, 63, 44], [91, 33, 17], [97, 3, 56], [15, 67, 48], [54, 25, 81]]
-        // }, 
-        // {
-        //     name: 'Delta-v',
-        //     data: [[47, 47, 21], [20, 12, 4], [6, 76, 91], [38, 30, 60], [57, 98, 64], [61, 17, 80], [83, 60, 13], [67, 78, 75], [64, 12, 10], [30, 77, 82]]
-        // }
-        ]
-
-      });
-
-    }
-*/
+  }
 
 
 
