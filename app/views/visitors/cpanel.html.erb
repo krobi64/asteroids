@@ -172,6 +172,22 @@ $(document).ready(function(){
   <!--<div class="panel-footer"> XXX of Asteroids selected. </div>-->
   <!-- <div class="panel-footer"><aside id="totals"><span id="active">-</span> of <span id="total">-</span> asteroids selected.</aside></div>-->
   
+<br/>
+            <div id="axis_choice" class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                Switch X-Axis...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(0)">Approaching Date</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbit Period</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(3)">Delta-V</a></li>
+              </ul>
+            </div>
+<br/>
   <div id="highchart_content" class="highchart" style="height: 480px; min-width: 720px; max-width: 720px; margin: 0 auto"></div>
 
 </div>
@@ -229,19 +245,26 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
   };
 
   window.danger = function() {
-    // pha.filter("true");
     impact2.filterRange([0.0001, 1.0]);
     renderAll();
+  };
+
+  var axisFlag = 0;
+  window.switchAxis = function(flag) {
+    axisFlag = flag;
+    highChart.each(render);
   };
 
   window.toggleAsteroidView = function(tableOrHighChart) {
     if( tableOrHighChart == 1 ) {
       $('#table_content').hide();  
       $('#highchart_content').show();
+      $('#axis_choice').show();      
     }
     else if( tableOrHighChart == 0 ) {
       $('#table_content').show();  
       $('#highchart_content').hide();
+      $('#axis_choice').hide();
     }
 
     // toggleFlag = tableOrHighChart;
@@ -515,6 +538,192 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
 function asteroidHighchart(div) {
 
+      var options = {
+        chart: {
+         type: 'scatter',
+            zoomType: 'xy'
+        },
+        title: {
+          text: 'Asteroids Chart'
+        },
+        xAxis: {
+            title: {
+                enabled: true,
+                text: 'Size (m)'
+            },
+            startOnTick: false,
+            endOnTick: false,
+            showLastLabel: true
+        },
+        series: []
+      };
+
+  var distanceSeries = [];
+  var periodSeries = [];
+  var sizeSeries = [];
+  var energySeries = [];
+  var impactSeries = [];
+
+      $(function(){
+        var asteroid = d3.select(this).selectAll(".asteroid")
+          .data(designation.top(1), function(d) { 
+
+            var dateStr = d.close_app_date.split(' ');
+            var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
+
+            var baseAxis = date;
+            if( axisFlag == 0 ) {
+              // Date
+              baseAxis = date;
+            }
+            else if( axisFlag == 1 ) {
+              // Size
+              baseAxis = d.size/100;
+            }
+            else if( axisFlag == 2 ) {
+              // Orbital period
+              baseAxis = Math.round(d.period);
+            }
+            else if( axisFlag == 3 ) {
+              // Energy
+              baseAxis = Math.round(d.delta_v);
+            }
+
+
+            var tmpDist = [];
+            tmpDist.push(baseAxis);
+            tmpDist.push(Math.round(d.close_app_dist));
+            //tmpDist.push(size); 
+            distanceSeries.push(tmpDist);
+
+          if( axisFlag != 1 ) {
+            var tmpSize = [];
+            tmpSize.push(baseAxis);
+            tmpSize.push(d.size/100);
+            //tmpPeriod.push(size); 
+            sizeSeries.push(tmpSize);
+          }
+
+          if( axisFlag != 2 ) {
+            var tmpPeriod = [];
+            tmpPeriod.push(baseAxis);
+            tmpPeriod.push(Math.round(d.period));
+            //tmpPeriod.push(size); 
+            periodSeries.push(tmpPeriod);
+          }
+
+          if( axisFlag != 3 ) {
+            var tmpEnergy = [];
+            tmpEnergy.push(baseAxis);
+            tmpEnergy.push(Math.round(d.delta_v));
+            //tmpEnergy.push(size); 
+            energySeries.push(tmpEnergy);
+          }
+
+            var tmpImpact = [];
+            tmpImpact.push(baseAxis);
+            var probLog = 0;
+            if( d.impact_prob_float > 0 ) {
+              probLog = Math.log10(d.impact_prob_float);
+            }
+            tmpImpact.push(probLog);
+            //tmpImpact.push(size); 
+            impactSeries.push(tmpImpact);
+
+            return d.index; 
+          });
+      });
+
+debugger;
+
+      if( axisFlag == 0 ) {
+        // Date
+        options.xAxis.title.text = 'Approaching Date';
+        options.xAxis.type = 'datetime';
+      }
+      else if( axisFlag == 1 ) {
+        // Size
+        options.xAxis.title.text = 'Asteroid Size, x 100m';
+        options.xAxis.type = '';        
+      }
+      else if( axisFlag == 2 ) {
+        // Size
+        options.xAxis.title.text = 'Orbit Peroid';
+        options.xAxis.type = '';        
+      }
+      else if( axisFlag == 3 ) {
+        // Size
+        options.xAxis.title.text = 'Energy to travel to';
+        options.xAxis.type = '';        
+      }
+
+      options.series.push({name: "Distance", data: distanceSeries});
+      options.series.push({name: "Impact Prob", data: impactSeries});
+      if( axisFlag != 1 ) {
+        options.series.push({name: "Asteroid Size, x 100m", data: sizeSeries});
+      }
+      if( axisFlag != 2 ) {
+        options.series.push({name: "Orbital Period", data: periodSeries});
+      }
+      if( axisFlag != 3 ) {
+        options.series.push({name: "Energy", data: energySeries});
+      }
+
+      // alert("data series size: " + distanceSeries.length);
+
+      $('#highchart_content').highcharts( options );    
+    /*      
+      $('#highchart_content').highcharts({
+        chart: {
+            type: 'scatter',
+            zoomType: 'xy'
+        },
+
+        title: {
+            text: 'Asteroid Charts'
+        },
+
+        xAxis: {
+            title: {
+                enabled: true,
+                text: 'Size (m)'
+            },
+            startOnTick: false,
+            endOnTick: false,
+            showLastLabel: true
+        },
+
+        series: [
+        {
+            name: "Distance",
+            data: distanceSeries
+            // fillColor: 'red'
+        },
+        {
+            name: "Orbital Period",
+            data: periodSeries
+        },
+        {
+            name: "Energy",
+            data: energySeries
+        },
+        {
+            name: "Impact Prob",
+            data: impactSeries
+        }
+        // {
+        //     name: 'RefSize',
+        //     data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]
+        //     // data: [[97, 36, 79], [94, 74, 60], [68, 76, 58], [64, 87, 56], [68, 27, 73], [74, 99, 42], [7, 93, 87], [51, 69, 40], [38, 23, 33], [57, 86, 31]]
+        // }
+        ]
+
+      });
+    */
+    }
+/*
+function asteroidHighchart2(div) {
+
   var distanceSeries = [];
   var periodSeries = [];
   var sizeSeries = [];
@@ -523,7 +732,7 @@ function asteroidHighchart(div) {
   
   $(function(){
       var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(designation.top(20), function(d) { 
+          .data(designation.top(35), function(d) { 
 
             var dateStr = d.close_app_date.split(' ');
             var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
@@ -619,8 +828,9 @@ function asteroidHighchart(div) {
         ]
 
       });
-    }
 
+    }
+*/
 
 
 
