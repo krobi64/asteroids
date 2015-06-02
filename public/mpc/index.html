@@ -44,6 +44,10 @@
 
   <link href="css/css.css" rel="stylesheet" type="text/css">
 
+
+
+
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -72,13 +76,26 @@
   <!-- ae asteroid explorer css + js -->
   <link rel="stylesheet" href="css/asteroid-explorers.css">
   <script src="js/asteroid-explorers.js"></script> 
-  <script src="js/d3.min.js"></script>
-  <script src="js/crossfilter.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+        'placement': 'top'
+    });
+});
+</script>
+
+<!-- Twitter -->
 
 </head>
 
 <body>
-  <div id="wrapper">
+
+<!-- START MPC HEADER -->
+
+<div id="wrapper">
     <div class="w1">
 
       <!-- header -->
@@ -130,10 +147,10 @@
                     <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
                     <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
                     <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
-                  </ul>
+                  </ul>                
                 </li>
                 <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
-                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>
+                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>              
                 <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
                   <ul>
                     <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
@@ -164,14 +181,14 @@
                     <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
                     <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
                     <li><a href="/iau/WhatsNew.html">What's New</a></li>
-                  </ul>
+                  </ul>                
                 </li>
                 <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
                   <ul>
                     <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
                     <li><a href="/iau/lists/CometLists.html">Comets</a></li>
                     <li><a href="/iau/Animations/Animations.html">Animations</a></li>
-                  </ul>
+                  </ul>                
                 </li>
                 <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
                 <li><a href="/mpc/summary">Summary of Latest Data</a></li>
@@ -190,131 +207,112 @@
           </ul>
         </nav>
       </header>
-</div>
 
-<!-- Start ae content -->
+     </div>
+     <!-- End of W1 -->
 
-
-	<div id="ae-main">
-
-
-	<div class="ae-header">
-
-  		<div id="ae-nav">
-  	   	<div id="ae-nav-header">
-  	      <h1 class="ae-title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Asteroid&nbsp;Data&nbsp;Explorer</h1>
-  	      <div class="btn-group ae-nav-btn-group" role="group">
-  	        <a type="button" class="active btn ae-nav-btn" href="index.html">Discover</a>
-  	        <a type="button" class="btn ae-nav-btn" href="ae-about.html">About</a>
-  	        <a type="button" class="btn ae-nav-btn" href="control-panel.html">Explore</a>
-  	      </div>   
-  	    </div>
-  	 	  <div id="ae-header-detail">
-  	            <h2 class="ae-asteroid-title">Finding Asteroids Before They Find Us!</h2>
-  	            <div id="ae-header-actions-2nd">
-  	             <a href="https://twitter.com/intent/tweet?text=Check+out+the+Minor+Planet+Center+Asteroid+Data+Explorer+Project&url=http://minorplanetcenter.com/mpc/index.html&hashtags=mpc,asteroids,asteroidexplorer" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>&nbsp;
-  	             </div>
-  	       </div>
-  		</div>
-  	</div>
-
-<!--
-        <div class="container-fluid mission">
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="title-mission">Mission</h4>
-              <p class="text-mission">
-                Your mission is to <strong>discover, learn and share</strong> information about
-                asteroids to increase awareness about asteroids and their impact and risks to the world.
-              </p>
-              <p class="text-mission">
-                Asteroids, also called minor planets, are rocky remnants left over from the
-                early formation of our solar system about 4.6 billion years ago. Despite their
-                size, asteroids can be dangerous. Many have hit Earth in the past, and more
-                will crash into our planet in the future. That's one reason scientists who
-                study asteroids are eager to learn more about their numbers, orbits and
-                physical characteristics. <a href="ae-about.html" class="ae-link">More about this project...</a>
-              </p>
-              <p class="text-mission">
-                <strong>Start exploring today with our scientists and help to stop
-                asteroids before they hit us!</strong>
-              </p>
-            </div>
-          </div>
-        </div>
--->
+<!-- END MPC HEADER -->
 
 
-  <div class="container ae-gallery-container center">
+<!-- START ae content - about.   classes mission -->
+
+<div class="ae-main">
+
+  <div class="ae-header">
+
+  	<div id="ae-nav">
+	   <div id="ae-nav-header">
+	      <h1 class="ae-title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Asteroid&nbsp;Data&nbsp;Explorer</h1>
+	      <div class="btn-group ae-nav-btn-group" role="group">
+	        <a type="button" class="active btn ae-nav-btn" href="index.html">Discover</a>
+	        <a type="button" class="btn ae-nav-btn" href="ae-about.html">About</a>
+	        <a type="button" class="btn ae-nav-btn" href="/cpanel">Explore</a>
+	      </div>   
+	    </div>
+	 	<div id="ae-header-detail">
+	            <h2 class="ae-asteroid-title">Finding Asteroids Before They Find Us!</h2>
+
+	            <div id="ae-header-actions-2nd">
+	             <a href="https://twitter.com/intent/tweet?text=Check+Out+Minor+Planet+Center+Asteroid+Data+Explorer+Project&url=http://minorplanetcenter.com/mpc/index.html&hashtags=mpc,asteroids,asteroidexplorer" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+	             </div>
+               <br> <br> <br>
+                <div class="ae-slogan">
+      <span class="ae-highlight-big">Discover</span>, explore, and share information about asteroids to increase awareness about asteroids and their impact and risks to the world.<br>
+    </div>
+	  </div>
+  
+
+
+	</div>
+  </div>
+
+
+<div class="container ae-gallery-container center">
           
-          <div class="row">
+          <div class="row ae-gallery-row">
             
             <div class="col-md-6 ">
-              <div class="thumbnail ae-thumbnail">
-                <a href="/cpanel?filter_type=hazard"><img src="images/Chelyabinsk.jpg" class="ae-gallery-thumb" alt="Chelyabinsk meteor"></a>
+              <div class="thumbnail ae-thumbnail" onmouseover="questionFocus_in('q1')" onmouseout="questionFocus_out('q1')">
+                <a href="/cpanel?filter_type=hazard"><img src="images/ae/asteroid-hazard.jpg" class="ae-gallery-thumb" alt="Chelyabinsk meteor"></a>
                 <div class="caption">
-                  <h5>Which asteriods are the most hazardrous?</h5>
-                  <p>On 15 February 2013, an approximately 20 meter meteor exploded in the Earth's atmosphere above Chelyabinsk, Russia, causing damage to thousands of buildings.</p>
-                  <p><a href="/cpanel?filter_type=hazard" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
+                  <h5 class="q-header"><span class="q-quote">"</span>Which Asteriods are the Most Hazardrous?<span class="q-quote">"</span></h5>
+                  <p class="q-text" id="ae-info-q1">On 15 February 2013, an approximately 20 meter meteor exploded in the Earth's atmosphere above Chelyabinsk, Russia, causing damage to thousands of buildings.</p>
+                  <p><a href="/cpanel?filter_type=hazard" class="btn btn-block ae-btn-explore" role="button" id="ae-btn-q1"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
                 </div>
               </div>
             </div>
 
             <div class="col-md-6">
-              <div class="thumbnail ae-thumbnail">
-                <a href="/cpanel?filter_type=size"><img src="images/ae/size.jpg" class="ae-gallery-thumb" alt="Minor planet (433) Eros."></a>
+              <div class="thumbnail ae-thumbnail" onmouseover="questionFocus_in('q2')" onmouseout="questionFocus_out('q2')">
+                <a href="/cpanel?filter_type=size"><img src="images/ae/asteroid-biggest.jpg" class="ae-gallery-thumb" alt="Minor planet (433) Eros."></a>
                 <div class="caption">
-                  <h5>Which asteriods are the biggest?</h5>
-                  <p>Minor planet (433) Eros is the second largest known Near Earth asteroid. It is approximately 17 kilometers in size.<br><br></p>
-                  <p><a href="/cpanel?filter_type=size" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
+                  <h5 class="q-header"><span class="q-quote">"</span>Which Asteriods are the Biggest?<span class="q-quote">"</span></h5>
+                  <p class="q-text" id="ae-info-q2">Minor planet (433) Eros is the second largest known Near Earth asteroid. It is approximately 17 kilometers in size.<br><br></p>
+                  <p><a href="/cpanel?filter_type=size" class="btn btn-block ae-btn-explore" role="button" id="ae-btn-q2"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
                 </div>
               </div>
             </div>
           
           </div>
 
-          <div class="row">
+          <div class="row ae-gallery-row">
 
             <div class="col-md-6">
-              <div class="thumbnail ae-thumbnail">
-                <a href="/cpanel?filter_type=near"><img src="images/ae/closer-to-the-earth.jpg" class="ae-gallery-thumb" alt="Inner solar system."></a>
+              <div class="thumbnail ae-thumbnail" onmouseover="questionFocus_in('q3')" onmouseout="questionFocus_out('q3')">
+                <a href="/cpanel?filter_type=near"><img src="images/ae/asteroids-flyingbyearth.jpg" class="ae-gallery-thumb" alt="Inner solar system."></a>
                 <div class="caption">
-                  <h5>Which asteroids are flying by Earth this month?</h5>
-                  <p>The inner solar system for 15 May 2015. Near-Earth asteroids are shown in red, other minor planets in green.</p>
-                  <p><a href="/cpanel?filter_type=near" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
+                  <h5 class="q-header"><span class="q-quote">"</span>Which Asteroids are Flying by Earth this Month?<span class="q-quote">"</span></h5>
+                  <p class="q-text" id="ae-info-q3">The inner solar system for 15 May 2015. Near-Earth asteroids are shown in red, other minor planets in green.</p>
+                  <p><a href="/cpanel?filter_type=near" class="btn btn-block ae-btn-explore" role="button" id="ae-btn-q3"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
                 </div>
               </div>
             </div>
 
             <div class="col-md-6">
-              <div class="thumbnail ae-thumbnail">
-                <a href="/cpanel?filter_type=easy"><img src="images/ae/time-to-orbit.jpg" class="ae-gallery-thumb" alt="Minor planets with perihelion distance < 0.1 AU."></a>
+              <div class="thumbnail ae-thumbnail" onmouseover="questionFocus_in('q4')" onmouseout="questionFocus_out('q4')">
+                <a href="/cpanel?filter_type=easy"><img src="images/ae/asteroid-travel.jpg" class="ae-gallery-thumb" alt="Minor planets with perihelion distance < 0.1 AU."></a>
                 <div class="caption">
-                  <h5>Which asteroids are easiest to travel to?</h5>
-                  <p>As of 2015, 7 minor planets are known with perihelion (Solar) distances less than 0.1 astronomical units (about 9 million miles). </p>
-                  <p><a href="/cpanel?filter_type=easy" class="btn btn-block ae-btn-explore" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
+                  <h5 class="q-header"><span class="q-quote">"</span>Which Asteroids Are Easiest to Travel to?<span class="q-quote">"</span></h5>
+                  <p class="q-text" id="ae-info-q4">As of 2015, 7 minor planets are known with perihelion (Solar) distances less than 0.1 astronomical units (about 9 million miles). </p>
+                  <p><a href="/cpanel?filter_type=easy" class="btn btn-block ae-btn-explore" role="button" id="ae-btn-q4"><i class="fa fa-compass fa-lg"></i>&nbsp;Explore</a>
                 </div>
               </div>
             </div> 
           
           </div>
-      	
+        
     </div>
- 	
-  <br><br><br><br><br><br>
-  <br><br><br>
+  
+  <br><br>
 
-
+<!-- END OF ae-main -->
+</div>
+<!-- END OF ae-main -->
 <!-- END ae content -->
-	</div>
-<!-- END ae content -->
 
-<!-- END wrapper class -->
- </div>
-<!-- END wrapper class -->
-
-      <!-- footer -->
-  <!-- footer -->
+<!-- END Wrapper-->
+   </div>
+    <!-- footer -->
       <footer id="footer">
         <div class="holder">
           <nav class="nav">
@@ -332,7 +330,7 @@
       </footer>
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
       (function() {
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/plusone.js';
