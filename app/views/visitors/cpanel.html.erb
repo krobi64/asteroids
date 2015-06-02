@@ -82,11 +82,11 @@ $(document).ready(function(){
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:danger()">Which are the most dangerous asteroids?</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[2000,3000], null, null, null])">Which are the biggest asteroids?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[3500,10000], null, null, null])">Which are the biggest asteroids?</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, [0,20], [0.0,0.7], null])">Which asteroids are flying by the earth this month?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:flyby()">Which asteroids are flying by the earth this month?</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.0,5.0]])">Which asteroids are easisest to travel to?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.0,4.2]])">Which asteroids are easisest to travel to?</a></li>
               </ul>
             </div>
 <br>
@@ -235,19 +235,52 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
   window.filter = function(filters) {
     filters.forEach(function(d, i) { charts[i].filter(d); });
     impact2.filter(null);
+    close_date.filter(null);
     renderAll();
   };
 
   window.reset = function(i) {
     charts[i].filter(null);
     impact2.filter(null);
+    close_date.filter(null);
     renderAll();
   };
 
+  window.resetAll = function() {
+    charts[0].filter(null);
+    charts[1].filter(null);
+    charts[2].filter(null);
+    charts[3].filter(null);
+    impact2.filter(null);
+    close_date.filter(null);    
+  };
+
   window.danger = function() {
-    impact2.filterRange([0.0001, 1.0]);
+    //Most dangerous:       impact_prob_float > 0.00009
+    window.resetAll();
+    impact2.filterRange([0.00009, 1.0]);
+
     renderAll();
   };
+
+  window.flyby = function() {
+    var currentDate = new Date();
+
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+
+    var date1 = Date.UTC(year,month, day);
+    //var date2 = Date.UTC(year, month+1, day);
+    var date2 = date1 + 2592000000;  // milliseconds for 30 days
+    // alert( date1 + ' ' + date2);
+
+    window.resetAll();
+    // close_date.filterRange([today1, day2]);
+    close_date.filterRange([date1, date2]);
+    
+    renderAll();
+  }
 
   var axisFlag = 0;
   window.switchAxis = function(flag) {
@@ -325,7 +358,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   var asteroid = crossfilter(asteroids),
       all = asteroid.groupAll(),
 
-      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(2000, +d.size)); }),
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(10000, +d.size)); }),
       sizes = size.group(function(d) { return Math.floor(d/100) * 100.0; }),
 
       earth_distance = asteroid.dimension(function(d) { return Math.max(0, +d.close_app_dist); }),
@@ -341,6 +374,14 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       pha = asteroid.dimension(function(d) { return d.pha}),
       impact = asteroid.dimension(function(d) { return d.impact_prob}),
       impact2 = asteroid.dimension(function(d) { return d.impact_prob_float}),
+      // dimension for filtering of "fly by this next month"
+      close_date = asteroid.dimension(function(d) {
+        if( d.close_app_date == null ) {
+          return null;
+        } 
+        var parts = d.close_app_date.split(' ');
+        return Date.UTC(parts[0], parts[1], parts[2]);
+      }),
 
       designation = asteroid.dimension(function(d) { return d.designation});
 
@@ -405,26 +446,37 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   d3.selectAll("#total")
       .text(formatNumber(asteroid.size()));
 
-  // WIP: apply filter
+  // TODO: apply filter
+  /*
+  Most dangerous:       impact_prob_float > 0.00009
+  Easiest to get to:    delta_v < 4.2
+  Biggest:              size > 3500
+  Flying by this month: "2015 06 08" < close_app_date < "2015 07 08"
+  */
   console.log("apply filter: <%= @filter_type %>"); 
 
-  <% if @filter_type=="hazard" %>
-    pha.filter("true");
-    window.filter([[1900,3000],null,null,null]);
-    console.log("filter is hazard"); 
-  <% elsif @filter_type=="size"  %>
-    window.filter([[2000,3000],null,null,null]);
-  <% elsif @filter_type=="near"  %>
-    window.filter([null,[0,20], [0.0,0.7], null]);
-  <% elsif @filter_type=="easy"  %>
-    window.filter([null, null, null, [0.0,5.0]]);
-  <% end %> 
-  
   // start with showing table list, hiding highchart
   // var toggleFlag = 0;
   toggleAsteroidView(0);
 
-  renderAll();
+  <% if @filter_type=="hazard" %>
+    // impact2.filterRange([0.00009, 1.0]);
+    // window.filter([null,null,null,null]);
+    window.danger();
+  <% elsif @filter_type=="size"  %>
+    window.filter([[3500,10000],null,null,null]);
+  <% elsif @filter_type=="near"  %>
+    // window.filter([null,[0,20], [0.0,0.7], null]);
+    window.flyby();
+  <% elsif @filter_type=="easy"  %>
+    window.filter([null, null, null, [0.0,4.2]]);
+  <% end %> 
+  
+  // start with showing table list, hiding highchart
+  // var toggleFlag = 0;
+  // toggleAsteroidView(0);
+
+  // renderAll();
 
   // Renders the specified chart or list.
   function render(method) {
@@ -537,11 +589,11 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
 
   function asteroidHighchart(div) {
-    var useBubble = false;
+    var useBubble = true;
     var options = {
         chart: {
-            type: 'scatter',
-            // type: 'bubble',
+            // type: 'scatter',
+            type: 'bubble',
             zoomType: 'xy'
         },
         title: {
