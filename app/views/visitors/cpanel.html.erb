@@ -719,16 +719,16 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         options.xAxis.type = '';        
       }
 
-      options.series.push({name: "Distance", data: distanceSeries});
-      options.series.push({name: "Impact Prob", data: impactSeries});
+      options.series.push({color: "#AAAAFF", name: "Distance", data: distanceSeries});
+      options.series.push({color: "#FFAABB", name: "Impact Prob", data: impactSeries});
       if( axisFlag != 1 ) {
-        options.series.push({name: "Asteroid Size, x 100m", data: sizeSeries});
+        options.series.push({color: "#66A2D4", name: "Asteroid Size, x 100m", data: sizeSeries});
       }
       if( axisFlag != 2 ) {
-        options.series.push({name: "Orbital Period", data: periodSeries});
+        options.series.push({color: "#FFF730", name: "Orbital Period", data: periodSeries});
       }
       if( axisFlag != 3 ) {
-        options.series.push({name: "Energy", data: energySeries});
+        options.series.push({color: "#20E7AC", name: "Energy", data: energySeries});
       }
 
       // alert("data series size: " + distanceSeries.length);
