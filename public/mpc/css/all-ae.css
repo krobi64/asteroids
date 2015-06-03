@@ -29,6 +29,7 @@ time, mark, audio, video {
 
 /* HTML5 display-role reset for older browsers */
 
+/*
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -42,6 +43,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+*/
 
 /*
 table {
@@ -83,6 +85,7 @@ select {
 
 */
 
+/*
 .alignleft{
 	float:left;
 	margin:0 5px 0 0;
@@ -95,7 +98,7 @@ select {
 	display:block;
 	margin:0 auto 5px;
 }
-
+*/
 
 /* Start Minor Planet Center Site Styles*/
 
@@ -186,18 +189,18 @@ dl.helpbox > dd {
 	background: url(../images/bg-w1.jpg) no-repeat 100% 0;
 }
 
-#header{
+#wrapper #header{
 	color:#fff;
 	position:relative;
 	z-index:50;
 }
 
-#header .holder{
+#wrapper #header .holder{
 	width:100%;
 	padding:0 0 0px;
 }
 
-#header .holder:after{
+#wrapper #header .holder:after{
 	content:"";
 	display:block;
 	clear:both;
@@ -218,7 +221,7 @@ dl.helpbox > dd {
 	height:100%;
 }
 
-#header .area{overflow:hidden;}
+#wrapper #header .area{overflow:hidden;}
 
 /*************************************
 	    Start Top Nav Styles
@@ -906,65 +909,31 @@ a[data-tooltip]:hover:before, a[data-tooltip]:hover:after {
 	text-decoration: none;
 }
 
-.nav {
+#footer .nav {
 	padding: 18px 0 26px;
 	width: 850px;
 	float: left;
 }
 
-.nav ul{
+#footer .nav ul{
 	text-align:left;
 	font:700 18px/23px 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 }
 
-.nav ul li{
+#footer .nav ul li{
 	display:inline;
 	padding:0 28px 0 0;
 }
 
-.nav ul a{color:#fff;}
+#footer .nav ul a{color:#fff;}
 
-.copy{
+#footer .copy{
 	font:14px/18px 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 	margin:0 0 0 -5px;
 	float: left;
 }
-.img {float:right;}
+#footer .img {float:right;}
 
-.widetable table {
-	font-size: 12px;
-	margin-left: -50px;
-	/* width: auto; */
-}
 
-/* Define a div which can contain a wide table
-   that has a horizontal scroll bar.            */
-.wide_table {
-	width: 960;
-	overflow: auto;
-}
 
-/* for wordpress */
-#body-container {
-margin: 0;
-}
-#header-container {
-display:none;
-}
-.entry-title a ,
-.entry-title h1 {
-	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
-	font-size: 30px;
-	font-weight: normal;
-	text-decoration: none;
-	line-height: 40px;
-}
-.widget-title {
-	font-size: 22px;
-}
-.loop-title {
-	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
-	font-size: 44px;
-	line-height: 50px;
-	font-weight: normal;
-}
+
