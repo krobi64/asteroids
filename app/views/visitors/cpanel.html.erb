@@ -11,6 +11,45 @@
 <title>MPC: Asteroid Data Explorer - Control Panel </title>
 
 
+<!-- Start MPC -->
+  <link media="all" rel="stylesheet" href="css/all.css">
+
+  <script type="text/javascript" async="" src="mpc/js/plusone.js"></script>
+  <script id="twitter-wjs" src="js/widgets.js"></script>
+  <script type="text/javascript" async="" src="mpc/js/plusone.js"></script>
+  <script type="text/javascript" async="" src="mpc/js/ga.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20663393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="https://plus.google.com/103523519128767953332" rel="publisher">
+  <script type="text/javascript">
+    (function()
+      {var po = document.createElement("script");
+       po.type = "text/javascript"; po.async = true;
+       po.src = "https://apis.google.com/js/plusone.js";
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(po, s);
+      })();
+  </script>
+
+  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="mpc/js/jquery.metadata.js"></script>
+  <script type="text/javascript" src="mpc/js/webtrends.js"></script>
+  <script type="text/javascript" src="mpc/js/track_pdfs.js"></script>
+
+  <link href="mpc/css/css.css" rel="stylesheet" type="text/css">
+<!-- END MPC -->
+
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -50,6 +89,130 @@ $(document).ready(function(){
 </head>
 
 <body>
+
+
+
+<!-- START MPC HEADER -->
+
+<div id="wrapper">
+    <div class="w1">
+
+      <!-- header -->
+      <header id="header">
+        <div class="holder">
+          <!-- logo -->
+          <h1 class="logo"><a href="/">The International Astronomical Union Minor Planet Center</a></h1>
+          <div class="area">
+            <!-- top-nav -->
+            <nav class="top-nav">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+
+            <!-- search-form -->
+            <div class="form-holder">
+              <form class="search-form" method="get" action="http://www.google.com/search">
+                <fieldset>
+                  <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
+                  <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="social-bar">
+              <a href="https://twitter.com/MinorPlanetCtr"><span class="social twitter">L</span></a>
+              <a href="https://www.facebook.com/MinorPlanetCenter"><span class="social facebook">F</span></a>
+              <a href="https://plus.google.com/103523519128767953332/posts"><span class="social gplus">G</span></a>
+              <a href="/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
+            </div>
+          </div>
+        </div>
+
+        <nav class="nav-holder">
+          <!-- main navigation -->
+          <ul id="nav">
+            <li>
+              <a href="/iau/mpc.html"><span>OBSERVERS</span></a>
+              <ul>
+                <li><a href="/iau/MPEph/MPEph.html">Ephemeris Service</a></li>
+                <li><a href="/mpec/RecentMPECs.html">MPECs</a></li>
+                <li><a href="/iau/NEO/toconfirm_tabular.html">NEO Confirmation</a></li>
+                <li><a href="/iau/Ephemerides/EphemOrbEls.html" class="nested">Orbital Elements</a>
+                  <ul>
+                    <li><a href="/iau/MPCORB.html">MPCORB</a></li>
+                    <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
+                    <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
+                    <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
+                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>              
+                <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
+                  <ul>
+                    <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
+                    <li><a href="/iau/NEO/PossNEO.html">Ratings</a></li>
+                    <li><a href="/cgi-bin/neaobs.cgi">Observation Planning Aid</a></li>
+                    <li><a href="/cgi-bin/checkneo.cgi">NEOChecker</a></li>
+                    <li><a href="/cgi-bin/checkneocmt.cgi">NEOCMTChecker</a></li>
+                    <li><a href="/NEOCPblog/">NEOCP Blog</a></li>
+                    <li><a href="/neocp_obs">NEOCP Recent Observations</a></li>
+                  </ul>
+                </li>
+                <li><a href="/iau/services/WebCSAccess.html" class="nested">Other Observer Services</a>
+                  <ul>
+                    <li><a href="/iau/NatSats/NaturalSatellites.html">Natural Satellite Ephemerides</a></li>
+                    <li><a href="/iau/MPEph/NewObjEphems.html">New Object Ephemerides</a></li>
+                    <li><a href="/cgi-bin/checkmp.cgi">MPChecker</a></li>
+                    <li><a href="/cgi-bin/checkcmt.cgi">CMTChecker</a></li>
+                    <li><a href="/iau/SpaceJunk/SpaceJunk.html">Distant Artificial Satellites</a></li>
+                    <li><a href="/iau/lists/Customize.html">Observing List Customizer</a></li>
+                  </ul>
+                </li>
+                <li><a href="/db_search">Orbits/Observations Database</a></li>
+                <li><a href='/light_curve2/light_curve.php'>Light Curve Database</a></li>
+                <li><a href="/iau/ECS/MPCAT-OBS/MPCAT-OBS.html">MPCAT-OBS</a></li>
+                <li><a href="/iau/SkyCoverage.html">Sky Coverage</a></li>
+                <li><a href="/iau/MPC_Documentation.html" class="nested">Documentation</a>
+                  <ul>
+                    <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
+                    <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
+                    <li><a href="/iau/WhatsNew.html">What's New</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
+                  <ul>
+                    <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
+                    <li><a href="/iau/lists/CometLists.html">Comets</a></li>
+                    <li><a href="/iau/Animations/Animations.html">Animations</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
+                <li><a href="/mpc/summary">Summary of Latest Data</a></li>
+              </ul>
+            </li>
+            <li><a href="/blog"><span>Public</span></a>
+            </li>
+            <li><a href="/IAWN/"><span>IAWN</span></a>
+              <ul>
+                <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
+                <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
+                <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
+                <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+     </div>
+     <!-- End of W1 -->
+
+<!-- END MPC HEADER -->
+
+<!-- START AE content -->
 
 <a name="top_page"></a>
 
@@ -168,18 +331,18 @@ $(document).ready(function(){
   </div>
 
             <br/>
-            <div id="axis_choice" class="dropdown" style="display:none;">
+            <div id="axis_choice" class="dropdown ae-graph-dropdown" style="display:none;">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                Switch X-Axis...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                Select Asteroid Data (X-Axis)...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(0)">Approaching Date</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(0)">Next Close Approach Date</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size (meters)</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbit Period</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbital Period</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(3)">Delta-V</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(3)">&#916;v</a></li>
               </ul>
             </div>
             <br/>
@@ -200,6 +363,30 @@ $(document).ready(function(){
   <!-- CLOSE of ae-main div-->
   </div>
   <!-- CLOSE of ae-main div-->
+
+  <!-- CLOSE of MPC Wrapper-->
+</div>
+  <!-- CLOSE of MPC Wrapper-->
+
+
+<!-- MPC footer -->
+    <footer id="footer">
+        <div class="holder">
+          <nav class="nav">
+            <ul>
+              <li><a href="http://www.minorplanetcenter.net/">Home</a></li>
+              <li><a href="http://www.minorplanetcenter.net/about">About</a></li>
+              <li><a href="http://www.minorplanetcenter.net/contact">Contact</a></li>
+              <li><a href="http://www.minorplanetcenter.net/iau/mpc.html">For Observers</a></li>
+              <li><a href="http://www.minorplanetcenter.net/blog">For the Public</a></li>
+            </ul>
+          </nav>
+          <img src="images/MPC_logo_circular.png" width="60" height="60" alt="Minor Planet Center Logo">
+          <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div> 
+        </div>
+      </footer>
+
+
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
@@ -926,6 +1113,40 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 });
 
 </script>
+
+<!-- Start MPC JS -->
+<script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      var _tag=new WebTrends();
+      _tag.dcsGetId();
+      //]]>
+    </script>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      _tag.dcsCustom=function(){
+      // Add custom parameters here.
+      //_tag.DCSext.param_name=param_value;
+      }
+      _tag.dcsCollect();
+      //]]>
+    </script>
+
+    <noscript>
+      <div>
+        <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//logs1.smithsonian.museum/dcsa7yzrmbdzpxzrosrn4tyep_5i1d/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.minorplanetcenter.net">
+      </div>
+    </noscript>
+    
+<!-- END MPC JS -->
 
 
 </body>

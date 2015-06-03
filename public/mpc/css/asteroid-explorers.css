@@ -358,6 +358,11 @@ th.ae-data-table-header{
   font-size: smaller;
 }
 
+
+.ae-graph-dropdown{
+  margin-left: 20px; 
+}
+
 .background.bar {
   fill: #ccc;
 }
