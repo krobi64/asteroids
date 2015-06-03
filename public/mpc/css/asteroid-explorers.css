@@ -80,6 +80,12 @@ h3.ae-sub-2-title {
   color: #4700A3;
 }
 
+.ae-highlight-med {
+  font-weight: 400;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #4700A3;
+}
 
 .ae-header{
 margin: 15px 0 20px 0 !important;  
@@ -144,7 +150,9 @@ margin: 15px 0 20px 0 !important;
     float: none !important;
 }
 
-
+.hcenter{
+  
+}
 
 .plus-divider {
   font-size: 1.4em;
@@ -350,6 +358,11 @@ th.ae-data-table-header{
 .reset {
   margin-left: 1em;
   font-size: smaller;
+}
+
+
+.ae-graph-dropdown{
+  margin-left: 20px; 
 }
 
 .background.bar {
@@ -636,6 +649,13 @@ h5.q-header{
 .q-quote{
   font-family: Georgia, serif;
   font-size: 1.8em;
+  color: #888; 
+}
+
+
+.q-quote-hover{
+  font-family: Georgia, serif;
+  font-size: 1.8em;
   color: orange; 
 }
 
@@ -663,11 +683,7 @@ h5.q-header{
 
 /* DO NOT REMOVE ---- STYLES BELOW STILL TO TRIAGE FROM DANIEL -- DO NOT REMOVE */
 
-.small {
-  font-size: 12px;
-  color: #e7e7e7; 
-}
-
+/*
 
 .ae-btn-basic{
   color: #000 !important;
@@ -699,7 +715,7 @@ h5.q-header{
 }
 
 
-
+*/
 
 
 

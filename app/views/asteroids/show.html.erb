@@ -34,7 +34,7 @@
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- ae asteroid explorer css + js -->
-  <link rel="stylesheet" href="/public/mpc/css/asteroid-explorers.css">
+  <link rel="stylesheet" href="/mpc/css/asteroid-explorers.css">
   <script src="/public/mpc/js/asteroid-explorers.js"></script>
 
 
@@ -62,15 +62,15 @@ $(document).ready(function(){
        <div id="ae-nav-header">
           <h1 class="ae-title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Asteroid&nbsp;Data&nbsp;Explorer</h1>
           <div class="btn-group ae-nav-btn-group" role="group">
-            <a type="button" class="btn ae-nav-btn" href="/public/mpc/index.html">Home</a>
-            <a type="button" class="btn ae-nav-btn" href="/public/mpc/ae-about.html">About</a>
-            <a type="button" class="btn ae-nav-btn" href="/public/mpc/control-panel.html">Control Panel</a>
+            <a type="button" class="btn ae-nav-btn" href="/mpc/index.html">Home</a>
+            <a type="button" class="btn ae-nav-btn" href="/mpc/ae-about.html">About</a>
+            <a type="button" class="btn ae-nav-btn" href="/mpc/control-panel.html">Control Panel</a>
           </div>
         </div>
         <div id="ae-header-detail">
             <h2 class="ae-asteroid-title">Asteroid: <%= @asteroid.designation %></h2>
             <div id="ae-header-actions-2nd">
-             <a href="http://minorplanetcenter.net/db_search/show_object?object_id=2006%20SR131" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="#" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a> <span class="ae-btn-divider">|</span> <a onclick="goBack();" class="btn ae-btn-default" role="button"><i class="fa fa-step-backward"></i>&nbsp;Back</a>
+             <a href="http://minorplanetcenter.net/db_search/show_object?object_id=2006%20SR131" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="<%= @asteroid.url %>" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a> <span class="ae-btn-divider">|</span> <a onclick="goBack();" class="btn ae-btn-default" role="button"><i class="fa fa-step-backward"></i>&nbsp;Back</a>
              </div>
           </div>
         </div>
@@ -84,16 +84,14 @@ $(document).ready(function(){
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Summary</h3>
-                </div>
-                <div class="panel-body">
 
                 <form class="form-horizontal ae-form-center">
                   <div class="form-group">
 
-                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
+                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Size" data-content="Approximate size of this asteroid"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
 
                     <div class="col-md-6">
-                      <p class="form-control-static ae-form-data"><%= @asteroid.size %> Meters</p>
+                      <p class="form-control-static ae-form-data"><%= @asteroid[:size] %> Meters</p>
                     </div>
                   </div>
 
@@ -113,7 +111,7 @@ $(document).ready(function(){
 
                   <% if @asteroid.taxonomy_class.present? %>
                       <div class="form-group">
-                      <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
+                      <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Taxonomy Class" data-content="Spectral Class"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
                         <div class="col-md-6">
                           <p class="form-control-static ae-form-data"><%= @asteroid.taxonomy_class %></p>
                         </div>
@@ -138,7 +136,7 @@ $(document).ready(function(){
                   <div class="panel-body text-center">
                     <div class="ae-form-data"><%= @asteroid.impact_prob %></div>
                     <div class="ae-form-label-bottom">Impact Probability of Hitting Earth in the Future</div>
-                    <p>As astronomers make more observations about this asteroid, the small probability of the asteroid hitting Earth is likely to go down or disappear altogether.</p>
+                    <p>This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory.</p>
                   </div>
                 </div>
             </div>
@@ -153,9 +151,14 @@ $(document).ready(function(){
                   <h3 class="panel-title">Potentially Hazardous Asteroid (PHA)</h3>
                 </div>
               <div class="panel-body text-center">
-                    <div class="ae-form-data">@asteroid.pha</div>
-                    <div class="ae-form-label-bottom">Asteroids of this Size are Estimated to hit Earth Every <span class="ae-form-data-med">SomeValue</span> Years.</div>
+                    <div class="ae-form-data"><%= @asteroid.pha || 'Unknown'  %></div>
+<% if @asteroid.pha = 'Yes' %>
                     <p>This asteroid is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
+<% elsif @asteroid.pha = 'No' %>
+<p>This asteroid is not classified as a Potentially Hazardous Asteroid because its orbit is not close enough to Earth’s.  We will still keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
+<% else %>
+<p>No PHA value is known for asteroids of this size.</p>
+<% end %>
               </div>
             </div>
           </div>
