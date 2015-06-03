@@ -4,7 +4,7 @@
 */
 
 /* removed table, thead, tr, th, td tbody, label, tfoot so doesn't conflict with table */
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, 
 a, abbr, acronym, address, big, cite, code,
 del, dfn, img, ins, kbd, q, s, samp,
@@ -23,7 +23,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
-
+*/
 
 
 
@@ -41,10 +41,15 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
+/*
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+*/
+
+/*
 html,
 body {height:100%;}
 body {
@@ -53,6 +58,9 @@ body {
 	background:#fff;
 	min-width:960px;
 }
+*/
+
+/*
 a,
 a:hover,
 a:visited {
@@ -61,6 +69,7 @@ a:visited {
 }
 
 a:hover {text-decoration:underline;}
+*/
 
 input,
 textarea,
@@ -85,23 +94,36 @@ select {
 
 /* Start Minor Planet Center Site Styles*/
 
+/*
 body, p {
 	font-family: 'PT Sans', Arial, Helvetica, sans-serif;
 	font-size: 15px;
 }
+*/
+
+/*
+
 p {
 	margin: 1.12em 0;
 
 }
+*/
 
+
+/*ae this was alrady commented out */
 /*td {
 	white-space: nowrap;
 }*/
+
+
 pre {
 	font-size: 12px;
 	overflow: auto;
 }
+/*
 pre table { font-size: 11px; }
+*/
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
 }
@@ -112,6 +134,8 @@ h3 {font-size: 22px;}
 i {font-style: italic;}
 .it {font-style: italic;}
 em {font-weight: bold;}
+
+
 
 @font-face {
     font-family: 'socialicoregular';
