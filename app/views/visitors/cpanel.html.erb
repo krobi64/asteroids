@@ -73,8 +73,14 @@ $(document).ready(function(){
   </div>
 
     <h2 class="ae-sub-title">Finding Asteroids Before They Find Us!</h2>
+<!--
+              <div id="ae-header-actions-2nd">
+               <a href="https://twitter.com/intent/tweet?text=Check+Out+Minor+Planet+Center+Asteroid+Data+Explorer+Project&url=http://minorplanetcenter.com/mpc/index.html&hashtags=mpc,asteroids,asteroidexplorer" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+               </div>
+               <br><br><br>
+-->
     <div class="ae-slogan">
-      <span class="ae-highlight-big">Discover, learn and share</span> information about asteroids to increase awareness about asteroids and their impact and risks to the world.
+      <span class="ae-highlight-big">Discover, Explore, and Share</span> information about asteroids to increase awareness about asteroids and their impact and risks to the world.
     </div>
   </div>
 
@@ -94,7 +100,7 @@ $(document).ready(function(){
                 Start Exploring Asteroids...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:danger()">Which are the most dangerous asteroids?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:danger()">Which asteroids have the highest risk of impacting Earth?"</a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[3500,10000], null, null, null])">Which are the biggest asteroids?</a></li>
                 <li role="presentation" class="divider"></li>
@@ -105,17 +111,16 @@ $(document).ready(function(){
             </div>
 
 
-
 <!-- charts START -->
   <div id="charts">
 
-    <div id="speed-chart" class="chart"><div class="title">Size (Meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    <div id="speed-chart" class="chart"><div class="title">Size (meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: size" data-content="Approximate dimension of asteroids">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="size-chart" class="chart"><div class="title">Next Closest Approach to Earth<br>(Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: lose_app_dist" data-content="How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
+    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
-    <div id="earth-moid-chart" class="chart"><div class="title">Energy to Travel to Asteroid (KM/Sec)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
+    <div id="earth-moid-chart" class="chart"><div class="title">Δv (km/s)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it.">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
   </div>
 <!-- charts END -->
@@ -134,21 +139,21 @@ $(document).ready(function(){
       <thead class="ae-data-table">
 
       <tr>
-              <th class="ae-data-table-header">Asteroid Designation&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Asteroid Designation&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: designation" data-content="Name that astronomers refer to the asteroid by"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Size (Meters)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Size (meters)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" itle="JSON data column: size" data-content="Approximate dimension of asteroids"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Next Closest Approach to Earth Date&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Next Close Approach Date&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_date" data-content="When the asteroid will next flyby Earth"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Next Close Approach Distance (LD)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Orbital Period&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Orbital Period&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Energy to Travel to Asteroid (KM/Sec)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Δv (km/s)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it."><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Potentially Hazardous Asteroid: Yes value indicates asteroid is large enough and its orbit is close enough to Earth's that one day it might pose an impact hazard"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Share&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Share&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" data-content="Share information about this asteroid!"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
           </tr>
 
@@ -178,12 +183,12 @@ $(document).ready(function(){
               </ul>
             </div>
             <br/>
+
   <div id="highchart_content" class="highchart" style="height: 480px; min-width: 720px; max-width: 720px; margin: 0 auto"></div>
 
 </div>
 <!-- END search results -->
  
-
 
 <!-- closing of Ground Control-->
   </div>
@@ -269,18 +274,18 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
   window.toggleAsteroidView = function(tableOrHighChart) {
     if( tableOrHighChart == 1 ) {
       $('#toggle_table_view').removeClass("active");
-      $('#toggle_chart_view').removeClass("inactive");
+      //$('#toggle_chart_view').removeClass("inactive");
       $('#toggle_chart_view').addClass("active");
-      $('#toggle_table_view').addClass("inactive");
+      //$('#toggle_table_view').addClass("inactive");
       $('#table_content').hide();  
       $('#highchart_content').show();
       $('#axis_choice').show();      
     }
     else if( tableOrHighChart == 0 ) {
       $('#toggle_chart_view').removeClass("active");
-      $('#toggle_table_view').removeClass("inactive");
+      //$('#toggle_table_view').removeClass("inactive");
       $('#toggle_table_view').addClass("active");
-      $('#toggle_chart_view').addClass("inactive");
+      //$('#toggle_chart_view').addClass("inactive");
       $('#table_content').show();  
       $('#highchart_content').hide();
       $('#axis_choice').hide();
@@ -558,7 +563,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
       asteroidEnter.append("td")
       .append("a")
-      .attr("href","http://twitter.com/home/?status=Check out Asteriod 2014 GC49! http://asteroid-explorers.herokuapp.com/adetail.html %23asteriodexplore %23asteroids %23nasa %23seti")
+      .attr("href","http://twitter.com/home/?status=Check out Asteroid 2014 GC49! http://asteroid-explorers.herokuapp.com/mpc/ae-detail.html %23mpc %23asteroids %23asteroidexplorer")
       .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
       .html("<span class='fa fa-twitter'></span> Tweet");
