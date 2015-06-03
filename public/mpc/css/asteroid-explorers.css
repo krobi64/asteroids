@@ -80,6 +80,12 @@ h3.ae-sub-2-title {
   color: #4700A3;
 }
 
+.ae-highlight-med {
+  font-weight: 400;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #4700A3;
+}
 
 .ae-header{
 margin: 15px 0 20px 0 !important;  
