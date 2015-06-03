@@ -28,6 +28,7 @@ time, mark, audio, video {
 
 
 /* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -568,6 +569,7 @@ ul.news li {
 
 #landing .block .info dd{margin-bottom:2px;}
 
+/*
 .btn{
 	display:inline-block;
 	vertical-align:top;
@@ -583,6 +585,7 @@ ul.news li {
 	-webkit-border-radius: 4px;
      border-radius: 4px;
 }
+*/
 
 #landing p {margin:0 auto 1em;}
 
