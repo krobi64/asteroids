@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,28 +9,27 @@
 
 <title>MPC: Asteroid Data Explorer - Control Panel </title>
 
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script>
-
 <script src="http://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.11/crossfilter.min.js"></script>
 
 
 <!-- font awesome -->
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- our css -->
-<link rel="stylesheet" href="/ae/includes/asteroids.css">
+<link rel="stylesheet" href="css/asteroid-explorers.css">
 
 
 <script type="text/javascript">
@@ -40,14 +38,10 @@ $(document).ready(function(){
     trigger: 'hover',
         'placement': 'top'
     });
-    $('#radio-tom-modal').on('hidden.bs.modal', function (e) {
-         $('#question-tom').val('');
-     });
-    $('.torino').popover({
-    html : true,
-    content: function() {
-      return $('#torino_content_wrapper').html();
-    }
+    $('[data-toggle="tooltip"]').tooltip({
+    trigger: 'hover',
+        'placement': 'top',
+        container: 'body'
     });
 });
 </script>
@@ -56,25 +50,44 @@ $(document).ready(function(){
 
 <body>
 
+<a name="top_page"></a>
 
-<h1>Finding Asteroids Before They Find Us!</h1>
+<div class="ae-main">
 
-<div class="mission">
-  <h2>Mission</h2>
-  <p>Your mission is to <strong>discover, learn and share</strong> information about asteroids to increase awareness about asteroids and their impact to the world. <!-- Asteroids, sometimes called minor planets, are rocky remnants left over from the early formation of our solar system about 4.6 billion years ago. Despite their size, asteroids can be dangerous. Many have hit Earth in the past, and more will crash into our planet in the future. That's one reason scientists who study asteroids and are eager to learn more about their numbers, orbits and physical characteristics. --><!-- </p><p> -->Work with Major Tom to help our scientists stop asteroids before they hit us!</p>
-  <br>
-</div>
+  <div class="ae-header">
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Major Tom's Ground Control Panel</h3>
+  <div id="ae-nav">
+   <div id="ae-nav-header">
+      <h1 class="ae-title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Asteroid&nbsp;Data&nbsp;Explorer</h1>
+      <div class="btn-group ae-nav-btn-group" role="group">
+        <a type="button" class="btn ae-nav-btn" href="index.html">Disover</a>
+        <a type="button" class="btn ae-nav-btn" href="ae-about.html">About</a>
+        <a type="button" class="active btn ae-nav-btn" href="#">Explore</a>
+      </div>   
+      <div id="ae-nav-header-actions">
+        <!--<a href="index.html" class="btn ae-btn-default" role="button"><i class="fa fa-chevron-up"></i>&nbsp;Home</a>-->
+      </div>
 
     </div>
-  <div class="panel-body clearfix">
-    <p class="pull-right"><object width="250" height="40" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="gsSong3522212442" name="gsSong3522212442"><param name="movie" value="http://grooveshark.com/songWidget.swf" /><param name="wmode" value="window" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="hostname=grooveshark.com&songID=35222124&style=metal&p=0" /><object type="application/x-shockwave-flash" data="http://grooveshark.com/songWidget.swf" width="250" height="40"><param name="wmode" value="window" /><param name="allowScriptAccess" value="always" /><param name="flashvars" value="hostname=grooveshark.com&songID=35222124&style=metal&p=0" /><span><a href="http://grooveshark.com/search/song?q=David%20Bowie%20Space%20Oddity" title="Space Oddity by David Bowie on Grooveshark">Space Oddity by David Bowie on Grooveshark</a></span></object></object></p>
-    <p>If an asteroid is headed our way, we want to know that! Ask Major Tom a question and explore the interactive charts below to find out about the risk for possibilities of future impact with Earth.</p>
-    <br>
-    <br>
+  </div>
+
+    <h2 class="ae-sub-title">Finding Asteroids Before They Find Us!</h2>
+    <div class="ae-slogan">
+      <span class="ae-highlight-big">Discover, learn and share</span> information about asteroids to increase awareness about asteroids and their impact and risks to the world.
+    </div>
+  </div>
+
+
+ <!-- START Ground Control -->
+  <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Control Panel</h3>
+      </div>
+
+    <div class="panel-body clearfix">
+      <p>Select a question to explore more about asteroids. You can then adjust the filters to refine and even craft your own exploration.
+      <br>
+      <br>
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                 Start Exploring Asteroids...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
@@ -89,28 +102,21 @@ $(document).ready(function(){
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.0,4.2]])">Which asteroids are easisest to travel to?</a></li>
               </ul>
             </div>
-<br>
+
 
 
 <!-- charts START -->
-<div id="charts">
-  <div id="speed-chart" class="chart">
-    <div class="title">Size (Meters)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="mean_daily_motion (°/day)" data-content="In orbital  mechanics, mean motion is measure of how fast a Asteroid progresses around its elliptical orbit.">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
-  </div>
+  <div id="charts">
 
-  <div id="size-chart" class="chart">
-    <div class="title">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="absolute_magnitude" data-content="Closest Approach to Earth">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
-  </div>
+    <div id="speed-chart" class="chart"><div class="title">Size (Meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    
+    <div id="size-chart" class="chart"><div class="title">Next Closest Approach to Earth<br>(Lunar&nbsp;Distance)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    
+    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
-  <div id="perihelion-distance-chart" class="chart">
-    <div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="perihelion_distance (AU)" data-content="Time to Orbit">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
-  </div>
+    <div id="earth-moid-chart" class="chart"><div class="title">Energy to Travel to Asteroid (KM/Sec)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
-  <div id="earth-moid-chart" class="chart">
-    <div class="title">Energy to Travel to Asteroid (KM/Sec)&nbsp;&nbsp;|&nbsp;&nbsp;<div class="label label-info" data-toggle="popover" title="earth_moid (AU)" data-content="Earth Minimum orbit intersection distance (MOID) is a measure used in astronomy to assess potential close approaches and collision risks between astronomical objects and Earth.">Info</div><!-- &nbsp;&nbsp;<a class="label label-default">Reset</a> --></div>
   </div>
-
-</div>
 <!-- charts END -->
 
 
@@ -120,59 +126,42 @@ $(document).ready(function(){
      <div class="panel-heading clearfix"><h4 class="panel-title ae-data-table-title">Asteroids<span class="pull-right ae-table-total">
       <div class="btn-group" role="group"><button id="toggle_table_view" type="button" class="btn ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Table View" onclick="toggleAsteroidView(0);">&nbsp;<i class="fa fa-table fa-lg"></i>&nbsp;</button><button id="toggle_chart_view" type="button" class="btn ae-table-toggle" data-toggle="tooltip" data-placement="top" title="Chart View" onclick="toggleAsteroidView(1);">&nbsp;<i class="fa fa-area-chart fa-lg"></i>&nbsp;</button></div>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="active">-</span> of <span id="total">-</span> Asteroids Displayed</span></h4></div>
 
-  <div id="table_content" class="panel-body">
-    <table class="table table-condensed">
 
-    <thead>
+  <div class="panel-body">
+      <table class="table table-condensed">
 
-        <tr>
+      <thead class="ae-data-table">
 
-          <th class="header">&nbsp;&nbsp;&nbsp; Designation (i)&nbsp;&nbsp;&nbsp;</th>
-          <th class="header">Size (Meters) (i)</th>
-          <th class="header">Next Closest Approach to Earth Date (i)</th>
-          <th class="header">Next Closest Approach to Earth (Lunar&nbsp;Distance) (i)</th>
-          <th class="header">Orbital Period (i)</th>
-          <th class="header">Energy to Travel to Asteroid (KM/Sec) (i)</th>
-          <th class="header">Impact Probability (i)
-          <th class="header">PHA (i)
-	    <br/>
-                <div href="#" class="torino label label-info" data-placement='above' title="The Torino Impact Hazard Scale">
-                  <span class="fa fa-info-circle fa-lg"></span>
-                </div>
+      <tr>
+              <th class="ae-data-table-header">Asteroid Designation&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-                  <!-- torino pop up layer HTML -->
-                  <div id="torino_content_wrapper" style="display: none">
-                      <table class="table small table-bordered" style="align:center; width:200px;">
-                              <tr><td>No Hazard (White Zone)</td></tr>
-                              <tr class="success"><td>Normal (Green Zone)</td></tr>
-                              <tr class="unknown-danger"><td>Danger is Unkown</td></tr>
-                              <tr class="warning"><td>Meriting Attention by Astronomers (Yellow Zone)</td></tr>
-                              <tr class="med-danger"><td>Threatening (Orange Zone)</td></tr>
-                              <tr class="high-danger"><td>Certain Collisions (Red Zone)</td></tr>
-                      </table>
-                      <a href="http://neo.jpl.nasa.gov/torino_scale.html" target="_blank">More Info...</a>
-                  </div>
-                  <!-- end tornino pop up layer -->
+              <th class="ae-data-table-header">Size (Meters)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-            </th>
+              <th class="ae-data-table-header">Next Closest Approach to Earth Date&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-            <th>Share</th>
+              <th class="ae-data-table-header">Next Closest Approach to Earth (Lunar&nbsp;Distance)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-        </tr>
+              <th class="ae-data-table-header">Orbital Period&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-    </thead>
+              <th class="ae-data-table-header">Energy to Travel to Asteroid (KM/Sec)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-    <tbody class="list">
-<!-- render via javascript -->
-    </tbody>
+              <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-</table>
+              <th class="ae-data-table-header">Share&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="someJSONColumnHeaderValue" data-content="someDescription"><span class="fa fa-info-circle fa-lg"></span></div></th>
+
+          </tr>
+
+      </thead>
+
+      <tbody class="list">
+  <!-- render via javascript -->
+      </tbody>
+
+    </table>
 
   </div>
-  <!--<div class="panel-footer"> XXX of Asteroids selected. </div>-->
-  <!-- <div class="panel-footer"><aside id="totals"><span id="active">-</span> of <span id="total">-</span> asteroids selected.</aside></div>-->
-  
-<br/>
+
+            <br/>
             <div id="axis_choice" class="dropdown" style="display:none;">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                 Switch X-Axis...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
@@ -187,12 +176,12 @@ $(document).ready(function(){
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(3)">Delta-V</a></li>
               </ul>
             </div>
-<br/>
+            <br/>
   <div id="highchart_content" class="highchart" style="height: 480px; min-width: 720px; max-width: 720px; margin: 0 auto"></div>
 
 </div>
-
-
+<!-- END search results -->
+ 
 
 
 <!-- closing of Ground Control-->
@@ -200,23 +189,11 @@ $(document).ready(function(){
  </div>
 <!-- closing of Ground Control-->
 
+<a href="#top_page" class="btn pull-right ae-btn-top bottom-button" role="button"><i class="fa fa-caret-up"></i>&nbsp;Top&nbsp;</a>
 
-
-<!--
-<div id="lists">
-  <div id="asteroid-list" class="list"></div>
-</div>
--->
-
-<footer>
-  <span style="float:left;">
-    <h6>Created by Team Nova: Kris Robison, Rajagopal Sathyamurthi, Daniel Schwartz, DJ Ursal</h6>
-    <p><a href="http://en.wikipedia.org/wiki/Major_Tom" target="_blank">More about Major Tom...</a></p>
-    Released under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.<br>
-    Leverage: Bootstrap, Fontawesome, Crossfilter (Square,Inc.)
-    <br><br><br><br><br>
-</footer>
-
+  <!-- CLOSE of ae-main div-->
+  </div>
+  <!-- CLOSE of ae-main div-->
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
