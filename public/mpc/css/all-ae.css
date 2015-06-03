@@ -72,6 +72,7 @@ a:visited {
 a:hover {text-decoration:underline;}
 */
 
+/*
 input,
 textarea,
 select {
@@ -79,6 +80,9 @@ select {
 	vertical-align:middle;
 	color:#000;
 }
+
+*/
+
 .alignleft{
 	float:left;
 	margin:0 5px 0 0;
@@ -116,11 +120,13 @@ p {
 	white-space: nowrap;
 }*/
 
-
+/*
 pre {
 	font-size: 12px;
 	overflow: auto;
 }
+*/
+
 /*
 pre table { font-size: 11px; }
 */
@@ -472,6 +478,7 @@ section {
 	font-size: 15px;
 }
 
+/* this was causing tons of issues ae 
 #landing table, 
 th, 
 tr, 
@@ -487,6 +494,8 @@ td {
   padding-top: 2px;
   padding-bottom: 2px;
 }
+
+*/
 
 #landing a {
 	text-decoration: underline;
