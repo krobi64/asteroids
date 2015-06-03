@@ -150,7 +150,9 @@ margin: 15px 0 20px 0 !important;
     float: none !important;
 }
 
-
+.hcenter{
+  
+}
 
 .plus-divider {
   font-size: 1.4em;
@@ -645,6 +647,13 @@ h5.q-header{
 }
 
 .q-quote{
+  font-family: Georgia, serif;
+  font-size: 1.8em;
+  color: #888; 
+}
+
+
+.q-quote-hover{
   font-family: Georgia, serif;
   font-size: 1.8em;
   color: orange; 
