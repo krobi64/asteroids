@@ -140,6 +140,9 @@ $(document).ready(function(){
                   <span class="fa fa-info-circle fa-lg"></span>
                 </div>
 
+
+
+
                   <!-- torino pop up layer HTML -->
                   <div id="torino_content_wrapper" style="display: none">
                       <table class="table small table-bordered" style="align:center; width:200px;">
@@ -178,9 +181,9 @@ $(document).ready(function(){
                 Switch X-Axis...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(0)">Approaching Date</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(0)">Approach Date</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Size, x100m</a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbit Period</a></li>
                 <li role="presentation" class="divider"></li>
@@ -610,12 +613,15 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         xAxis: {
             title: {
                 enabled: true,
-                text: 'Size (m)'
+                text: 'Approach date'
             },
             startOnTick: false,
             endOnTick: false,
             showLastLabel: true
         },
+        yAxis: {
+            allowDecimals: true
+        },        
         series: []
     };
 
@@ -644,17 +650,21 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             }
             else if( axisFlag == 2 ) {
               // Orbital period
-              baseAxis = Math.round(d.period);
+              // baseAxis = Math.round(d.period);
+              baseAxis = parseFloat(d.period);
             }
             else if( axisFlag == 3 ) {
               // Energy
-              baseAxis = Math.round(d.delta_v);
+              // baseAxis = Math.round(d.delta_v);
+              baseAxis = parseFloat(d.delta_v);
             }
 
 
+            //RXIE: ploting note: x-axis can have float, but y-axis seems to require whole number
             var tmpDist = [];
             tmpDist.push(baseAxis);
-            tmpDist.push(Math.round(d.close_app_dist));
+            tmpDist.push(parseFloat(d.close_app_dist));
+//            tmpDist.push(d.close_app_dist);
             if( useBubble ) {
 		          tmpDist.push(size); 
 	          }
@@ -673,7 +683,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
           if( axisFlag != 2 ) {
             var tmpPeriod = [];
             tmpPeriod.push(baseAxis);
-            tmpPeriod.push(Math.round(d.period));
+            tmpPeriod.push(parseFloat(d.period));
+//            tmpPeriod.push(d.period);
             if( useBubble ) {
 		          tmpPeriod.push(size); 
 	          }
@@ -683,7 +694,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
           if( axisFlag != 3 ) {
             var tmpEnergy = [];
             tmpEnergy.push(baseAxis);
-            tmpEnergy.push(Math.round(d.delta_v));
+            // tmpEnergy.push(Math.round(d.delta_v));
+            tmpEnergy.push(parseFloat(d.delta_v));
             if( useBubble ) {
 		          tmpEnergy.push(size); 
 	          }
@@ -692,7 +704,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
             var tmpImpact = [];
             tmpImpact.push(baseAxis);
-            var probLog = -13;
+            var probLog = -14;
             if( d.impact_prob_float > 0 ) {
               probLog = Math.log10(d.impact_prob_float);
             }
@@ -708,12 +720,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
       if( axisFlag == 0 ) {
         // Date
-        options.xAxis.title.text = 'Approaching Date';
+        options.xAxis.title.text = 'Approach Date';
         options.xAxis.type = 'datetime';
       }
       else if( axisFlag == 1 ) {
         // Size
-        options.xAxis.title.text = 'Asteroid Size, x 100m';
+        options.xAxis.title.text = 'Size, x100m';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 2 ) {
@@ -723,20 +735,20 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       }
       else if( axisFlag == 3 ) {
         // Size
-        options.xAxis.title.text = 'Energy to travel to';
+        options.xAxis.title.text = 'Delta-V';
         options.xAxis.type = '';        
       }
 
-      options.series.push({color: "#AAAAFF", name: "Distance", data: distanceSeries});
-      options.series.push({color: "#FFAABB", name: "Impact Prob", data: impactSeries});
+      options.series.push({color: "#AAAAFF", name: "Approach Distance", data: distanceSeries});
+      options.series.push({color: "#FFAABB", name: "Impact Probability", data: impactSeries});
       if( axisFlag != 1 ) {
-        options.series.push({color: "#66A2D4", name: "Asteroid Size, x 100m", data: sizeSeries});
+        options.series.push({color: "#66A2D4", name: "Size, x100m", data: sizeSeries});
       }
       if( axisFlag != 2 ) {
         options.series.push({color: "#FFF730", name: "Orbital Period", data: periodSeries});
       }
       if( axisFlag != 3 ) {
-        options.series.push({color: "#20E7AC", name: "Energy", data: energySeries});
+        options.series.push({color: "#20E7AC", name: "Delta-V", data: energySeries});
       }
 
       // alert("data series size: " + distanceSeries.length);
