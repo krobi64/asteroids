@@ -576,9 +576,13 @@ background-color: #fff;
 *
 */
 
+.ae-summary-label{
+  font-size: 16px !important;
+}
 
 .ae-form-label{
   /*uses font styles of bootstrap labels */
+  font-size: 16px !important;
   padding: 12px 0 0 0 !important;
   vertical-align: middle !important;
 }
