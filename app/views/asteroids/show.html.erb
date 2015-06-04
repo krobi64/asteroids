@@ -152,12 +152,14 @@ $(document).ready(function(){
                 </div>
               <div class="panel-body text-center">
                     <div class="ae-form-data"><%= @asteroid.pha || 'Unknown'  %></div>
-<% if @asteroid.pha = 'Yes' %>
+<% if @asteroid.pha == 'Yes' %>
                     <p>This asteroid is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
-<% elsif @asteroid.pha = 'No' %>
-<p>This asteroid is not classified as a Potentially Hazardous Asteroid because its orbit is not close enough to Earth’s.  We will still keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
+
+<% elsif @asteroid.pha == 'No' %>
+		    <p>This asteroid is not classified as a Potentially Hazardous Asteroid because its orbit is not close enough to Earth’s. We will still keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
 <% else %>
-<p>No PHA value is known for asteroids of this size.</p>
+
+		    <p>No PHA value is known for asteroids of this size.</p>
 <% end %>
               </div>
             </div>
