@@ -386,18 +386,22 @@ th.ae-data-table-header{
   fill: #ccc;
 }
 
+/* Size */
 .foreground.bar {
   fill: steelblue;
 }
 
+/* Next Close Approach Distance */
 #size-chart .foreground.bar {
   fill: #AAAAFF;
 }
 
+/* Orbital Period */
 #perihelion-distance-chart .foreground.bar {
   fill: #FFD700;
 }
 
+/* delta v */
 #earth-moid-chart .foreground.bar {
   fill: #00C78C;
 }
@@ -502,29 +506,40 @@ aside {
 }
 
 
-.no-danger{
-background-color: #fff;
+
+/* table row highlights */
+
+/* high impact probability */
+.high-danger{
+background-color: #fccd72;
+}
+
+/* medium impact probability */
+.med-danger{
+background-color: #fdd68b;
+}
+
+/* low impact prob */
+.low-danger{
+background-color: #fddfa4;
+}
+
+/* minimal impact prob */
+.minimal-danger{
+background-color: #fddfa4;
 }
 
 /*stop using*/
 .unknown-danger{
-background-color: #fcebfc;
+background-color: #f9f9d4;
 }
 
-/*stop using*/
-.low-danger{
-background-color: #FFD6D6;
+/* plain row */
+.no-danger{
+background-color: #fff;
 }
 
-/*stop using*/
-.med-danger{
-background-color: #FFCC99;
-}
 
-/*USE - Orange color to highlight asteroids with PHA value = yes. Previous red color FF8888*/
-.high-danger{
-background-color: #FCCD72;
-}
 
 
 /*Control Panel - Buttons */
