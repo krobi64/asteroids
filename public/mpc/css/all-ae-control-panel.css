@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 
+/* asteroid explorer version for control panel usage */
+
 /* removed table, thead, tr, th, td tbody, label, tfoot so doesn't conflict with table */
 /*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, 
@@ -149,16 +151,17 @@ em {font-weight: bold;}
 */
 
 
+/* ae- added local copy as issue with using fonts on other domains with hta access editing s*/
+
 @font-face {
     font-family: 'socialicoregular';
-    src: url('/fonts/socialico-webfont.eot');
-    src: url('/fonts/socialico-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/socialico-webfont.woff') format('woff'),
-         url('/fonts/socialico-webfont.ttf') format('truetype'),
-         url('/fonts/socialico-webfont.svg#socialicoregular') format('svg');
+    src: url('../fonts/socialico-webfont.eot');
+    src: url('../fonts/socialico-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/socialico-webfont.woff') format('woff'),
+         url('../fonts/socialico-webfont.ttf') format('truetype'),
+         url('../fonts/socialico-webfont.svg#socialicoregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 dl.helpbox > dt {
@@ -280,14 +283,30 @@ dl.helpbox > dd {
 	font-size: 30px;
 	letter-spacing: 9px;
 }
+
+/* ae - custom positioning when no other menu items */
+.social-bar {
+	float: right;
+	display: inline-block;
+	padding-top: 73px;
+	position: absolute;
+	right: 0px;
+	font-size: 0; /* make spacing zero */
+}
+
+/*
+
 .social-bar {
 	float: right;
 	display: inline-block;
 	padding-top: 6px;
 	position: absolute;
 	right: 0px;
-	font-size: 0; /* make spacing zero */
+	font-size: 0;
 }
+*/
+
+
 .social-bar a {
 	text-decoration: none;
 }

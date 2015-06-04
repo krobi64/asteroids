@@ -239,8 +239,6 @@ dl.helpbox > dd {
 #search {color: rgb(0,0,0);}
 
 
-/* ae- use custom version of font so can load via */
-
 .social {
 	font-family: 'socialicoregular', Arial, san-serif;
 	font-size: 30px;
@@ -256,6 +254,22 @@ dl.helpbox > dd {
 	right: 0px;
 	font-size: 0; /* make spacing zero */
 }
+
+
+/*
+
+.social-bar {
+	float: right;
+	display: inline-block;
+	padding-top: 6px;
+	position: absolute;
+	right: 0px;
+	font-size: 0;
+}
+*/
+
+
+
 .social-bar a {
 	text-decoration: none;
 }
