@@ -194,19 +194,6 @@ hr.style-two {
   cursor: pointer;
 }
 
-/* custom positioning for social bar to remain where it is */
-
-.ae-social {
-  font-size: 21px !important;
-  letter-spacing: 9px !important;
-  position: relative !important;
-  top: -2px !important;
-  left: 0 !important;
-}
-
-.ae-twitter {
-  color: #4099FF !important;
-}
 
 
 /* 

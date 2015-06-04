@@ -306,7 +306,7 @@ $(document).ready(function(){
     
     <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: lose_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
+    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period (years)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
     <div id="earth-moid-chart" class="chart"><div class="title">&#916;v (km/s)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it.">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
@@ -337,11 +337,11 @@ $(document).ready(function(){
 
               <th class="ae-data-table-header">Next Close<br/>Approach Distance (LD)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Orbital Period (years)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Orbital<br>Period (years)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
               <th class="ae-data-table-header">&#916;v (km/s)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it."><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Impact Probability&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: impact_prob" data-content="This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory (JPL)"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Impact<br>Probability&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: impact_prob" data-content="This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory (JPL)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
                <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: pha" data-content="Potentially Hazardous Asteroid: This asteroid is large enough and its orbit is close enough to Earth's that one day it might pose an impact hazard"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
@@ -918,35 +918,35 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
       if( axisFlag == 0 ) {
         // Date
-        options.xAxis.title.text = 'Approach Date';
+        options.xAxis.title.text = 'Next Close Approach Date';
         options.xAxis.type = 'datetime';
       }
       else if( axisFlag == 1 ) {
         // Size
-        options.xAxis.title.text = 'Size, x100m';
+        options.xAxis.title.text = 'Size (x100m)';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 2 ) {
         // Size
-        options.xAxis.title.text = 'Orbit Period (years)';
+        options.xAxis.title.text = 'Orbital Period (years)';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 3 ) {
         // Size
-        options.xAxis.title.text = 'Delta-V (km/s)';
+        options.xAxis.title.text = '&#916;v (km/s)';
         options.xAxis.type = '';        
       }
 
       options.series.push({color: "#AAAAFF", name: "Approach Distance", data: distanceSeries});
       options.series.push({color: "#FFAABB", name: "Impact Probability", data: impactSeries});
       if( axisFlag != 1 ) {
-        options.series.push({color: "#66A2D4", name: "Size, x100m", data: sizeSeries});
+        options.series.push({color: "#66A2D4", name: "Size (x100m)", data: sizeSeries});
       }
       if( axisFlag != 2 ) {
         options.series.push({color: "#FFF730", name: "Orbital Period", data: periodSeries});
       }
       if( axisFlag != 3 ) {
-        options.series.push({color: "#20E7AC", name: "Delta-V (km/s)", data: energySeries});
+        options.series.push({color: "#20E7AC", name: "&#916;v (km/s)", data: energySeries});
       }
 
       // alert("data series size: " + distanceSeries.length);

@@ -255,6 +255,20 @@ dl.helpbox > dd {
 	font-size: 0; /* make spacing zero */
 }
 
+/* ae- custom social icon as twitter not showing up */
+
+.ae-social {
+  font-size: 21px !important;
+  letter-spacing: 9px !important;
+  position: relative !important;
+  top: -2px !important;
+  left: 0 !important;
+}
+
+.ae-twitter {
+  color: #4099FF !important;
+}
+
 
 /*
 
