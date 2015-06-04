@@ -8,7 +8,8 @@
 
   <title>MPC: Asteroids Data Explorer - About</title>
 
-  <link media="all" rel="stylesheet" href="css/all.css">
+  <!-- custom version of all.css for this project when no menu options -->
+  <link media="all" rel="stylesheet" href="css/all-ae-full.css">
 
   <script type="text/javascript" async="" src="js/plusone.js"></script>
   <script id="twitter-wjs" src="js/widgets.js"></script>
@@ -102,41 +103,56 @@ $(document).ready(function(){
       <header id="header">
         <div class="holder">
           <!-- logo -->
-          <h1 class="logo"><a href="/">The International Astronomical Union Minor Planet Center</a></h1>
+          <h1 class="logo"><a href="http://www.minorplanetcenter.com/">The International Astronomical Union Minor Planet Center</a></h1>
           <div class="area">
             <!-- top-nav -->
+
+         
             <nav class="top-nav">
+             <!--
               <ul>
+
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
+         
               </ul>
+               -->
             </nav>
 
+
             <!-- search-form -->
+
+        
             <div class="form-holder">
               <form class="search-form" method="get" action="http://www.google.com/search">
                 <fieldset>
+                    <!--
                   <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
                   <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
+                   -->
                 </fieldset>
               </form>
             </div>
+           
 
             <div class="social-bar">
-              <a href="https://twitter.com/MinorPlanetCtr"><span class="social twitter">L</span></a>
+              <a href="https://twitter.com/MinorPlanetCtr"><i class="fa fa-twitter ae-social ae-twitter"></i></span></a>
               <a href="https://www.facebook.com/MinorPlanetCenter"><span class="social facebook">F</span></a>
               <a href="https://plus.google.com/103523519128767953332/posts"><span class="social gplus">G</span></a>
-              <a href="/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
+              <a href="http://minorplanetcenter.com/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
             </div>
+                
           </div>
         </div>
+    
 
         <nav class="nav-holder">
           <!-- main navigation -->
           <ul id="nav">
             <li>
-              <a href="/iau/mpc.html"><span>OBSERVERS</span></a>
+              <!--<a href="/iau/mpc.html"><span>OBSERVERS</span></a>-->
+              <!--
               <ul>
                 <li><a href="/iau/MPEph/MPEph.html">Ephemeris Service</a></li>
                 <li><a href="/mpec/RecentMPECs.html">MPECs</a></li>
@@ -192,18 +208,29 @@ $(document).ready(function(){
                 </li>
                 <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
                 <li><a href="/mpc/summary">Summary of Latest Data</a></li>
+
               </ul>
+          -->
             </li>
-            <li><a href="/blog"><span>Public</span></a>
+           
+            <li> 
+            <!--<a href="/blog"><span>Public</span></a>  -->
             </li>
-            <li><a href="/IAWN/"><span>IAWN</span></a>
-              <ul>
-                <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
-                <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
-                <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
-                <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
-              </ul>
+          
+           
+            <li>
+               <span class="ae-menuspacer">&nbsp;</span>
+              <!--<a href="/IAWN/"><span>IAWN</span></a>-->
+              <!--
+                <ul>
+                  <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
+                  <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
+                  <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
+                  <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
+                </ul>
+                -->
             </li>
+   
           </ul>
         </nav>
       </header>
@@ -225,14 +252,14 @@ $(document).ready(function(){
 	      <h1 class="ae-title"><i class="fa fa-compass"></i>&nbsp;MPC&nbsp;Asteroid&nbsp;Data&nbsp;Explorer</h1>
 	      <div class="btn-group ae-nav-btn-group" role="group">
 	        <a type="button" class="btn ae-nav-btn" href="index.html">Discover</a>
-	        <a type="button" class="active btn ae-nav-btn" href="ae-about.html">About</a>
+	        <a type="button" class="active btn ae-nav-btn" href="#">About</a>
 	        <a type="button" class="btn ae-nav-btn" href="/cpanel?filter_type=hazard">Explore</a>
 	      </div>   
 	    </div>
 	 	<div id="ae-header-detail">
 	            <h2 class="ae-asteroid-title">About This Project</h2>
 	            <div id="ae-header-actions-2nd">
-	             <a href="https://twitter.com/intent/tweet?text=About+Minor+Planet+Center+Asteroid+Data+Explorer+Project&url=http://minorplanetcenter.com/mpc/ae-about.html&hashtags=mpc,asteroids,asteroidexplorer" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>&nbsp; <a onclick="goBack();" class="btn ae-btn-default" role="button"><i class="fa fa-step-backward"></i>&nbsp;Back</a>
+	             <a href="https://twitter.com/intent/tweet?text=Find+out+about+the+Minor+Planet+Ctr+Asteroid+Data+Explorer+Project:&url=http://minorplanetcenter.com/asteroid-explorers&hashtags=Asteroid,AsteroidExplorers&via=MinorPlanetCtr" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>&nbsp; <!--<a onclick="goBack();" class="btn ae-btn-default" role="button"><i class="fa fa-step-backward"></i>&nbsp;Back</a>-->
 	             </div>
 	       </div>
 	</div>
@@ -261,7 +288,6 @@ $(document).ready(function(){
             <a class="media-right media-middle" href="https://www.youtube.com/watch?v=0h0QgK1r-Gg"> 
             <iframe width="560" height="315" src="https://www.youtube.com/embed/0h0QgK1r-Gg?rel=0" frameborder="0" allowfullscreen alt="Video of Asteriod Hackathon Challenge Event" style="margin-left:10px">
             </iframe>
-             <!-- <img class="media-object" alt="Video of Asteriod Hackathon Challenge Event" style="width: 225px; height: 225px;" src=""> -->
             </a>
         </div>
 
@@ -311,9 +337,10 @@ $(document).ready(function(){
 
             <div class="row">
                 <div class="col-md-12">
-                <br>
+                <br/>
                       <hr class="style-two">
                     <div class="text-center ae-about-section-explore">
+                    <br/><br/>
                       <a href="/cpanel?filter_type=hazard" class="btn ae-btn-explore btn-lg ae-btn-lg" role="button"><i class="fa fa-compass fa-lg"></i>&nbsp;Start&nbsp;Exploring</a>
                     </div>
                 </div>
