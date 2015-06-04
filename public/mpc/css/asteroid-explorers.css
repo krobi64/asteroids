@@ -183,9 +183,40 @@ hr.style-two {
 /* 
 *
 *
+*Overwrites of MPC all.css 
+*
+*/
+
+/* used when not showing nav menu items but to maintain spacing with header below. C*/
+#nav > li > span.ae-menuspacer {
+  display: block;
+  padding: 8px 2px 20px;
+  cursor: pointer;
+}
+
+/* custom positioning for social bar to remain where it is */
+
+.ae-social {
+  font-size: 21px !important;
+  letter-spacing: 9px !important;
+  position: relative !important;
+  top: -2px !important;
+  left: 0 !important;
+}
+
+.ae-twitter {
+  color: #4099FF !important;
+}
+
+
+/* 
+*
+*
 *Global Buttons 
 *
 */
+
+
 
 /* reset over MPC's all.css */
 .ae-main .btn{
@@ -217,8 +248,8 @@ hr.style-two {
 .ae-nav-btn.active, 
 .open .dropdown-toggle.ae-nav-btn { 
   color: #ffffff !important; 
-  background-color: #4700A3 !important; 
-  border-color: #6638A3 !important;
+  background-color: #461388 !important; 
+  border-color: #461388 !important;
   font-family: "Helvetica Neue", Verdana, Arial !important; 
   letter-spacing: 0 !important; 
 } 
@@ -226,7 +257,8 @@ hr.style-two {
 .ae-nav-btn:active, 
 .ae-nav-btn.active, 
 .open .dropdown-toggle.ae-nav-btn { 
-  background-image: none !important; 
+  background-image: none !important;
+  cursor: default;
 } 
  
 .ae-nav-btn.disabled, 
@@ -608,6 +640,19 @@ background-color: #FCCD72;
 *
 */
 
+@font-face {
+    font-family: 'johnhancokcpmedium';
+    src: url('../fonts/johnhancockcp-webfont.eot');
+    src: url('../fonts/johnhancockcp-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/johnhancockcp-webfont.woff2') format('woff2'),
+         url('../fonts/johnhancockcp-webfont.woff') format('woff'),
+         url('../fonts/johnhancockcp-webfont.ttf') format('truetype'),
+         url('../fonts/johnhancockcp-webfont.svg#johnhancokcpmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .ae-thumbnail{
   width: 525px !important;
   max-width: 525px !important;
@@ -619,7 +664,7 @@ background-color: #FCCD72;
   -ms-transition: box-shadow.2ms ease-in-out;
   -o-transition: box-shadow .2ms ease-in-out;
   transition: box-shadow .5ms ease-in-out .5ms;
-  background-color: rgb(241, 244, 249);
+  background-color: rgba(241, 244, 249,.6);
 }
 
 .ae-thumbnail:hover {
@@ -638,7 +683,8 @@ background-color: #FCCD72;
 
 
 h5.q-header{
- font-size: 1.5em;
+ font-size: 17px !important;
+ padding-bottom: 15px;
 }
 
 
@@ -648,15 +694,31 @@ h5.q-header{
 
 .q-quote{
   font-family: Georgia, serif;
-  font-size: 1.8em;
+  font-size: 25px;
+  font-weight: 800;
   color: #888; 
 }
 
+.quote-open{
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: 800;
+  color: #888; 
+}
 
 .q-quote-hover{
-  font-family: Georgia, serif;
-  font-size: 1.8em;
+  font-family: 'johnhancokcpmedium', Georgia, serif;
+  font-size: 25px;
+  font-weight: 800;
   color: orange; 
+}
+
+.flip {
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 
 .ae-btn-explore-hover {
