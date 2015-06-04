@@ -245,6 +245,12 @@ dl.helpbox > dd {
 	letter-spacing: 9px;
 }
 
+a.social:link, a.social:hover, a.social:active,{
+	text-decoration: none !important;
+	background-color: #000 !important;
+	border: none !important;
+}
+
 /* ae - custom positioning when no other menu items */
 .social-bar {
 	float: right;
@@ -283,10 +289,12 @@ dl.helpbox > dd {
 */
 
 
-
+/* ae- modified here too to not have blue underline */
 .social-bar a {
-	text-decoration: none;
+	text-decoration: none !important;
+	background-color: transparent !important;
 }
+
 .social-bar img {
 	margin: 0px 4px;
 }

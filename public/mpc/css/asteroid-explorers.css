@@ -203,8 +203,6 @@ hr.style-two {
 *
 */
 
-
-
 /* reset over MPC's all.css */
 .ae-main .btn{
    font-family: "Helvetica Neue", Verdana, Arial !important;
@@ -724,47 +722,6 @@ h5.q-header{
 .ae-text-explore-hover {
  color: #000 !important;
 }
-
-
-
-
-
-
-/* DO NOT REMOVE ---- STYLES BELOW STILL TO TRIAGE FROM DANIEL -- DO NOT REMOVE */
-
-/*
-
-.ae-btn-basic{
-  color: #000 !important;
-  font-size: 1.2em;
-  font-weight: 600;
-  background: #fff;
-  border: 1px solid #d6d6d6;
-  -webkit-box-shadow: inset 0 -2px #cb7b7b7;
-  box-shadow: inset 0 -2px #b7b7b7;
-}
-
-.ae-about-section-explore {
-  padding-top: 50px;
-}
-
-
-.ae-btn-default-blue{
-  color: #218bc3 !important;
-  font-size: 1.2em;
-  font-weight: 600;
-  background: #fff;
-  border: 1px solid #218bc3;
-  -webkit-box-shadow: inset 0 -2px #218bc3;
-  box-shadow: inset 0 -2px #218bc3;
-}
-
-.ae-btn-default-blue:hover {
-  background-color: #f1f8fd !important;
-}
-
-
-*/
 
 
 
