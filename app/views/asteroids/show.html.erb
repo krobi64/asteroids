@@ -278,11 +278,12 @@ $(document).ready(function(){
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Summary</h3>
-
+                  <br/>
+                  <br/>
+                  <br/>
                 <form class="form-horizontal ae-form-center">
                   <div class="form-group">
-
-                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Size" data-content="Approximate size of this asteroid"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
+                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: size" data-content="Approximate dimension of this asteroid"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
 
                     <div class="col-md-6">
                       <p class="form-control-static ae-form-data"><%= @asteroid[:size] %> Meters</p>
@@ -290,14 +291,14 @@ $(document).ready(function(){
                   </div>
 
                   <div class="form-group">
-                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Orbital Period" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: period" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
                     <div class="col-md-6">
                       <p class="form-control-static ae-form-data"><%= @asteroid.period %> Years</p>
                     </div>
                   </div>
 
                   <div class="form-group">
-                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Spin Period" data-content="Times the asteroid spins once around its axis"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: spin_period" data-content="How long it takes the asteroid to spin once around itself"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
                     <div class="col-md-6">
                       <p class="form-control-static ae-form-data"><%= @asteroid.spin_period %> Hours</p>
                     </div>
@@ -305,7 +306,7 @@ $(document).ready(function(){
 
                   <% if @asteroid.taxonomy_class.present? %>
                       <div class="form-group">
-                      <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Spectral Class" data-content="The group in which a star is classified according to its spectrum, especially using the Harvard classification."><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
+                      <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: taxonomy_class" data-content="This tells astronomers what the asteroid's surface is made of"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
                         <div class="col-md-6">
                           <p class="form-control-static ae-form-data"><%= @asteroid.taxonomy_class %></p>
                         </div>
@@ -313,6 +314,10 @@ $(document).ready(function(){
                   <% end %>
 
                 </form>
+
+                  <br/>
+                  <br/>
+                  <br/>
 
                 </div>
               </div>
