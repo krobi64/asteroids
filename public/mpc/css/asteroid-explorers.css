@@ -398,7 +398,8 @@ th.ae-data-table-header{
 
 /* Orbital Period */
 #perihelion-distance-chart .foreground.bar {
-  fill: #FFD700;
+  fill: #FFDF32;
+  /* fill: #FFD700; */
 }
 
 /* delta v */
@@ -511,22 +512,22 @@ aside {
 
 /* high impact probability */
 .high-danger{
-background-color: #fccd72;
+background-color: #fdd68b;
 }
 
 /* medium impact probability */
 .med-danger{
-background-color: #fdd68b;
+background-color: #fee8bd;
 }
 
 /* low impact prob */
 .low-danger{
-background-color: #fddfa4;
+background-color: #fef1d6;
 }
 
 /* minimal impact prob */
 .minimal-danger{
-background-color: #fddfa4;
+background-color: #fff9ef;
 }
 
 /*stop using*/
