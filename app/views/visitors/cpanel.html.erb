@@ -261,7 +261,7 @@ $(document).ready(function(){
               <h2 class="ae-asteroid-title">Finding Asteroids Before They Find Us!</h2>
 
               <div id="ae-header-actions-2nd">
-               <a href="https://twitter.com/intent/tweet?text=Explore+asteroids+with+Minor+Planet+Center+Asteroid+Data+Explorer+Project+&url=http://minorplanetcenter.com/mpc/cpanel?filter_type=hazard&hashtags=mpc,asteroids,asteroidexplorer" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+               <a href="https://twitter.com/intent/tweet?text=Explore+asteroids+with+Minor+Planet+Center's+Asteroid+Data+Explorer+Project+&url=http://minorplanetcenter.com/mpc/cpanel?filter_type=hazard&hashtags=Asteroids,Asteroidexplorer&via=MinorPlanetCtr" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
                </div>
                <br> <br> <br>
                 <div class="ae-slogan">
@@ -370,7 +370,7 @@ $(document).ready(function(){
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size (meters)</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbital Period</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbital Period (years)</a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(3)">&#916;v (km/s)</a></li>
               </ul>
@@ -917,12 +917,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
       if( axisFlag == 0 ) {
         // Date
-        options.xAxis.title.text = 'Next Close Approach Date (LD)';
+        options.xAxis.title.text = 'Next Close Approach Date';
         options.xAxis.type = 'datetime';
       }
       else if( axisFlag == 1 ) {
         // Size
-        options.xAxis.title.text = 'Size (x100m)';
+        options.xAxis.title.text = 'Asteroid Size (x100m)';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 2 ) {
