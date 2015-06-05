@@ -468,7 +468,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     var currentDate = new Date();
 
     var day = currentDate.getDate();
-    var month = currentDate.getMonth() + 1;
+    var month = currentDate.getMonth();
     var year = currentDate.getFullYear();
     var date1 = Date.UTC(year,month, day);
     //var date2 = Date.UTC(year, month+1, day);
@@ -606,8 +606,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         if( d.close_app_date == null ) {
           return null;
         } 
-        var parts = d.close_app_date.split(' ');
-        return Date.UTC(parts[0], parts[1], parts[2]);
+        var dateStr = d.close_app_date.split(' ');
+
+        var m = parseInt(dateStr[1], 10) - 1;
+        var date = Date.UTC(dateStr[0], ''+m, dateStr[2]);
+
+        return date;
       }),
 
       designation = asteroid.dimension(function(d) { return d.designation});
@@ -882,7 +886,9 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
           .data(sortedDataSet, function(d) { 
 
             var dateStr = d.close_app_date.split(' ');
-            var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
+            // javascript month starts with 0
+            var m = parseInt(dateStr[1], 10) - 1;
+            var date = Date.UTC(dateStr[0], ''+m, dateStr[2]);
 	          var size = d.size/100;
 
             var baseAxis = date;
