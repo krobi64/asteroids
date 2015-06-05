@@ -288,13 +288,13 @@ $(document).ready(function(){
                 Start Discovering Asteroids...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:danger()">Which asteroids have the highest risk of impacting Earth?"</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(1)">Which asteroids have the highest risk of impacting Earth?"</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([[3500,10000], null, null, null])">Which are the biggest asteroids?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(2)">Which are the biggest asteroids?</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:flyby()">Which asteroids are flying by the earth this month?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(3)">Which asteroids are flying by the earth this month?</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:filter([null, null, null, [0.0,4.2]])">Which asteroids are easisest to travel to?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(4)">Which asteroids are easisest to travel to?</a></li>
               </ul>
             </div>
 
@@ -468,9 +468,8 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     var currentDate = new Date();
 
     var day = currentDate.getDate();
-    var month = currentDate.getMonth();
+    var month = currentDate.getMonth() + 1;
     var year = currentDate.getFullYear();
-
     var date1 = Date.UTC(year,month, day);
     //var date2 = Date.UTC(year, month+1, day);
     var date2 = date1 + 2592000000;  // milliseconds for 30 days
@@ -481,6 +480,25 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     close_date.filterRange([date1, date2]);
     
     renderAll();
+  }
+
+  window.switchQuestion = function(num) {
+    if( num == 1 ) {
+      asteroidSortingDimension = impact2;
+      window.danger();
+    }
+    else if( num == 2 ) {
+      asteroidSortingDimension = size;
+      window.filter([[3500,10000],null,null,null]);
+    }
+    else if( num == 3 ) {
+      asteroidSortingDimension = close_date;
+      window.flyby();
+    }
+    else if( num == 4 ) {
+      asteroidSortingDimension = energy;
+      window.filter([null, null, null, [0.0,4.2]]);
+    }
   }
 
   var axisFlag = 0;
@@ -655,7 +673,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   d3.selectAll("#total")
       .text(formatNumber(asteroid.size()));
 
-  // TODO: apply filter
+  // apply preset filter with following rule
   /*
   Most dangerous:       impact_prob_float > 0.00009
   Easiest to get to:    delta_v < 4.2
@@ -668,25 +686,27 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   // var toggleFlag = 0;
   toggleAsteroidView(0);
 
+  // select the sorting column
+  var asteroidSortingDimension = designation; 
+
   <% if @filter_type=="hazard" %>
-    // impact2.filterRange([0.00009, 1.0]);
-    // window.filter([null,null,null,null]);
+    asteroidSortingDimension = impact2;
     window.danger();
   <% elsif @filter_type=="size"  %>
+    asteroidSortingDimension = size;
     window.filter([[3500,10000],null,null,null]);
   <% elsif @filter_type=="near"  %>
-    // window.filter([null,[0,20], [0.0,0.7], null]);
+    asteroidSortingDimension = close_date;
     window.flyby();
   <% elsif @filter_type=="easy"  %>
+    asteroidSortingDimension = energy;
     window.filter([null, null, null, [0.0,4.2]]);
+  <% else %>
+    asteroidSortingDimension = designation;
+    window.filter([null, null, null, null]);
   <% end %> 
+
   
-  // start with showing table list, hiding highchart
-  // var toggleFlag = 0;
-  // toggleAsteroidView(0);
-
-  // renderAll();
-
   // Renders the specified chart or list.
   function render(method) {
     d3.select(this).call(method);
@@ -717,8 +737,18 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
     //   date.exit().remove();
 
     div.each(function() {
+      var sortedDataSet = null;
+      if( asteroidSortingDimension === close_date || asteroidSortingDimension === energy) {
+        // ascending
+        sortedDataSet = asteroidSortingDimension.bottom(20); 
+      } 
+      else {
+        //descending
+        sortedDataSet = asteroidSortingDimension.top(20);
+      }
+
       var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(designation.top(20), function(d) { 
+          .data(sortedDataSet, function(d) { 
               return d.index; 
           });
 
@@ -837,8 +867,19 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
     var impactSeries = [];
 
     $(function(){
+        // seems it remembers the dimension data being fetched already in earlier call.
+        var sortedDataSet = null;
+        if( asteroidSortingDimension === close_date || asteroidSortingDimension === energy) {
+          // ascending
+          sortedDataSet = asteroidSortingDimension.bottom(1); 
+        } 
+        else {
+          // descending
+          sortedDataSet = asteroidSortingDimension.top(1);
+        }
+
         var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(designation.top(1), function(d) { 
+          .data(sortedDataSet, function(d) { 
 
             var dateStr = d.close_app_date.split(' ');
             var date = Date.UTC(dateStr[0],dateStr[1],dateStr[2]);
