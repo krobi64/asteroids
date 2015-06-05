@@ -454,19 +454,19 @@ th.ae-data-table-header{
 }
 
 #size-chart {
-  width: 320px;
+  width: 500px;
 }
 
 #speed-chart {
-  width: 300px;
+  width: 480px;
 }
 
 #perihelion-distance-chart {
-  width: 300px;
+  width: 500px;
 }
 
 #earth-moid-chart {
-  width: 750px;
+  width: 480px;
 }
 
 #km-neo {

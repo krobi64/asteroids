@@ -304,7 +304,7 @@ $(document).ready(function(){
 
     <div id="speed-chart" class="chart"><div class="title">Size (meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: size" data-content="Approximate dimension of asteroids">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: lose_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
     <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
@@ -369,16 +369,16 @@ $(document).ready(function(){
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(0)">Next Close Approach Date</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size (meters)</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(1)">Asteroid Size (x100 meters)</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbital Period</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(2)">Orbital Period (years)</a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchAxis(3)">&#916;v (km/s)</a></li>
               </ul>
             </div>
             <br/>
 
-  <div id="highchart_content" class="highchart" style="height: 480px; min-width: 720px; max-width: 720px; margin: 0 auto"></div>
+  <div id="highchart_content" class="highchart" style="height: 560px; min-width: 960px; max-width: 960px; margin: 0 auto"></div>
 
 </div>
 <!-- END search results -->
@@ -468,7 +468,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     var currentDate = new Date();
 
     var day = currentDate.getDate();
-    var month = currentDate.getMonth() + 1;
+    var month = currentDate.getMonth();
     var year = currentDate.getFullYear();
 
     var date1 = Date.UTC(year,month, day);
@@ -600,29 +600,29 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         .dimension(size)
         .group(sizes)
       .x(d3.scale.linear()
-        .domain([1, 2000])
-        .rangeRound([0, 10 * 20])),
+        .domain([1, 4000])
+        .rangeRound([0, 10 * 40])),
 
     barChart()
         .dimension(earth_distance)
         .group(earth_distances)
       .x(d3.scale.linear()
-        .domain([0, 500])
-        .rangeRound([0, 10 * 20])),
+        .domain([0, 750])
+        .rangeRound([0, 10 * 30])),
 
     barChart()
         .dimension(period)
         .group(periods)
       .x(d3.scale.linear()
-        .domain([0, 5.0])
-        .rangeRound([0, 10 * 20])),
+        .domain([0, 7.5])
+        .rangeRound([0, 10 * 30])),
 
     barChart()
         .dimension(energy)
         .group(energys)
       .x(d3.scale.linear()
-        .domain([0, 20])
-        .rangeRound([0, 10 * 20])),
+        .domain([0, 30])
+        .rangeRound([0, 10 * 30])),
 
 
     // barChart()
@@ -811,6 +811,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         xAxis: {
             title: {
                 enabled: true,
+                style: 'bold',
+                margin: 20,
                 text: 'Approach date'
             },
             startOnTick: false,
@@ -818,6 +820,11 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             showLastLabel: true
         },
         yAxis: {
+            title: {
+                enabled: true,
+                style: 'bold',
+                margin: 20,
+            },
             allowDecimals: true
         },        
         series: []
@@ -918,12 +925,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
       if( axisFlag == 0 ) {
         // Date
-        options.xAxis.title.text = 'Approach Date';
+        options.xAxis.title.text = 'Next Close Approach Date';
         options.xAxis.type = 'datetime';
       }
       else if( axisFlag == 1 ) {
         // Size
-        options.xAxis.title.text = 'Size, x100m';
+        options.xAxis.title.text = 'Size (x100 meters)';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 2 ) {
@@ -937,16 +944,16 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         options.xAxis.type = '';        
       }
 
-      options.series.push({color: "#AAAAFF", name: "Approach Distance", data: distanceSeries});
-      options.series.push({color: "#FFAABB", name: "Impact Probability", data: impactSeries});
+      options.series.push({color: "#AAAAFF", name: "Next Close Approach Distance<br/>(LD)", data: distanceSeries});
+      options.series.push({color: "#FFAABB", name: "Impact Probability<br/>(in log scale)", data: impactSeries});
       if( axisFlag != 1 ) {
-        options.series.push({color: "#66A2D4", name: "Size, x100m", data: sizeSeries});
+        options.series.push({color: "#66A2D4", name: "Size<br/>(x100 meters)", data: sizeSeries});
       }
       if( axisFlag != 2 ) {
-        options.series.push({color: "#FFF730", name: "Orbital Period", data: periodSeries});
+        options.series.push({color: "#FFF730", name: "Orbital Period<br/>(years)", data: periodSeries});
       }
       if( axisFlag != 3 ) {
-        options.series.push({color: "#20E7AC", name: "Delta-V (km/s)", data: energySeries});
+        options.series.push({color: "#20E7AC", name: "Delta-V<br/>(km/s)", data: energySeries});
       }
 
       // alert("data series size: " + distanceSeries.length);
@@ -961,7 +968,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   function barChart() {
     if (!barChart.id) barChart.id = 0;
 
-    var margin = {top: 10, right: 10, bottom: 20, left: 10},
+    var margin = {top: 10, right: 20, bottom: 20, left: 10},
         x,
         y = d3.scale.linear().range([100, 0]),
         id = barChart.id++,
