@@ -109,7 +109,7 @@ $(document).ready(function(){
 
          
             <nav class="top-nav">
-             <!--
+              <!--
               <ul>
 
                 <li><a href="/">Home</a></li>
@@ -117,29 +117,28 @@ $(document).ready(function(){
                 <li><a href="/contact">Contact</a></li>
          
               </ul>
-               -->
+                -->
             </nav>
-
-
-            <!-- search-form -->
-
+          
         
             <div class="form-holder">
+             <!-- 
               <form class="search-form" method="get" action="http://www.google.com/search">
                 <fieldset>
-                    <!--
+            
                   <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
                   <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
-                   -->
+             
                 </fieldset>
               </form>
+                   -->
             </div>
-           
+          
 
             <div class="social-bar">
-              <a href="https://twitter.com/MinorPlanetCtr"><i class="fa fa-twitter ae-social ae-twitter"></i></span></a>
-              <a href="https://www.facebook.com/MinorPlanetCenter"><span class="social facebook">F</span></a>
-              <a href="https://plus.google.com/103523519128767953332/posts"><span class="social gplus">G</span></a>
+              <a href="https://twitter.com/MinorPlanetCtr" target="_top"><i class="fa fa-twitter ae-social ae-twitter"></i></span></a>
+              <a href="https://www.facebook.com/MinorPlanetCenter" target="_top"><span class="social facebook">F</span></a>
+              <a href="https://plus.google.com/103523519128767953332/posts" target="_top"><span class="social gplus">G</span></a>
               <a href="http://minorplanetcenter.com/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
             </div>
                 
@@ -262,7 +261,7 @@ $(document).ready(function(){
               <h2 class="ae-asteroid-title">Finding Asteroids Before They Find Us!</h2>
 
               <div id="ae-header-actions-2nd">
-               <a href="https://twitter.com/intent/tweet?text=Explore+asteroids+with+Minor+Planet+Center+Asteroid+Data+Explorer+Project+&url=http://minorplanetcenter.com/mpc/cpanel?filter_type=hazard&hashtags=mpc,asteroids,asteroidexplorer" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+               <a href="https://twitter.com/intent/tweet?text=Explore+%23asteroids+with+@MinorPlanetCtr+Asteroid+Data+Explorer+Project+&url=http://minorplanetcenter.com/mpc/cpanel?filter_type=hazard&hashtags=Asteroidexplorer&via=MinorPlanetCtr" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
                </div>
                <br> <br> <br>
                 <div class="ae-slogan">
@@ -306,7 +305,7 @@ $(document).ready(function(){
     
     <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
+    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period (years)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
     <div id="earth-moid-chart" class="chart"><div class="title">&#916;v (km/s)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it.">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
@@ -337,11 +336,11 @@ $(document).ready(function(){
 
               <th class="ae-data-table-header">Next Close<br/>Approach Distance (LD)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Orbital Period (years)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Orbital<br>Period (years)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
               <th class="ae-data-table-header">&#916;v (km/s)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it."><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Impact Probability&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: impact_prob" data-content="This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory (JPL)"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Impact<br>Probability&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: impact_prob" data-content="This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory (JPL)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
                <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: pha" data-content="Potentially Hazardous Asteroid: This asteroid is large enough and its orbit is close enough to Earth's that one day it might pose an impact hazard"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
@@ -361,7 +360,6 @@ $(document).ready(function(){
 
   </div>
 
-            <br/>
             <div id="axis_choice" class="dropdown ae-graph-dropdown" style="display:none;">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                 Select Asteroid Data (X-Axis)...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
@@ -379,7 +377,7 @@ $(document).ready(function(){
             <br/>
 
   <div id="highchart_content" class="highchart" style="height: 560px; min-width: 960px; max-width: 960px; margin: 0 auto"></div>
-
+  <br/><br/>
 </div>
 <!-- END search results -->
  
@@ -764,9 +762,9 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
                                     } else if (+d.impact_prob_float <= 0.0) {
                                       return "asteroid";
                                     } else if (+d.impact_prob_float > 0.0 && +d.impact_prob_float <= 0.00001 ) {
-                                      return "asteroid success";
+                                      return "asteroid minimal-danger";
                                     } else if (+d.impact_prob_float > 0.00001 && +d.impact_prob_float <= 0.0001 ) {
-                                      return "asteroid warning";
+                                      return "asteroid low-danger";
                                     } else if (+d.impact_prob_float > 0.0001 && +d.impact_prob_float <= 0.001 ) {
                                       return "asteroid med-danger";
                                     } else if (+d.impact_prob_float > 0.001 ) {
@@ -982,12 +980,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       }
       else if( axisFlag == 2 ) {
         // Size
-        options.xAxis.title.text = 'Orbit Period (years)';
+        options.xAxis.title.text = 'Orbital Period (years)';
         options.xAxis.type = '';        
       }
       else if( axisFlag == 3 ) {
         // Size
-        options.xAxis.title.text = 'Delta-V (km/s)';
+        options.xAxis.title.text = 'Δv (km/s)';
         options.xAxis.type = '';        
       }
 
@@ -997,12 +995,13 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         options.series.push({color: "#66A2D4", name: "Size<br/>(x100 meters)", data: sizeSeries});
       }
       if( axisFlag != 2 ) {
-        options.series.push({color: "#FFF730", name: "Orbital Period<br/>(years)", data: periodSeries});
+        options.series.push({color: "#FFE246", name: "Orbital Period<br/>(years)", data: periodSeries});
       }
       if( axisFlag != 3 ) {
-        options.series.push({color: "#20E7AC", name: "Delta-V<br/>(km/s)", data: energySeries});
+        options.series.push({color: "#20E7AC", name: "Δv (km/s)", data: energySeries});
       }
 
+      // old orbital color #FFF730. Others tyring out: #ffeb84
       // alert("data series size: " + distanceSeries.length);
       // reference size to influence the bubble size
       // options.series.push(name: "RefSize", data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]);

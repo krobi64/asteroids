@@ -284,6 +284,21 @@ dl.helpbox > dd {
 	letter-spacing: 9px;
 }
 
+/* ae- custom social icon as twitter not showing up */
+
+.ae-social {
+  font-size: 21px !important;
+  letter-spacing: 9px !important;
+  position: relative !important;
+  top: -2px !important;
+  left: 0 !important;
+}
+
+.ae-twitter {
+  color: #4099FF !important;
+}
+
+
 /* ae - custom positioning when no other menu items */
 .social-bar {
 	float: right;
@@ -307,9 +322,13 @@ dl.helpbox > dd {
 */
 
 
+/* ae- modified here too to not have blue underline */
 .social-bar a {
-	text-decoration: none;
+	text-decoration: none !important;
+	background-color: transparent !important;
 }
+
+
 .social-bar img {
 	margin: 0px 4px;
 }
