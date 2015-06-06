@@ -487,7 +487,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     }
     else if( num == 2 ) {
       asteroidSortingDimension = size;
-      window.filter([[3500,10000],null,null,null]);
+      window.filter([[3500,100000],null,null,null]);
     }
     else if( num == 3 ) {
       asteroidSortingDimension = close_date;
@@ -583,7 +583,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   var asteroid = crossfilter(asteroids),
       all = asteroid.groupAll(),
 
-      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(10000, +d.size)); }),
+      size = asteroid.dimension(function(d) { return Math.max(0, Math.min(100000, +d.size)); }),
       sizes = size.group(function(d) { return Math.floor(d/100) * 100.0; }),
 
       earth_distance = asteroid.dimension(function(d) { return Math.max(0, +d.close_app_dist); }),
@@ -696,7 +696,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
     window.danger();
   <% elsif @filter_type=="size"  %>
     asteroidSortingDimension = size;
-    window.filter([[3500,10000],null,null,null]);
+    window.filter([[3500,100000],null,null,null]);
   <% elsif @filter_type=="near"  %>
     asteroidSortingDimension = close_date;
     window.flyby();
@@ -758,7 +758,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
                                   .attr("class", function(d) {
 
                                     if (d.impact_prob_float == null) {
-                                      return "asteroid unknown-danger";
+                                      return "asteroid";
                                     } else if (+d.impact_prob_float <= 0.0) {
                                       return "asteroid";
                                     } else if (+d.impact_prob_float > 0.0 && +d.impact_prob_float <= 0.00001 ) {
