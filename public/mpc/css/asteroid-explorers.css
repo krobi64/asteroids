@@ -460,19 +460,19 @@ th.ae-data-table-header{
 }
 
 #size-chart {
-  width: 320px;
+  width: 480px;
 }
 
 #speed-chart {
-  width: 300px;
+  width: 500px;
 }
 
 #perihelion-distance-chart {
-  width: 300px;
+  width: 500px;
 }
 
 #earth-moid-chart {
-  width: 750px;
+  width: 480px;
 }
 
 #km-neo {
