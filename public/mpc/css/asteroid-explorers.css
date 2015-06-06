@@ -73,6 +73,17 @@ h3.ae-sub-2-title {
   margin: 5px 0 0 0;
 }
 
+.ae-slogan-instruction{
+ font-size: 14px;
+ /* color: #4700A3; */ 
+}
+
+.ae-slogan-instruction-hightlight {
+  font-size: 14px;
+  color: #4700A3;
+  font-weight: 500;
+}
+
 .ae-highlight-big{
   font-weight: 600;
   font-size: 1.2em;
@@ -350,6 +361,11 @@ fieldset[disabled] .ae-nav-btn.active {
 *
 */
 
+.ae-impact-popover{
+  font-size: 12px !important;
+  padding-bottom: 4px;
+}
+
 .ae-data-table-title{
   font-size: 1.25em !important;
   margin-top: 8px;
@@ -444,19 +460,19 @@ th.ae-data-table-header{
 }
 
 #size-chart {
-  width: 500px;
+  width: 320px;
 }
 
 #speed-chart {
-  width: 480px;
+  width: 300px;
 }
 
 #perihelion-distance-chart {
-  width: 500px;
+  width: 300px;
 }
 
 #earth-moid-chart {
-  width: 480px;
+  width: 750px;
 }
 
 #km-neo {
@@ -474,7 +490,7 @@ th.ae-data-table-header{
 
 #asteroid-list .asteroid {
   line-height: 1.5em;
-  background: #eee;
+  background: #fff;
   width: 640px;
   margin-bottom: 1px;
 }
