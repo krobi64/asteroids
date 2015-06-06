@@ -13,7 +13,7 @@
 
 <!-- Start MPC -->
 
-  <!-- custom version of all.css file so don't overwrite bootstrap --> 
+  <!-- custom version of all.css file so don't overwrite bootstrap -->
   <link media="all" rel="stylesheet" href="../../../mpc/css/all-ae-control-panel.css">
 
   <script type="text/javascript" async="" src="../../../mpc/js/plusone.js"></script>
@@ -80,7 +80,7 @@ $(document).ready(function(){
           <div class="area">
             <!-- top-nav -->
 
-         
+
             <nav class="top-nav">
               <!--
               <ul>
@@ -88,25 +88,25 @@ $(document).ready(function(){
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
-         
+
               </ul>
                 -->
             </nav>
-          
-        
+
+
             <div class="form-holder">
-             <!-- 
+             <!--
               <form class="search-form" method="get" action="http://www.google.com/search">
                 <fieldset>
-            
+
                   <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
                   <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
-             
+
                 </fieldset>
               </form>
                    -->
             </div>
-          
+
 
             <div class="social-bar">
               <a href="https://twitter.com/MinorPlanetCtr" target="_top"><i class="fa fa-twitter ae-social ae-twitter"></i></span></a>
@@ -114,10 +114,10 @@ $(document).ready(function(){
               <a href="https://plus.google.com/103523519128767953332/posts" target="_top"><span class="social gplus">G</span></a>
               <a href="http://minorplanetcenter.com/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
             </div>
-                
+
           </div>
         </div>
-    
+
 
         <nav class="nav-holder">
           <!-- main navigation -->
@@ -125,20 +125,20 @@ $(document).ready(function(){
             <li>
               <!--<a href="/iau/mpc.html"><span>OBSERVERS</span></a>-->
               <!-- removed unused main menu -->
-          
+
             </li>
-           
-            <li> 
+
+            <li>
             <!--<a href="/blog"><span>Public</span></a>  -->
             </li>
-          
-           
+
+
             <li>
                <span class="ae-menuspacer">&nbsp;</span>
               <!--<a href="/IAWN/"><span>IAWN</span></a>-->
                  <!-- removed unused main menu -->
             </li>
-   
+
           </ul>
         </nav>
       </header>
@@ -173,7 +173,7 @@ $(document).ready(function(){
         <div id="ae-header-detail">
             <h2 class="ae-asteroid-title">Asteroid: <%= @asteroid.designation %></h2>
             <div id="ae-header-actions-2nd">
-     <a href="<%= @asteroid.url %>" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+<%= @asteroid.designation %>!+Via+@MinorPlanetCtr+%23AsteroidExplorers" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+     <a href="<%= @asteroid.url %>" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+<%= @asteroid.designation %>!+Via+@MinorPlanetCtr+%23AsteroidExplorers+<%= CGI.escape("http://asteroid-explorers.com/asteroid/#{@asteroid.designation.gsub(/ /,'+')}")%>" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
             </div>
           </div>
         </div>
@@ -205,6 +205,7 @@ $(document).ready(function(){
                       <p class="form-control-static ae-form-data"><%= @asteroid.period %> Years</p>
                     </div>
                   </div>
+<% if @asteroid.spin_period.present? %>
 
                   <div class="form-group">
                   <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Spin Period (hours)" data-content="How long it takes the asteroid to spin once around itself"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
@@ -212,6 +213,7 @@ $(document).ready(function(){
                       <p class="form-control-static ae-form-data"><%= @asteroid.spin_period %> Hours</p>
                     </div>
                   </div>
+<% end %>
 
                   <% if @asteroid.taxonomy_class.present? %>
                       <div class="form-group">
@@ -236,7 +238,6 @@ $(document).ready(function(){
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
 
-
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h3 class="panel-title">JPL Impact Risk</h3>
@@ -244,7 +245,11 @@ $(document).ready(function(){
                   <div class="panel-body text-center">
                     <div class="ae-form-data"><%= @asteroid.impact_prob %></div>
                     <div class="ae-form-label-bottom">Impact Probability of Hitting Earth in the Future</div>
-                    <p>This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory. As astronomers make more observations about this asteroid, the small probability of the asteroid hitting Earth is likely to go down or disappear altogether.</p>
+                    <p>This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory.
+        <% unless @asteroid.impact_prob == '0' %>
+                      As astronomers make more observations about this asteroid, the small probability of the asteroid hitting Earth is likely to go down or disappear altogether.
+        <% end %>
+                    </p>
                   </div>
                 </div>
             </div>
@@ -261,10 +266,10 @@ $(document).ready(function(){
               <div class="panel-body text-center">
                     <div class="ae-form-data"><%= @asteroid.pha || 'Unknown'  %></div>
 <% if @asteroid.pha == 'Yes' %>
-                    <p>This asteroid is classified as a Potentially Hazardous Asteroid because its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
+                    <p>This asteroid is classified as a Potentially Hazardous Asteroid because it's large enough and its orbit is close enough to Earth’s that we want to keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
 
 <% elsif @asteroid.pha == 'No' %>
-		    <p>This asteroid is not classified as a Potentially Hazardous Asteroid because its orbit is not close enough to Earth’s. We will still keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
+		    <p>This asteroid is not classified as a Potentially Hazardous Asteroid because its orbit is not close enough to Earth’s or is not large enough. We will still keep a special eye on it just to make sure it does not drift closer to Earth over the coming centuries.</p>
 <% else %>
 
 		    <p>No PHA value is known for asteroids of this size.</p>
@@ -303,7 +308,7 @@ $(document).ready(function(){
             </ul>
           </nav>
           <img src="http://www.minorplanetcenter.net/images/MPC_logo_circular.png" width="60" height="60" alt="Minor Planet Center Logo">
-          <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div> 
+          <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div>
         </div>
       </footer>
 
