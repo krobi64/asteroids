@@ -779,6 +779,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       asteroidEnter.append("td")
           .append("a")
           .attr("href", function(d) { return "/asteroids/" + d.designation; })
+          .attr("target", "_blank")
           .text(function(d) { return d.designation; });
 
       asteroidEnter.append("td")
