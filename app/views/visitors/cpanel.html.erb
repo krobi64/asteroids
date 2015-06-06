@@ -21,6 +21,33 @@
   <script type="text/javascript" async="" src="../../../mpc/js/plusone.js"></script>
   <script type="text/javascript" async="" src="../../../mpc/js/ga.js"></script>
 
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20663393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <link href="https://plus.google.com/103523519128767953332" rel="publisher">
+  <script type="text/javascript">
+    (function()
+      {var po = document.createElement("script");
+       po.type = "text/javascript"; po.async = true;
+       po.src = "https://apis.google.com/js/plusone.js";
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(po, s);
+      })();
+  </script>
+
+  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="../../../mpc/js/jquery.metadata.js"></script>
+  <script type="text/javascript" src="../../../mpc/js/webtrends.js"></script>
+  <script type="text/javascript" src="../../../mpc/js/track_pdfs.js"></script>
+
   <link href="../../../mpc/css/css.css" rel="stylesheet" type="text/css">
 <!-- END MPC -->
 
@@ -57,15 +84,6 @@ $(document).ready(function(){
     trigger: 'hover',
         'placement': 'top',
         container: 'body'
-    });
-    $('.ae-impact-popover-main').popover({
-    html : true,
-    placement: 'top',
-    trigger: 'hover',
-    container: 'body',
-    content: function() {
-      return $('#ae_impact_content_wrapper').html();
-    }
     });
 });
 </script>
@@ -132,7 +150,66 @@ $(document).ready(function(){
           <!-- main navigation -->
           <ul id="nav">
             <li>
-    <!-- removed menu -->
+              <!--<a href="/iau/mpc.html"><span>OBSERVERS</span></a>-->
+              <!--
+              <ul>
+                <li><a href="/iau/MPEph/MPEph.html">Ephemeris Service</a></li>
+                <li><a href="/mpec/RecentMPECs.html">MPECs</a></li>
+                <li><a href="/iau/NEO/toconfirm_tabular.html">NEO Confirmation</a></li>
+                <li><a href="/iau/Ephemerides/EphemOrbEls.html" class="nested">Orbital Elements</a>
+                  <ul>
+                    <li><a href="/iau/MPCORB.html">MPCORB</a></li>
+                    <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
+                    <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
+                    <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
+                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>              
+                <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
+                  <ul>
+                    <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
+                    <li><a href="/iau/NEO/PossNEO.html">Ratings</a></li>
+                    <li><a href="/cgi-bin/neaobs.cgi">Observation Planning Aid</a></li>
+                    <li><a href="/cgi-bin/checkneo.cgi">NEOChecker</a></li>
+                    <li><a href="/cgi-bin/checkneocmt.cgi">NEOCMTChecker</a></li>
+                    <li><a href="/NEOCPblog/">NEOCP Blog</a></li>
+                    <li><a href="/neocp_obs">NEOCP Recent Observations</a></li>
+                  </ul>
+                </li>
+                <li><a href="/iau/services/WebCSAccess.html" class="nested">Other Observer Services</a>
+                  <ul>
+                    <li><a href="/iau/NatSats/NaturalSatellites.html">Natural Satellite Ephemerides</a></li>
+                    <li><a href="/iau/MPEph/NewObjEphems.html">New Object Ephemerides</a></li>
+                    <li><a href="/cgi-bin/checkmp.cgi">MPChecker</a></li>
+                    <li><a href="/cgi-bin/checkcmt.cgi">CMTChecker</a></li>
+                    <li><a href="/iau/SpaceJunk/SpaceJunk.html">Distant Artificial Satellites</a></li>
+                    <li><a href="/iau/lists/Customize.html">Observing List Customizer</a></li>
+                  </ul>
+                </li>
+                <li><a href="/db_search">Orbits/Observations Database</a></li>
+                <li><a href='/light_curve2/light_curve.php'>Light Curve Database</a></li>
+                <li><a href="/iau/ECS/MPCAT-OBS/MPCAT-OBS.html">MPCAT-OBS</a></li>
+                <li><a href="/iau/SkyCoverage.html">Sky Coverage</a></li>
+                <li><a href="/iau/MPC_Documentation.html" class="nested">Documentation</a>
+                  <ul>
+                    <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
+                    <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
+                    <li><a href="/iau/WhatsNew.html">What's New</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
+                  <ul>
+                    <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
+                    <li><a href="/iau/lists/CometLists.html">Comets</a></li>
+                    <li><a href="/iau/Animations/Animations.html">Animations</a></li>
+                  </ul>                
+                </li>
+                <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
+                <li><a href="/mpc/summary">Summary of Latest Data</a></li>
+
+              </ul>
+          -->
             </li>
            
             <li> 
@@ -144,7 +221,12 @@ $(document).ready(function(){
                <span class="ae-menuspacer">&nbsp;</span>
               <!--<a href="/IAWN/"><span>IAWN</span></a>-->
               <!--
-             Removed Menu
+                <ul>
+                  <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
+                  <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
+                  <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
+                  <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
+                </ul>
                 -->
             </li>
    
@@ -179,7 +261,7 @@ $(document).ready(function(){
               <h2 class="ae-asteroid-title">Finding Asteroids Before They Find Us!</h2>
 
               <div id="ae-header-actions-2nd">
-               <a href="https://twitter.com/intent/tweet?text=Explore+%23asteroids+with@MinorPlanetCtr+Asteroid+Data+Explorer+Project:&url=http://www.asteroid-explorers.com/mpc/&hashtags=AsteroidExplorers" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+               <a href="https://twitter.com/intent/tweet?text=Explore+%23asteroids+with+@MinorPlanetCtr+Asteroid+Data+Explorer+Project+&url=http://minorplanetcenter.com/mpc/cpanel?filter_type=hazard&hashtags=Asteroidexplorer&via=MinorPlanetCtr" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
                </div>
                <br> <br> <br>
                 <div class="ae-slogan">
@@ -205,7 +287,7 @@ $(document).ready(function(){
                 Start Discovering Asteroids...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(1)">Which asteroids have the highest risk of impacting Earth?</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(1)">Which asteroids have the highest risk of impacting Earth?"</a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:switchQuestion(2)">Which are the biggest asteroids?</a></li>
                 <li role="presentation" class="divider"></li>
@@ -219,13 +301,13 @@ $(document).ready(function(){
 <!-- charts START -->
   <div id="charts">
 
-    <div id="speed-chart" class="chart"><div class="title">Size (meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Size (meters)" data-content="Approximate dimension of asteroids">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    <div id="speed-chart" class="chart"><div class="title">Size (meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: size" data-content="Approximate dimension of asteroids">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Next Close Approach Distance (LD)" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
+    <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
     
-    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period (years)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Orbital Period (years)" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
+    <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period (years)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
-    <div id="earth-moid-chart" class="chart"><div class="title">&#916;v (km/s)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="&#916;v (km/s)" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it.">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
+    <div id="earth-moid-chart" class="chart"><div class="title">&#916;v (km/s)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it.">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
   </div>
 <!-- charts END -->
@@ -246,39 +328,21 @@ $(document).ready(function(){
       <tr>
      
 
-              <th id="ae-col-1" class="ae-data-table-header">Asteroid<br/>Designation&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="bottom" title="Asteroid Designation" data-content="Name that astronomers refer to the asteroid by"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th id="ae-col-1" class="ae-data-table-header">Asteroid<br/>Designation&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="bottom" title="JSON data column: designation" data-content="Name that astronomers refer to the asteroid by"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Size (meters)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Size (meters)" data-content="Approximate dimension of asteroids"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Size (meters)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: size" data-content="Approximate dimension of asteroids"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Next Close<br/>Approach Date&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Next Close Approach Date" data-content="When the asteroid will next flyby Earth"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Next Close<br/>Approach Date&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_date" data-content="When the asteroid will next flyby Earth"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Next Close<br/>Approach Distance (LD)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Next Close Approach Distance (LD)" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Next Close<br/>Approach Distance (LD)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Orbital<br>Period (years)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Orbital Period (years)" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">Orbital<br>Period (years)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">&#916;v (km/s)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="&#916;v (km/s)" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it."><span class="fa fa-info-circle fa-lg"></span></div></th>
+              <th class="ae-data-table-header">&#916;v (km/s)&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it."><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-              <th class="ae-data-table-header">Impact<br>Probability&nbsp;<div href="#" class="label label-info ae-impact-popover-main" data-placement="above" title="" data-original-title="Impact Probability"><span class="fa fa-info-circle fa-lg"></span></div>
+              <th class="ae-data-table-header">Impact<br>Probability&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: impact_prob" data-content="This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory (JPL)"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
-
-                  <!-- start ae impact opop up -->
-                        <div id="ae_impact_content_wrapper" style="display: none;">
-                           <div class="ae-impact-popover">This is the probability that the asteroid will impact Earth, calculated by NASA's Jet Propulsion Laboratory</div>
-                                <table class="table small table-bordered" style="align:center; width:150px;">
-                                   <tbody>
-                                    <tr><td>In the Clear!</td></tr> 
-                                    <tr class="minimal-danger"><td>Minimal</td></tr>
-                                    <tr class="low-danger"><td>Low</td></tr>
-                                    <tr class="med-danger"><td>Medium</td></tr>
-                                    <tr class="high-danger"><td>High</td></tr>
-                                    </tbody>
-                          </table>
-                        </div>
-                  <!-- ae impact popp up -->
-
-              </th>
-
-               <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="PHA (Potentially Hazardous Asteroid)" data-content="This asteroid is large enough and its orbit is close enough to Earth's that one day it might pose an impact hazard"><span class="fa fa-info-circle fa-lg"></span></div></th>
+               <th class="ae-data-table-header">PHA&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: pha" data-content="Potentially Hazardous Asteroid: This asteroid is large enough and its orbit is close enough to Earth's that one day it might pose an impact hazard"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
               <th class="ae-data-table-header">Share&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Share with the World!" data-content="Share information about this asteroid!"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
@@ -710,7 +774,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
                                   });
 
       // asteroidEnter.append("td")
-      // .text(function(d) { return d.name; });
+      //     .text(function(d) { return d.name; });
 
       asteroidEnter.append("td")
           .append("a")
@@ -938,6 +1002,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         options.series.push({color: "#20E7AC", name: "Δv (km/s)", data: energySeries});
       }
 
+      // old orbital color #FFF730. Others tyring out: #ffeb84
       // alert("data series size: " + distanceSeries.length);
       // reference size to influence the bubble size
       // options.series.push(name: "RefSize", data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]);
@@ -1144,7 +1209,37 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 </script>
 
 <!-- Start MPC JS -->
-<!-- removed as hosted on heroku site -->
+<script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      var _tag=new WebTrends();
+      _tag.dcsGetId();
+      //]]>
+    </script>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      _tag.dcsCustom=function(){
+      // Add custom parameters here.
+      //_tag.DCSext.param_name=param_value;
+      }
+      _tag.dcsCollect();
+      //]]>
+    </script>
+
+    <noscript>
+      <div>
+        <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//logs1.smithsonian.museum/dcsa7yzrmbdzpxzrosrn4tyep_5i1d/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.minorplanetcenter.net">
+      </div>
+    </noscript>
+
 <!-- END MPC JS -->
 
 
