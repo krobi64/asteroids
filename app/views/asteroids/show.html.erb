@@ -21,33 +21,6 @@
   <script type="text/javascript" async="" src="../../../mpc/js/plusone.js"></script>
   <script type="text/javascript" async="" src="../../../mpc/js/ga.js"></script>
 
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-20663393-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-  <link href="https://plus.google.com/103523519128767953332" rel="publisher">
-  <script type="text/javascript">
-    (function()
-      {var po = document.createElement("script");
-       po.type = "text/javascript"; po.async = true;
-       po.src = "https://apis.google.com/js/plusone.js";
-       var s = document.getElementsByTagName("script")[0];
-       s.parentNode.insertBefore(po, s);
-      })();
-  </script>
-
-  <script src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="../../../mpc/js/jquery.metadata.js"></script>
-  <script type="text/javascript" src="../../../mpc/js/webtrends.js"></script>
-  <script type="text/javascript" src="../../../mpc/js/track_pdfs.js"></script>
-
   <link href="../../../mpc/css/css.css" rel="stylesheet" type="text/css">
 <!-- END MPC -->
 
@@ -123,15 +96,8 @@ $(document).ready(function(){
         
             <div class="form-holder">
              <!-- 
-              <form class="search-form" method="get" action="http://www.google.com/search">
-                <fieldset>
-            
-                  <input type="hidden" name="sitesearch" value="minorplanetcenter.net">
-                  <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" id="search" name="q" value="Search MPC">
-             
-                </fieldset>
-              </form>
-                   -->
+            removed as hosted on heroku
+              -->
             </div>
           
 
@@ -150,66 +116,7 @@ $(document).ready(function(){
           <!-- main navigation -->
           <ul id="nav">
             <li>
-              <!--<a href="/iau/mpc.html"><span>OBSERVERS</span></a>-->
-              <!--
-              <ul>
-                <li><a href="/iau/MPEph/MPEph.html">Ephemeris Service</a></li>
-                <li><a href="/mpec/RecentMPECs.html">MPECs</a></li>
-                <li><a href="/iau/NEO/toconfirm_tabular.html">NEO Confirmation</a></li>
-                <li><a href="/iau/Ephemerides/EphemOrbEls.html" class="nested">Orbital Elements</a>
-                  <ul>
-                    <li><a href="/iau/MPCORB.html">MPCORB</a></li>
-                    <li><a href="/iau/ECS/MPCAT/MPCAT.html">MPCAT</a></li>
-                    <li><a href="/iau/ECS/MPCUPDATE/MPCUPDATE.html">MPCUPDATE</a></li>
-                    <li><a href="/iau/Ephemerides/SoftwareEls.html">Orbital Elements for Software</a></li>
-                  </ul>                
-                </li>
-                <li><a href="/iau/services/MPCServices.html">Publications Overview</a></li>
-                <li><a href="/iau/ECS/MPCArchive/MPCArchive_TBL.html">Publications Archive</a></li>              
-                <li><a href="/iau/NEO/TheNEOPage.html" class="nested">NEO Services</a>
-                  <ul>
-                    <li><a href="/iau/NEO/toconfirm_tabular.html">Confirmation</a></li>
-                    <li><a href="/iau/NEO/PossNEO.html">Ratings</a></li>
-                    <li><a href="/cgi-bin/neaobs.cgi">Observation Planning Aid</a></li>
-                    <li><a href="/cgi-bin/checkneo.cgi">NEOChecker</a></li>
-                    <li><a href="/cgi-bin/checkneocmt.cgi">NEOCMTChecker</a></li>
-                    <li><a href="/NEOCPblog/">NEOCP Blog</a></li>
-                    <li><a href="/neocp_obs">NEOCP Recent Observations</a></li>
-                  </ul>
-                </li>
-                <li><a href="/iau/services/WebCSAccess.html" class="nested">Other Observer Services</a>
-                  <ul>
-                    <li><a href="/iau/NatSats/NaturalSatellites.html">Natural Satellite Ephemerides</a></li>
-                    <li><a href="/iau/MPEph/NewObjEphems.html">New Object Ephemerides</a></li>
-                    <li><a href="/cgi-bin/checkmp.cgi">MPChecker</a></li>
-                    <li><a href="/cgi-bin/checkcmt.cgi">CMTChecker</a></li>
-                    <li><a href="/iau/SpaceJunk/SpaceJunk.html">Distant Artificial Satellites</a></li>
-                    <li><a href="/iau/lists/Customize.html">Observing List Customizer</a></li>
-                  </ul>
-                </li>
-                <li><a href="/db_search">Orbits/Observations Database</a></li>
-                <li><a href='/light_curve2/light_curve.php'>Light Curve Database</a></li>
-                <li><a href="/iau/ECS/MPCAT-OBS/MPCAT-OBS.html">MPCAT-OBS</a></li>
-                <li><a href="/iau/SkyCoverage.html">Sky Coverage</a></li>
-                <li><a href="/iau/MPC_Documentation.html" class="nested">Documentation</a>
-                  <ul>
-                    <li><a href="/iau/info/TechInfo.html">MPC Submission Info</a></li>
-                    <li><a href="/iau/info/Astrometry.html">Astrometry Guide</a></li>
-                    <li><a href="/iau/WhatsNew.html">What's New</a></li>
-                  </ul>                
-                </li>
-                <li><a href="/iau/lists/Lists.html" class="nested">Lists and Plots</a>
-                  <ul>
-                    <li><a href="/iau/lists/MPLists.html">Minor Planets</a></li>
-                    <li><a href="/iau/lists/CometLists.html">Comets</a></li>
-                    <li><a href="/iau/Animations/Animations.html">Animations</a></li>
-                  </ul>                
-                </li>
-                <li><a href="/iau/MPCStatus.html">MPC Status</a></li>
-                <li><a href="/mpc/summary">Summary of Latest Data</a></li>
-
-              </ul>
-          -->
+              <!-- removed menu as hosted on heroku -->
             </li>
            
             <li> 
@@ -220,14 +127,7 @@ $(document).ready(function(){
             <li>
                <span class="ae-menuspacer">&nbsp;</span>
               <!--<a href="/IAWN/"><span>IAWN</span></a>-->
-              <!--
-                <ul>
-                  <li><a href="/IAWN/2014_cambridge/findings.html">First Meeting of the Steering Committee</a></li>
-                  <li><a href="/IAWN/first_communication_workshop/">First Communications Workshop</a></li>
-                  <li><a href="/IAWN/2014_tucson/">Second Meeting of the Steering Committee</a></li>
-                  <li><a href="/IAWN/statement_of_intent.html">IAWN Statement of Intent</a></li>
-                </ul>
-                -->
+              <!-- removed menu as hosted on heroku-->
             </li>
    
           </ul>
@@ -238,12 +138,6 @@ $(document).ready(function(){
      <!-- End of W1 -->
 
 <!-- END MPC HEADER -->
-
-  <!-- ae asteroid explorer css + js -->
-<!--
-  <link rel="stylesheet" href="/mpc/css/asteroid-explorers.css">
-  <script src="/mpc/js/asteroid-explorers.js"></script>
--->
 
 
 <!-- START ae content - detail page-->
@@ -283,7 +177,7 @@ $(document).ready(function(){
                   <br/>
                 <form class="form-horizontal ae-form-center">
                   <div class="form-group">
-                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: size" data-content="Approximate dimension of this asteroid"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
+                    <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Approximate Size (meters)" data-content="Approximate dimension of this asteroid"><span class="fa fa-info-circle fa-lg"></span></div> Approximate Size </label>
 
                     <div class="col-md-6">
                       <p class="form-control-static ae-form-data"><%= @asteroid[:size] %> Meters</p>
@@ -291,14 +185,14 @@ $(document).ready(function(){
                   </div>
 
                   <div class="form-group">
-                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: period" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Orbital Period (years)" data-content="Years to complete 1 revolution around the sun"><span class="fa fa-info-circle fa-lg"></span></div> Orbital Period</label>
                     <div class="col-md-6">
                       <p class="form-control-static ae-form-data"><%= @asteroid.period %> Years</p>
                     </div>
                   </div>
 
                   <div class="form-group">
-                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: spin_period" data-content="How long it takes the asteroid to spin once around itself"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
+                  <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Spin Period (hours)" data-content="How long it takes the asteroid to spin once around itself"><span class="fa fa-info-circle fa-lg"></span></div> Spin Period</label>
                     <div class="col-md-6">
                       <p class="form-control-static ae-form-data"><%= @asteroid.spin_period %> Hours</p>
                     </div>
@@ -306,7 +200,7 @@ $(document).ready(function(){
 
                   <% if @asteroid.taxonomy_class.present? %>
                       <div class="form-group">
-                      <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON Data Column: taxonomy_class" data-content="This tells astronomers what the asteroid's surface is made of"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
+                      <label class="col-md-6 control-label ae-form-label"><div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="Spectral Class" data-content="This tells astronomers what the asteroid's surface is made of"><span class="fa fa-info-circle fa-lg"></span></div> Spectral Class</label>
                         <div class="col-md-6">
                           <p class="form-control-static ae-form-data"><%= @asteroid.taxonomy_class %></p>
                         </div>
@@ -397,38 +291,6 @@ $(document).ready(function(){
           <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div> 
         </div>
       </footer>
-
-
-<script type="text/javascript">
-      (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })();
-    </script>
-
-    <script type="text/javascript">
-      //<![CDATA[
-      var _tag=new WebTrends();
-      _tag.dcsGetId();
-      //]]>
-    </script>
-
-    <script type="text/javascript">
-      //<![CDATA[
-      _tag.dcsCustom=function(){
-      // Add custom parameters here.
-      //_tag.DCSext.param_name=param_value;
-      }
-      _tag.dcsCollect();
-      //]]>
-    </script>
-
-    <noscript>
-      <div>
-        <img alt="DCSIMG" id="DCSIMG" width="1" height="1" src="//logs1.smithsonian.museum/dcsa7yzrmbdzpxzrosrn4tyep_5i1d/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=9.4.0&amp;dcssip=www.minorplanetcenter.net">
-      </div>
-    </noscript>
 
 </body>
 </html>
