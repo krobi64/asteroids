@@ -660,7 +660,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 // data-hashtags="asteriodexplore, asteroids, nasa, seti">Tweet</a>
       asteroidEnter.append("td")
       .append("a")
-           .attr("href", function(d) { return "https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+" + d.designation + "!+Via+@MinorPlanetCtr+%23AsteroidExplorers+" + encodeURI("http://asteroid-explorers.herokuapp.com/asteroids/" + d.designation.replace(' ', '%20'));
+           .attr("href", function(d) { return "https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+" + d.designation + "!+Via+@MinorPlanetCtr+%23AsteroidExplorers+" + encodeURI("http://asteroid-explorers.com/asteroids/" + d.designation.replace(' ', '%20'));
          })
       .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
