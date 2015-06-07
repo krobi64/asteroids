@@ -173,7 +173,7 @@ $(document).ready(function(){
         <div id="ae-header-detail">
             <h2 class="ae-asteroid-title">Asteroid: <%= @asteroid.designation %></h2>
             <div id="ae-header-actions-2nd">
-     <a href="<%= @asteroid.url %>" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+<%= @asteroid.designation %>!+Via+@MinorPlanetCtr+%23AsteroidExplorers+<%= CGI.escape("http://asteroid-explorers.com/asteroid/#{@asteroid.designation.gsub(/ /,'+')}")%>" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
+     <a href="<%= @asteroid.url %>" class="btn ae-btn-default" role="button"><i class="fa fa-connectdevelop"></i>&nbsp;Orbit&nbsp;Details</a>&nbsp;&nbsp;<a href="https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+<%= @asteroid.designation %>!+Via+@MinorPlanetCtr+%23AsteroidExplorers+<%= CGI.escape("http://asteroid-explorers.com/asteroid/#{@asteroid.designation.gsub(/ /,'%20')}")%>" class="btn ae-btn-default" role="button"><i class="fa fa-twitter"></i>&nbsp;Share</a>
             </div>
           </div>
         </div>

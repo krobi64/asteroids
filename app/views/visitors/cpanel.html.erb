@@ -13,7 +13,7 @@
 
 <!-- Start MPC -->
 
-  <!-- custom version of all.css file so don't overwrite bootstrap --> 
+  <!-- custom version of all.css file so don't overwrite bootstrap -->
   <link media="all" rel="stylesheet" href="../../../mpc/css/all-ae-control-panel.css">
 
   <script type="text/javascript" async="" src="../../../mpc/js/plusone.js"></script>
@@ -90,17 +90,17 @@ $(document).ready(function(){
           <div class="area">
             <!-- top-nav -->
 
-         
+
             <nav class="top-nav">
            <!-- REMOVED CONTENT as not showing MPC header -->
 
             </nav>
-          
-        
+
+
             <div class="form-holder">
                <!-- REMOVED CONTENT as not showing MPC header -->
             </div>
-          
+
 
             <div class="social-bar">
               <a href="https://twitter.com/MinorPlanetCtr" target="_top"><i class="fa fa-twitter ae-social ae-twitter"></i></span></a>
@@ -108,10 +108,10 @@ $(document).ready(function(){
               <a href="https://plus.google.com/103523519128767953332/posts" target="_top"><span class="social gplus">G</span></a>
               <a href="http://minorplanetcenter.com/iau/rss/mpc_feeds.html"><span class="social rss">R</span></a>
             </div>
-                
+
           </div>
         </div>
-    
+
 
         <nav class="nav-holder">
           <!-- main navigation -->
@@ -119,18 +119,18 @@ $(document).ready(function(){
             <li>
               <!-- REMOVED CONTENT as not showing MPC header -->
             </li>
-           
-            <li> 
+
+            <li>
             <!--<a href="/blog"><span>Public</span></a>  -->
             </li>
-          
-           
+
+
             <li>
                <span class="ae-menuspacer">&nbsp;</span>
               <!--<a href="/IAWN/"><span>IAWN</span></a>-->
                  <!-- REMOVED CONTENT as not showing MPC header -->
             </li>
-   
+
           </ul>
         </nav>
       </header>
@@ -155,7 +155,7 @@ $(document).ready(function(){
         <a type="button" class="btn ae-nav-btn" href="../../../mpc/index.html">Discover</a>
         <a type="button" class="btn ae-nav-btn" href="../../../mpc/ae-about.html">About</a>
         <a type="button" class="active btn ae-nav-btn" href="#">Explore</a>
-      </div>  
+      </div>
     </div>
 
         <div id="ae-header-detail">
@@ -202,9 +202,9 @@ $(document).ready(function(){
   <div id="charts">
 
     <div id="speed-chart" class="chart"><div class="title">Size (meters)&nbsp;&nbsp;|&nbsp;&nbsp; <div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: size" data-content="Approximate dimension of asteroids">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
-    
+
     <div id="size-chart" class="chart"><div class="title">Next Close Approach Distance (LD)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: close_app_dist" data-content="LD stands for Lunar Distance. How close the asteroid will come on its next flyby of Earth (1 LD = 384,401 km)">&nbsp;<span class="fa fa-info-circle fa-lg"></span>&nbsp;</div></div></div>
-    
+
     <div id="perihelion-distance-chart" class="chart"><div class="title">Orbital Period (years)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: period" data-content="How long it takes the asteroid to complete one trip around the Sun">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
 
     <div id="earth-moid-chart" class="chart"><div class="title">&#916;v (km/s)&nbsp;&nbsp;|&nbsp;&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="above" title="JSON data column: delta_v" data-content="Approximate change in speed required to reach the asteroid; the more speed required, the harder it is to get to it.">&nbsp;<span class="fa fa-info-circle fa-lg">&nbsp;</span></div></div></div>
@@ -226,7 +226,7 @@ $(document).ready(function(){
       <thead class="ae-data-table">
 
       <tr>
-     
+
 
                <th id="ae-col-1" class="ae-data-table-header">Asteroid<br/>Designation&nbsp;<div href="#" class="label label-info" data-toggle="popover" data-placement="bottom" title="Asteroid Designation" data-content="Name that astronomers refer to the asteroid by"><span class="fa fa-info-circle fa-lg"></span></div></th>
 
@@ -298,7 +298,7 @@ $(document).ready(function(){
   <br/><br/>
 </div>
 <!-- END search results -->
- 
+
 
 <!-- closing of Ground Control-->
   </div>
@@ -329,7 +329,7 @@ $(document).ready(function(){
             </ul>
           </nav>
           <img src="../../../mpc/images/MPC_logo_circular.png" width="60" height="60" alt="Minor Planet Center Logo">
-          <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div> 
+          <div class="copy">©2015 The Minor Planet Center. All Rights Reserved.</div>
         </div>
       </footer>
 
@@ -364,7 +364,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     charts[2].filter(null);
     charts[3].filter(null);
     impact2.filter(null);
-    close_date.filter(null);    
+    close_date.filter(null);
   };
   window.danger = function() {
     //Most dangerous:       impact_prob_float > 0.00009
@@ -384,7 +384,7 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
     window.resetAll();
     // close_date.filterRange([today1, day2]);
     close_date.filterRange([date1, date2]);
-    
+
     renderAll();
   }
   window.switchQuestion = function(num) {
@@ -416,16 +416,16 @@ d3.json("/asteroids.json", function(error, asteroids_temp) {
       //$('#toggle_chart_view').removeClass("inactive");
       $('#toggle_chart_view').addClass("active");
       //$('#toggle_table_view').addClass("inactive");
-      $('#table_content').hide();  
+      $('#table_content').hide();
       $('#highchart_content').show();
-      $('#axis_choice').show();      
+      $('#axis_choice').show();
     }
     else if( tableOrHighChart == 0 ) {
       $('#toggle_chart_view').removeClass("active");
       //$('#toggle_table_view').removeClass("inactive");
       $('#toggle_table_view').addClass("active");
       //$('#toggle_chart_view').addClass("inactive");
-      $('#table_content').show();  
+      $('#table_content').show();
       $('#highchart_content').hide();
       $('#axis_choice').hide();
     }
@@ -492,7 +492,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       close_date = asteroid.dimension(function(d) {
         if( d.close_app_date == null ) {
           return null;
-        } 
+        }
         var dateStr = d.close_app_date.split(' ');
         var m = parseInt(dateStr[1], 10) - 1;
         var date = Date.UTC(dateStr[0], ''+m, dateStr[2]);
@@ -555,12 +555,12 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   Biggest:              size > 3500
   Flying by this month: "2015 06 08" < close_app_date < "2015 07 08"
   */
-  console.log("apply filter: <%= @filter_type %>"); 
+  console.log("apply filter: <%= @filter_type %>");
   // start with showing table list, hiding highchart
   // var toggleFlag = 0;
   toggleAsteroidView(0);
   // select the sorting column
-  var asteroidSortingDimension = designation; 
+  var asteroidSortingDimension = designation;
   <% if @filter_type=="hazard" %>
     asteroidSortingDimension = impact2;
     window.danger();
@@ -576,8 +576,8 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
   <% else %>
     asteroidSortingDimension = designation;
     window.filter([null, null, null, null]);
-  <% end %> 
-  
+  <% end %>
+
   // Renders the specified chart or list.
   function render(method) {
     d3.select(this).call(method);
@@ -604,15 +604,15 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       var sortedDataSet = null;
       if( asteroidSortingDimension === close_date || asteroidSortingDimension === energy) {
         // ascending
-        sortedDataSet = asteroidSortingDimension.bottom(20); 
-      } 
+        sortedDataSet = asteroidSortingDimension.bottom(20);
+      }
       else {
         //descending
         sortedDataSet = asteroidSortingDimension.top(20);
       }
       var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(sortedDataSet, function(d) { 
-              return d.index; 
+          .data(sortedDataSet, function(d) {
+              return d.index;
           });
       var asteroidEnter = asteroid.enter().append("tr")
                                   .attr("class", function(d) {
@@ -660,7 +660,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 // data-hashtags="asteriodexplore, asteroids, nasa, seti">Tweet</a>
       asteroidEnter.append("td")
       .append("a")
-           .attr("href", function(d) { return "https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+" + d.designation + "!+Via+@MinorPlanetCtr+%23AsteroidExplorers+" + encodeURI("http://asteroid-explorers.herokuapp.com/asteroids/" + d.designation.replace(' ', '+')); 
+           .attr("href", function(d) { return "https://twitter.com/intent/tweet?text=Check+out+Near+Earth+%23Asteroid+" + d.designation + "!+Via+@MinorPlanetCtr+%23AsteroidExplorers+" + encodeURI("http://asteroid-explorers.herokuapp.com/asteroids/" + d.designation.replace(' ', '%20'));
          })
       .attr("target", "_blank")
       .attr("class", "btn btn-default btn-sm")
@@ -700,7 +700,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
                 margin: 20,
             },
             allowDecimals: true
-        },        
+        },
         series: []
     };
     var distanceSeries = [];
@@ -713,14 +713,14 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
         var sortedDataSet = null;
         if( asteroidSortingDimension === close_date || asteroidSortingDimension === energy) {
           // ascending
-          sortedDataSet = asteroidSortingDimension.bottom(1); 
-        } 
+          sortedDataSet = asteroidSortingDimension.bottom(1);
+        }
         else {
           // descending
           sortedDataSet = asteroidSortingDimension.top(1);
         }
         var asteroid = d3.select(this).selectAll(".asteroid")
-          .data(sortedDataSet, function(d) { 
+          .data(sortedDataSet, function(d) {
             var dateStr = d.close_app_date.split(' ');
             // javascript month starts with 0
             var m = parseInt(dateStr[1], 10) - 1;
@@ -751,7 +751,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             tmpDist.push(parseFloat(d.close_app_dist));
 //            tmpDist.push(d.close_app_dist);
             if( useBubble ) {
-              tmpDist.push(size); 
+              tmpDist.push(size);
             }
             distanceSeries.push(tmpDist);
           if( axisFlag != 1 ) {
@@ -759,7 +759,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             tmpSize.push(baseAxis);
             tmpSize.push(d.size/100);
             if( useBubble ) {
-              tmpSize.push(size); 
+              tmpSize.push(size);
             }
             sizeSeries.push(tmpSize);
           }
@@ -769,7 +769,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             tmpPeriod.push(parseFloat(d.period));
 //            tmpPeriod.push(d.period);
             if( useBubble ) {
-              tmpPeriod.push(size); 
+              tmpPeriod.push(size);
             }
             periodSeries.push(tmpPeriod);
           }
@@ -779,7 +779,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             // tmpEnergy.push(Math.round(d.delta_v));
             tmpEnergy.push(parseFloat(d.delta_v));
             if( useBubble ) {
-              tmpEnergy.push(size); 
+              tmpEnergy.push(size);
             }
             energySeries.push(tmpEnergy);
           }
@@ -791,10 +791,10 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
             }
             tmpImpact.push(probLog);
             if( useBubble ) {
-              tmpImpact.push(size); 
+              tmpImpact.push(size);
             }
             impactSeries.push(tmpImpact);
-            return d.index; 
+            return d.index;
         });
     });
       if( axisFlag == 0 ) {
@@ -805,17 +805,17 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       else if( axisFlag == 1 ) {
         // Size
         options.xAxis.title.text = 'Size (x100 meters)';
-        options.xAxis.type = '';        
+        options.xAxis.type = '';
       }
       else if( axisFlag == 2 ) {
         // Size
         options.xAxis.title.text = 'Orbital Period (years)';
-        options.xAxis.type = '';        
+        options.xAxis.type = '';
       }
       else if( axisFlag == 3 ) {
         // Size
         options.xAxis.title.text = 'Δv (km/s)';
-        options.xAxis.type = '';        
+        options.xAxis.type = '';
       }
       options.series.push({color: "#AAAAFF", name: "Next Close Approach Distance<br/>(LD)", data: distanceSeries});
       options.series.push({color: "#FFAABB", name: "Impact Probability<br/>(in log scale)", data: impactSeries});
@@ -832,7 +832,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
       // alert("data series size: " + distanceSeries.length);
       // reference size to influence the bubble size
       // options.series.push(name: "RefSize", data: [[Date.UTC(2034,6,3),0,500],[Date.UTC(2034,03,09),0,50], [Date.UTC(2034,05,18),0,5000]]);
-      $('#highchart_content').highcharts( options );    
+      $('#highchart_content').highcharts( options );
   }
   function barChart() {
     if (!barChart.id) barChart.id = 0;
@@ -1004,7 +1004,7 @@ url     :       http://minorplanetcenter.net/db_search/show_object?object_id=200
 
 <!-- Start MPC JS -->
 
-<!-- removed MPC JS --> 
+<!-- removed MPC JS -->
 
 <!-- END MPC JS -->
 
